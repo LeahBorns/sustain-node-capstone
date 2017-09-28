@@ -38,7 +38,7 @@ Sustain is both a game and an educational tool for music fans to encourage the a
 
 ##### Screens
 
-![Wireframe](../github-images/sustain-node-capstone-wireframe.jpg)
+![Wireframe](https://github.com/LeahBorns/Sustain-node-capstone/blob/master/github-images/sustain-node-capstone-wireframe.jpg)
 * Screen to log in
 * Screen with user profile (Home) information (img, summary, feed of activities, activities signed up for
 * Screen with list of activities
