@@ -49,7 +49,7 @@ Sustain is both a game and an educational tool for music fans to encourage the a
 
 ## Working Prototype
 
-You can access a working prototype of the app here: https://find-and-register-for-events.herokuapp.com/
+You can access a working prototype of the app here: https://sustain-node-capstone.herokuapp.com/
 
 ## Functionality
 The app's functionality includes:
