@@ -38,11 +38,16 @@ Sustain is both a game and an educational tool for music fans to encourage the a
 
 ##### Screens
 
-![Wireframe](https://github.com/LeahBorns/Sustain-node-capstone/blob/master/github-images/sustain-node-capstone-wireframe.jpg)
 * Screen to log in
-* Screen with user profile (Home) information with search bar to find friends/activities (img, summary, feed of activities, activities signed up for
-* Screen with list of activities with search bar to find friends/activities
-* Screen with live feed with search bar to find friends/activities
+![Log-In](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-node-capstone-wireframe-login.jpg)
+* Screen with user profile (Home) information to find friends/activities (img, summary, feed of activities, activities signed up for
+![Profile](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-node-capstone-wireframe_profile.jpg)
+* Screen with list of activities
+![Activities](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-node-capstone-wireframe_activities.jpg)
+* Screen with live feed
+![Live feed](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-node-capstone-wireframe_feed.jpg)
+* Screen to find friends and see 'leaderboard'
+![Find friends](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-node-capstone-wireframe_find-friends.jpg)
 
 
 
