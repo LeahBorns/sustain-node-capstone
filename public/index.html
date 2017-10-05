@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Sustain Capstone</title>
-    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -14,17 +14,17 @@
     <nav>
         <h1>Sustain</h1>
 
-        <div>
-            <a href="#" class="navLinks">Practices</a>
-            <a href="#" class="navLinks">Feed</a>
-            <a href="#" class="navLinks"><img class="searchIcon" src="images/find.png" alt="search icon"></a>
-            <a href="#" class="navLinks"><img class="profilePic" src="images/IMG_2436.JPG" alt="profile picture"></a>
+        <div class="navLinks">
+            <a href="#" class="link">Practices</a>
+            <a href="#" class="link">Feed</a>
+            <a href="#" class="link"><img class="searchIcon" src="images/find.png" alt="search icon"></a>
+            <a href="#" class="link"><img class="profilePic" src="images/IMG_2436.JPG" alt="profile picture"></a>
         </div>
 
     </nav>
 
     <!-- Login Page -->
-    <main>
+    <main class="loginPage">
         <section>
             <p class="overallMessage">Join BØRNS in a quest toward a healthier future.<br><br>Commit to daily practices, share your experience, get points!</p>
         </section>
@@ -35,7 +35,7 @@
                 <input type="email" name="email" id="email" placeholder="email" required="true"><br><br>
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" placeholder="password" required="true"><br><br><br>
-                <button role="button" type="submit">Enter</button>
+                <button id="enter-site" role="button" type="submit">Enter</button>
             </form><br>
             <div class="sign-up">
                 <p>Want to join? <a href="/signup">Create an account</a></p>
@@ -207,31 +207,33 @@
         </section>
 
         <!--Oveall Feed -->
-        <h2 class="pageTitle">FEED</h2>
-        <div class="currentFeed">
-            <div class="pointsEarned">
-                <h2 class="points"><img class="feedPicture" src="images/friend-filler.png" alt="Kauri">Kauri earned 2 more point!</h2>
-                <h3 class="practice">Use a reusable water bottle</h3>
-                <p class="comment">"I don't leave the house without it!"</p>
+        <section class="overallFeed">
+            <h2 class="pageTitle">FEED</h2>
+            <div class="currentFeed">
+                <div class="pointsEarned">
+                    <h2 class="points"><img class="feedPicture" src="images/friend-filler.png" alt="Kauri">Kauri earned 2 more point!</h2>
+                    <h3 class="practice">Use a reusable water bottle</h3>
+                    <p class="comment">"I don't leave the house without it!"</p>
+                </div>
+                <img class="proofPicture" src="images/water-bottle.png" alt="water bottle">
             </div>
-            <img class="proofPicture" src="images/water-bottle.png" alt="water bottle">
-        </div>
-        <div class="currentFeed">
-            <div class="pointsEarned">
-                <h2 class="points"><img class="feedPicture" src="images/friend-filler.png" alt="Emma">Emma earned 6 more point!</h2>
-                <h3 class="practice">Changed lightbulbs to LCD</h3>
-                <p class="comment">"I look forward to see how my energy bill changes!"</p>
+            <div class="currentFeed">
+                <div class="pointsEarned">
+                    <h2 class="points"><img class="feedPicture" src="images/friend-filler.png" alt="Emma">Emma earned 6 more point!</h2>
+                    <h3 class="practice">Changed lightbulbs to LCD</h3>
+                    <p class="comment">"I look forward to see how my energy bill changes!"</p>
+                </div>
+                <img class="proofPicture" src="images/lightbulb.png" alt="water bottle">
             </div>
-            <img class="proofPicture" src="images/lightbulb.png" alt="water bottle">
-        </div>
-        <div class="currentFeed">
-            <div class="pointsEarned">
-                <h2 class="points"><img class="feedPicture" src="images/friend-filler.png" alt="Susie">Susie earned 4 more points!</h2>
-                <h3 class="practice">Don't make uncessesary purchases</h3>
-                <p class="comment">"I'm realizing how many uncessary purchases I make each week!"</p>
+            <div class="currentFeed">
+                <div class="pointsEarned">
+                    <h2 class="points"><img class="feedPicture" src="images/friend-filler.png" alt="Susie">Susie earned 4 more points!</h2>
+                    <h3 class="practice">Don't make uncessesary purchases</h3>
+                    <p class="comment">"I'm realizing how many uncessary purchases I make each week!"</p>
+                </div>
+                <img class="proofPicture" src="images/save-money.png" alt="water bottle">
             </div>
-            <img class="proofPicture" src="images/save-money.png" alt="water bottle">
-        </div>
+        </section>
 
         <!--Friends page -->
         <section class="friendsSection">
