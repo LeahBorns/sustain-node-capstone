@@ -1,14 +1,248 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Sustain Capstone</title>
-        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="client.js"></script>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sustain Capstone</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <h1>Sustain</h1>
+
+        <div>
+            <a href="#" class="navLinks">Practices</a>
+            <a href="#" class="navLinks">Feed</a>
+            <a href="#" class="navLinks"><img class="searchIcon" src="images/find.png" alt="search icon"></a>
+            <a href="#" class="navLinks"><img class="profilePic" src="images/IMG_2436.JPG" alt="profile picture"></a>
+        </div>
+
+    </nav>
+
+    <!-- Login Page -->
+    <main>
+        <section>
+            <p class="overallMessage">Join BØRNS in a quest toward a healthier future.<br><br>Commit to daily practices, share your experience, get points!</p>
+        </section>
+        <section class="loginForm">
+            <form class="login" role="form" action="/login/" method="post">
+                <h2>Login</h2><br>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="email" required="true"><br><br>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="password" required="true"><br><br><br>
+                <button role="button" type="submit">Enter</button>
+            </form><br>
+            <div class="sign-up">
+                <p>Want to join? <a href="/signup">Create an account</a></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- profile -->
+    <main>
+        <section class="profileInfo">
+            <div class="picture"><img class="mainProfilePic" src="images/IMG_2436.JPG" alt="Profile picture"></div>
+            <div class="profileDescription">
+                <h2>Leah Borns</h2>
+                <p>Sed haec quis possit intrepidus aestimare tellus. Contra legem facit qui id facit quod lex prohibet. Morbi fringilla convallis sapien, id pulvinar odio volutpat.</p>
+            </div>
+        </section>
+        <hr>
+        <section class="activityBoxes">
+            <div>
+                <img class="activityIcon" src="images/bus.png" alt="bus icon">
+                <h3 class="activityName">Take Public Transit</h3><br>
+                <h3>Points: 6</h3> <br>
+                <label for="checkbox">Committed</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"><br>
+                <p>Tell us about your experience</p> <textarea class="textBox" name="textBox" id="text-box"></textarea>
+                <button class="completedActivity" role="button" type="submit">I did it</button>
+            </div>
+            <div>
+                <img class="activityIcon" src="images/short-shower.png" alt="bus icon">
+                <h3 class="activityName">Take 5 minute shower</h3><br>
+                <h3>Points: 2</h3><br>
+                <label for="checkbox">Committed</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>
+                <button class="completedActivity" role="button" type="submit">I did it</button></div>
+            <div>
+                <img class="activityIcon" src="images/water-bottle.png" alt="bus icon">
+                <h3 class="activityName">Use a reusable bottle </h3><br>
+                <h3>Points: 4</h3><br>
+                <label for="checkbox">Committed</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>
+                <button class="completedActivity" role="button" type="submit">I did it</button></div>
+        </section>
+        <hr>
+        <section class="indivFeed">
+            <h2 class="pageTitle">YOUR FEED</h2>
+            <div class="currentFeed">
+                <div class="pointsEarned">
+                    <h2 class="points">Leah earned 2 more point!</h2>
+                    <h3 class="practice">Use a reusable water bottle</h3>
+                    <p class="comment">"I don't leave the house without it!"</p>
+                </div>
+                <img class="proofPicture" src="images/water-bottle.png" alt="water bottle">
+            </div>
+            <div class="currentFeed">
+                <div class="pointsEarned">
+                    <h2 class="points">Leah earned 6 more point!</h2>
+                    <h3 class="practice">Changed lightbulbs to LCD</h3>
+                    <p class="comment">"I look forward to see how my energy bill changes!"</p>
+                </div>
+                <img class="proofPicture" src="images/lightbulb.png" alt="water bottle">
+            </div>
+            <div class="currentFeed">
+                <div class="pointsEarned">
+                    <h2 class="points">Leah earned 4 more points!</h2>
+                    <h3 class="practice">Don't make uncessesary purchases</h3>
+                    <p class="comment">"I'm realizing how many uncessary purchases I make each week!"</p>
+                </div>
+                <img class="proofPicture" src="images/save-money.png" alt="water bottle">
+            </div>
+        </section>
+
+
+
+        <!--Activiies page -->
+
+        <section class="activitiesSection">
+            <h2 class="pageTitle">ACTIVITIES</h2>
+            <select name="Categories" class="sustainCategories" id="categories">
+                <option value="empty">Choose a category...</option>
+               <option value="food">Food</option>
+               <option value="transport">Transportation</option>
+               <option value="water">Water</option>
+               <option value="energy">Energy</option>
+               <option value="waste">Waste</option>
+               <option value="nature appreciation">Nature appreciation</option>
+               <option value="Health">Health</option>
+           </select>
+            <select name="points" class="sustainPoints" id="points">
+                <option value="empty">Choose number of points...</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+            </select>
+            <button class="pullDownCategories" role="button" type="search">Search</button>
+        </section>
+        <hr>
+        <section class="activityBoxes">
+            <div>
+                <img class="activityIcon" src="images/bus.png" alt="bus icon">
+                <h3 class="activityName">Take Public Transit</h3><br>
+                <h3>Points: 6</h3> <br>
+                <label for="checkbox">Commit</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+            </div>
+            <div>
+                <img class="activityIcon" src="images/short-shower.png" alt="short shower icon">
+                <h3 class="activityName">Take 5 minute shower</h3><br>
+                <h3>Points: 2</h3><br>
+                <label for="checkbox">Commit</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+            </div>
+            <div>
+                <img class="activityIcon" src="images/water-bottle.png" alt="waterbottle icon">
+                <h3 class="activityName">Use a reusable bottle </h3><br>
+                <h3>Points: 4</h3><br>
+                <label for="checkbox">Commit</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+            </div>
+        </section>
+        <section class="activityBoxes">
+            <div>
+                <img class="activityIcon" src="images/toilet.png" alt="toilet icon">
+                <h3 class="activityName">If yellow let mellow</h3><br>
+                <h3>Points: 2</h3> <br>
+                <label for="checkbox">Commit</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+            </div>
+            <div>
+                <img class="activityIcon" src="images/lightbulb.png" alt="lightbulb icon">
+                <h3 class="activityName">Switch to LED bulbs</h3><br>
+                <h3>Points: 6</h3><br>
+                <label for="checkbox">Commit</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+            </div>
+            <div>
+                <img class="activityIcon" src="images/exercise.png" alt="Exercise icon">
+                <h3 class="activityName">Exercise 3x a week </h3><br>
+                <h3>Points: 4</h3><br>
+                <label for="checkbox">Commit</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+            </div>
+        </section>
+        <section class="activityBoxes">
+            <div>
+                <img class="activityIcon" src="images/recycle.png" alt="recycle icon">
+                <h3 class="activityName">Recycle all items</h3><br>
+                <h3>Points: 4</h3> <br>
+                <label for="checkbox">Commit</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+            </div>
+            <div>
+                <img class="activityIcon" src="images/bike.png" alt="lightbulb icon">
+                <h3 class="activityName">Ride your bike</h3><br>
+                <h3>Points: 6</h3><br>
+                <label for="checkbox">Commit</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+            </div>
+            <div>
+                <img class="activityIcon" src="images/nature.png" alt="nature icon">
+                <h3 class="activityName">Get outside </h3><br>
+                <h3>Points: 6</h3><br>
+                <label for="checkbox">Commit</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+            </div>
+        </section>
+
+        <!--Oveall Feed -->
+        <h2 class="pageTitle">FEED</h2>
+        <div class="currentFeed">
+            <div class="pointsEarned">
+                <h2 class="points"><img class="feedPicture" src="images/bob-with-bangs-length.jpg" alt="Jill">Jill earned 2 more point!</h2>
+                <h3 class="practice">Use a reusable water bottle</h3>
+                <p class="comment">"I don't leave the house without it!"</p>
+            </div>
+            <img class="proofPicture" src="images/water-bottle.png" alt="water bottle">
+        </div>
+        <div class="currentFeed">
+            <div class="pointsEarned">
+                <h2 class="points"><img class="feedPicture" src="images/bob-with-bangs-length.jpg" alt="Jill">Aaron earned 6 more point!</h2>
+                <h3 class="practice">Changed lightbulbs to LCD</h3>
+                <p class="comment">"I look forward to see how my energy bill changes!"</p>
+            </div>
+            <img class="proofPicture" src="images/lightbulb.png" alt="water bottle">
+        </div>
+        <div class="currentFeed">
+            <div class="pointsEarned">
+                <h2 class="points"><img class="feedPicture" src="images/bob-with-bangs-length.jpg" alt="Jill">Tim earned 4 more points!</h2>
+                <h3 class="practice">Don't make uncessesary purchases</h3>
+                <p class="comment">"I'm realizing how many uncessary purchases I make each week!"</p>
+            </div>
+            <img class="proofPicture" src="images/save-money.png" alt="water bottle">
+        </div>
+
+        <!--Friends page -->
+        <h2 class="pageTitle">FRIENDS</h2>
+
+
+    </main>
+    <footer>
+        <div></div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="client.js"></script>
+</body>
+
 </html>
