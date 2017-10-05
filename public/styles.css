@@ -13,7 +13,7 @@ main {
 }
 
 .pageTitle {
-    margin-left: 40px;
+    margin-left: 70px;
 }
 
 /* Navigation*/
@@ -94,6 +94,7 @@ h1 {
 /*Profile Page*/
 
 div.picture {
+    margin-left: 70px;
     width: 30%;
     display: inline-block;
     vertical-align: middle;
@@ -173,10 +174,9 @@ input {
 
 .currentFeed {
     border: 2px solid #118C4E;
-    background-color: #C1E1A6;
     height: 200px;
     margin: 15px auto;
-    width: 90%;
+    width: 80%;
 }
 
 .pointsEarned {
@@ -193,11 +193,13 @@ input {
 }
 
 .proofPicture {
-    padding-top: 15px;
+    margin-top: 20px;
+    margin-left: 50px;
     width: 150px;
     display: inline-block;
     vertical-align: middle;
-    border-radius: 50%;
+    border-radius: 100%;
+    border: 5px dotted #C1E1A6;
 }
 
 
@@ -210,7 +212,7 @@ input {
 }
 
 .sustainCategories {
-    margin-left: 40px;
+    margin-left: 70px;
 
 }
 
@@ -221,6 +223,7 @@ input {
 
 
 .pullDownCategories {
+    margin-left: 10px;
     background-color: #C1E1A6;
     padding: 10px;
     color: #585858;
@@ -231,8 +234,74 @@ input {
 .feedPicture {
     width: 50px;
     vertical-align: middle;
-    border-radius: 50%;
-    padding-right: 10px;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+/*Friends section*/
+
+.topPlayers {
+    text-align: center;
+}
+
+.topRated {
+    border: 3px dashed #FFB861;
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+}
+
+div.topProfile {
+    display: inline-block;
+    width: 30%;
+}
+
+img.topImages {
+    width: 50%;
+    display: inline-block;
+    border-radius: 100%;
+    margin-top: 20px;
+}
+
+div.topPlayerInfo {
+    border: 3px solid #118C4E;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+form.search-bar {
+    margin: 40px auto;
+    width: 60%;
+}
+
+input.searchFriends {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #C1E1A6;
+}
+
+input.searchButton {
+    background-color: #FFB861;
+    padding: 10px;
+    color: #585858;
+}
+
+div.currentFriends {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+}
+
+
+div.friendProfile {
+    display: inline-block;
+    width: 18%;
+}
+
+img.friendImages {
+    width: 60%;
+    border-radius: 100%;
 
 }
 
