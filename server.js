@@ -1,17 +1,193 @@
-var express = require('express');
-var unirest = require('unirest');
-var events = require('events');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var config = require('./config');
-var app = express();
-var activity = require('./models/activity');
+const User = require('.models/user');
+const activity = require('.models/activity');
+const bodyParser = require('body-parser');
+const config = require('./config');
+const mongoose = require('mongoose');
+
+//const unirest = require('unirest');
+//const events = require('events');
+const moment = require('moment');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+const BasicStrategy = require('passport-http').BasicStrategy;
+
+const express = require('express');
+const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json());
+app.use(cors());
+
+mongoose.Promise = global.Promise;
+
+//RUN/CLOSE SERVER
+let server = undefined;
+
+function runServer() {
+    return new Promise((resolve, request) => {
+        mongoose.connect(config.DATABASE_URL, err => {
+            if (err) {
+                return reject(err);
+            }
+            server = app.listen(config.PORT, () => {
+                console.log(`Listening on localhost:${config.PORT}`);
+                resolve();
+            }).on('error', err => {
+                mongoose.disconnect();
+                reject(err);
+            });
+        });
+    });
+}
+
+if (require.main === module) {
+    runServer().catch(err => console.error(err));
+}
+
+function closeServer() {
+    return mongoose.disconnect().then(() => new Promise((resolve, reject) => {
+        console.log('Closing server');
+        server.close(err => {
+            if (err) {
+                return reject(err);
+            }
+            resolve();
+        });
+    }));
+}
+
+// USER ENDPOINTS
+//POST -> Creating a new user (Registration)
+
+app.post('/user/create', (req, res) => {
+    let username = req.body.username;
+    username = username.trim();
+    let password = req.body.password;
+    password = password.trim();
+    bcrypt.genSalt(10, (err, salt) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal server error'
+            });
+        }
+
+        bcrypt.hash(password, salt, (err, hash) => {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Internal server error'
+                });
+            }
+
+            User.create({
+                username,
+                password: hash,
+            }, (err, item) => {
+                if (err) {
+                    return res.status(500).json({
+                        message: 'Internal server error'
+                    });
+                }
+
+                if (item) {
+                    console.log(`User \`${username}\` created.`);
+                    return res.json(item);
+                }
+            });
+        });
+
+    });
+});
 
 
+//GET -> User signing in
 
-var runServer = function (callback) {
+app.put('/signin', function (req, res) {
+    const user = req.body.username;
+    const pw = req.body.password;
+    User
+        .findOne({
+            username: req.body.username
+        }, function (err, items) {
+            if (err) {
+                return res.status(500).json({
+                    message: "Internal server error"
+                });
+            }
+            if (!items) {
+                //wrong username
+                return res.status(401).json({
+                    message: 'Not Found!'
+                });
+            } else {
+                items.validatePassword(req.body.password, function (err, isValid) {
+                    if (err) {
+                        console.log('There was an error validating the password.');
+                    }
+                    if (!isValid) {
+                        return res.status(401).json({
+                            message: 'Not found'
+                        });
+                    } else {
+                        var logInTime = new Date();
+                        console.log('User logged in:' + req.body.username + 'at' + logInTime);
+                        return res.json(items);
+                    }
+                });
+            };
+        });
+});
+
+//ACTIVITY ENDPOINTS (CREATE?, FIND, DELETE?)
+//FIND/GET -> accessing all of users activties
+app.get('/activity/:user', function (req, res) {
+    console.log(req.params.user);
+    Activity
+        .find()
+        .sort()
+        .then(function (activity) {
+            let activityOutput = [];
+            activity.map(function (activity) {
+                if (activity.user == req.params.user) {
+                    activityOutput.push(activity);
+                }
+            });
+            res.json({
+                activityOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
+//DELETE -> an activity by ID
+app.delete('/activity/:id', function (req, res) {
+    Activity.findByIdAndRemove(req.params.id).exec().then(function (activity) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return .res.status(500).json({
+            message: 'Internal server error'
+        });
+    });
+});
+
+//MISC -> catch-all endpoint if client makes request to non-existent endpoint
+app.use('*', (req, res) => {
+    res.status(404).json({
+        message: 'Not Found'
+    });
+});
+
+exports.app = app;
+exports.runServer = runServer;
+exports.closeServer = closeServer;
+
+
+//Pulled this from other github project
+/*var runServer = function (callback) {
     mongoose.connect(config.DATABASE_URL, function (err) {
         if (err && callback) {
             return callback(err);
@@ -124,3 +300,4 @@ exports.app = app;
 exports.runServer = runServer;
 
 app.listen(3000);
+*/
