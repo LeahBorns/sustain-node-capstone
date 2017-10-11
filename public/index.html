@@ -7,11 +7,12 @@
     <title>Sustain Capstone</title>
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <nav>
+    <nav id="nav-bar">
         <h1>Sustain</h1>
 
         <div class="navLinks">
@@ -19,32 +20,51 @@
             <a href="#" class="link">Feed</a>
             <a href="#" class="link"><img class="searchIcon" src="images/find.png" alt="search icon"></a>
             <a href="#" class="link"><img class="profilePic" src="images/IMG_2436.JPG" alt="profile picture"></a>
+            <a href="#" class="link" id="js-signout-link">Sign out</a>
         </div>
 
     </nav>
 
     <!-- Login Page -->
-    <main class="loginPage">
-        <section>
+    <main id="login-page">
+        <section class="loginPage">
             <p class="overallMessage">Join BØRNS in a quest toward a healthier future.<br><br>Commit to daily practices, share your experience, get points!</p>
-        </section>
-        <section class="loginForm">
-            <form class="login" role="form" action="/login/" method="post">
-                <h2>Login</h2><br>
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="email" required="true"><br><br>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="password" required="true"><br><br><br>
-                <button id="enter-site" role="button" type="submit">Enter</button>
-            </form><br>
-            <div class="sign-up">
-                <p>Want to join? <a href="/signup">Create an account</a></p>
+
+            <div class="loginForm">
+                <form class="login" role="form" action="/login/" method="post">
+                    <h2>Login</h2><br>
+                    <label for="username">Username</label>
+                    <input type="username" name="signin-username" id="username" placeholder="username" required="true"><br><br>
+                    <label for="password">Password</label>
+                    <input type="password" name="signin-pw" id="password" placeholder="password" required="true"><br><br><br>
+                    <button id="enter-site" role="button" type="submit">Enter</button>
+                </form><br>
+                <div class="sign-up">
+                    <p>Want to join? <a href="/signup">Create an account</a></p>
+                </div>
             </div>
         </section>
     </main>
 
+    <!-- register page -->
+    <main id="register-page">
+        <section class="registerForm">
+            <form class="signup" id="new-user-form" role="form" action="/signup/" method="post">
+                <h2>Join Sustain</h2><br>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="username" required="true"><br><br>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="email" required="true"><br><br>
+                <label for="password">Password</label>
+                <input type="password" name="pw" id="password" placeholder="password" required="true"><br><br>
+                <label for="password">Re-enter Password</label>
+                <input type="password" name="confirm-pw" id="verify-password" placeholder="verify password" required="true"><br><br>
+                <button id="signup-button" role="button" type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
     <!-- profile -->
-    <main>
+    <main id="profile-page">
         <section class="profileInfo">
             <div class="picture"><img class="mainProfilePic" src="images/IMG_2436.JPG" alt="Profile picture"></div>
             <div class="profileDescription">
@@ -81,42 +101,48 @@
                 <button class="completedActivity" role="button" type="submit">I did it</button></div>
         </section>
         <hr>
+
+        <!--Personal feed -->
         <section class="indivFeed">
             <h2 class="pageTitle">YOUR FEED</h2>
             <div class="currentFeed">
+                <img class="proofPicture" src="images/water-bottle.png" alt="water bottle">
+
                 <div class="pointsEarned">
                     <h2 class="points">Leah earned 2 more point!</h2>
                     <h3 class="practice">Use a reusable water bottle</h3>
                     <p class="comment">"I don't leave the house without it!"</p>
                 </div>
-                <img class="proofPicture" src="images/water-bottle.png" alt="water bottle">
             </div>
             <div class="currentFeed">
+                <img class="proofPicture" src="images/lightbulb.png" alt="water bottle">
+
                 <div class="pointsEarned">
                     <h2 class="points">Leah earned 6 more point!</h2>
                     <h3 class="practice">Changed lightbulbs to LCD</h3>
                     <p class="comment">"I look forward to see how my energy bill changes!"</p>
                 </div>
-                <img class="proofPicture" src="images/lightbulb.png" alt="water bottle">
             </div>
             <div class="currentFeed">
+                <img class="proofPicture" src="images/save-money.png" alt="water bottle">
+
                 <div class="pointsEarned">
                     <h2 class="points">Leah earned 4 more points!</h2>
                     <h3 class="practice">Don't make uncessesary purchases</h3>
                     <p class="comment">"I'm realizing how many uncessary purchases I make each week!"</p>
                 </div>
-                <img class="proofPicture" src="images/save-money.png" alt="water bottle">
             </div>
         </section>
+    </main>
 
 
 
-        <!--Activiies page -->
-
+    <!--Activiies page -->
+    <main id="activities-page">
         <section class="activitiesSection">
             <h2 class="pageTitle">ACTIVITIES</h2>
             <select name="Categories" class="sustainCategories" id="categories">
-                <option value="empty">Choose a category...</option>
+                <option value="empty">Choose category...</option>
                <option value="food">Food</option>
                <option value="transport">Transportation</option>
                <option value="water">Water</option>
@@ -126,7 +152,7 @@
                <option value="Health">Health</option>
            </select>
             <select name="points" class="sustainPoints" id="points">
-                <option value="empty">Choose number of points...</option>
+                <option value="empty">Choose points...</option>
                 <option value="2">2</option>
                 <option value="4">4</option>
                 <option value="6">6</option>
@@ -143,6 +169,7 @@
                 <h3>Points: 6</h3> <br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
             <div>
                 <img class="activityIcon" src="images/short-shower.png" alt="short shower icon">
@@ -150,6 +177,7 @@
                 <h3>Points: 2</h3><br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
             <div>
                 <img class="activityIcon" src="images/water-bottle.png" alt="waterbottle icon">
@@ -157,6 +185,7 @@
                 <h3>Points: 4</h3><br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
         </section>
         <section class="activityBoxes">
@@ -166,6 +195,7 @@
                 <h3>Points: 2</h3> <br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
             <div>
                 <img class="activityIcon" src="images/lightbulb.png" alt="lightbulb icon">
@@ -173,6 +203,7 @@
                 <h3>Points: 6</h3><br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
             <div>
                 <img class="activityIcon" src="images/exercise.png" alt="Exercise icon">
@@ -180,6 +211,7 @@
                 <h3>Points: 4</h3><br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
         </section>
         <section class="activityBoxes">
@@ -189,53 +221,60 @@
                 <h3>Points: 4</h3> <br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
             <div>
                 <img class="activityIcon" src="images/bike.png" alt="lightbulb icon">
-                <h3 class="activityName">Ride your bike</h3><br>
+                <h3 class="activityName">Ride your bike vs drive</h3><br>
                 <h3>Points: 6</h3><br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
             <div>
                 <img class="activityIcon" src="images/nature.png" alt="nature icon">
-                <h3 class="activityName">Get outside </h3><br>
+                <h3 class="activityName">Get outside for at least 30 mins </h3><br>
                 <h3>Points: 6</h3><br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
         </section>
-
-        <!--Oveall Feed -->
+    </main>
+    <!--Overall Feed -->
+    <main id="feed-page">
         <section class="overallFeed">
             <h2 class="pageTitle">FEED</h2>
             <div class="currentFeed">
+                <img class="proofPicture" src="images/water-bottle.png" alt="water bottle">
+
                 <div class="pointsEarned">
                     <h2 class="points"><img class="feedPicture" src="images/friend-filler.png" alt="Kauri">Kauri earned 2 more point!</h2>
                     <h3 class="practice">Use a reusable water bottle</h3>
                     <p class="comment">"I don't leave the house without it!"</p>
                 </div>
-                <img class="proofPicture" src="images/water-bottle.png" alt="water bottle">
             </div>
             <div class="currentFeed">
+                <img class="proofPicture" src="images/lightbulb.png" alt="water bottle">
                 <div class="pointsEarned">
                     <h2 class="points"><img class="feedPicture" src="images/friend-filler.png" alt="Emma">Emma earned 6 more point!</h2>
                     <h3 class="practice">Changed lightbulbs to LCD</h3>
                     <p class="comment">"I look forward to see how my energy bill changes!"</p>
                 </div>
-                <img class="proofPicture" src="images/lightbulb.png" alt="water bottle">
             </div>
             <div class="currentFeed">
+                <img class="proofPicture" src="images/save-money.png" alt="water bottle">
                 <div class="pointsEarned">
                     <h2 class="points"><img class="feedPicture" src="images/friend-filler.png" alt="Susie">Susie earned 4 more points!</h2>
                     <h3 class="practice">Don't make uncessesary purchases</h3>
                     <p class="comment">"I'm realizing how many uncessary purchases I make each week!"</p>
                 </div>
-                <img class="proofPicture" src="images/save-money.png" alt="water bottle">
             </div>
         </section>
+    </main>
 
-        <!--Friends page -->
+    <!--Friends page -->
+    <main id="friends-page">
         <section class="friendsSection">
             <h2 class="pageTitle">FRIENDS</h2>
             <h2 class="topPlayers">Most CO2 diverted</h2>
@@ -273,35 +312,35 @@
             <div class="currentFriends">
                 <div class="friendProfile">
                     <img class="friendImages" src="images/friend-filler.png" alt="Kauri"><br>
-                    <div class="topPlayerInfo">
+                    <div class="playerInfo">
                         <p>Kauri V. </p>
                         <p>146 points</p>
                     </div>
                 </div>
                 <div class="friendProfile">
                     <img class="friendImages" src="images/friend-filler.png" alt="Emma"><br>
-                    <div class="topPlayerInfo">
+                    <div class="playerInfo">
                         <p>Emma B. </p>
                         <p>142 points</p>
                     </div>
                 </div>
                 <div class="friendProfile">
                     <img class="friendImages" src="images/friend-filler.png" alt="Susie"><br>
-                    <div class="topPlayerInfo">
+                    <div class="playerInfo">
                         <p>Susie R. </p>
                         <p>140 points</p>
                     </div>
                 </div>
                 <div class="friendProfile">
                     <img class="friendImages" src="images/friend-filler.png" alt="Susie"><br>
-                    <div class="topPlayerInfo">
+                    <div class="playerInfo">
                         <p>Susie R. </p>
                         <p>140 points</p>
                     </div>
                 </div>
                 <div class="friendProfile">
                     <img class="friendImages" src="images/friend-filler.png" alt="Susie"><br>
-                    <div class="topPlayerInfo">
+                    <div class="playerInfo">
                         <p>Susie R. </p>
                         <p>140 points</p>
                     </div>
@@ -312,47 +351,52 @@
             <div class="currentFriends">
                 <div class="friendProfile">
                     <img class="friendImages" src="images/friend-filler.png" alt="Kauri"><br>
-                    <div class="topPlayerInfo">
+                    <div class="playerInfo">
                         <p>Kauri V. </p>
                         <p>146 points</p>
                     </div>
                 </div>
                 <div class="friendProfile">
                     <img class="friendImages" src="images/friend-filler.png" alt="Emma"><br>
-                    <div class="topPlayerInfo">
+                    <div class="playerInfo">
                         <p>Emma B. </p>
                         <p>142 points</p>
                     </div>
                 </div>
                 <div class="friendProfile">
                     <img class="friendImages" src="images/friend-filler.png" alt="Susie"><br>
-                    <div class="topPlayerInfo">
+                    <div class="playerInfo">
                         <p>Susie R. </p>
                         <p>140 points</p>
                     </div>
                 </div>
                 <div class="friendProfile">
                     <img class="friendImages" src="images/friend-filler.png" alt="Susie"><br>
-                    <div class="topPlayerInfo">
+                    <div class="playerInfo">
                         <p>Susie R. </p>
                         <p>140 points</p>
                     </div>
                 </div>
                 <div class="friendProfile">
                     <img class="friendImages" src="images/friend-filler.png" alt="Susie"><br>
-                    <div class="topPlayerInfo">
+                    <div class="playerInfo">
                         <p>Susie R. </p>
                         <p>140 points</p>
                     </div>
                 </div>
             </div>
         </section>
-
-
-
     </main>
     <footer>
-        <div></div>
+        <div class="footerInfo">
+            <h1>Sustain</h1>
+        </div>
+        <div class="socialButtons">
+            <a href="http://www.facebook.com" class="link"><img class="facebook" src="images/facebook.png" alt="facebook"></a>
+            <a href="http://www.instagram.com" class="link"><img class="instagram" src="images/instagram.png" alt="instagram"></a>
+            <a href="http://www.linkedin.com" class="link"><img class="linkedIn" src="images/linkedIn.png" alt="linkedIn"></a>
+            <a href="http://www.twitter.com" class="link"><img class="twitter" src="images/twitter.png" alt="twitter"></a>
+        </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="client.js"></script>

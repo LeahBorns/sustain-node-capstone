@@ -16,7 +16,7 @@ main {
     width: 80%;
 }
 
-.pageTitle {
+h2.pageTitle {
     margin-left: 70px;
 }
 
@@ -35,69 +35,104 @@ h1 {
     margin: 0;
 }
 
-.navLinks {
+div.navLinks {
 
     display: inline-block;
     float: right;
     color: #585858;
-    font-size: 20px;
+    font-size: 1em;
     vertical-align: middle;
     margin-top: 11px;
 }
 
-.link {
+a.link {
     margin-left: 20px;
 }
 
-.searchIcon {
+img.searchIcon {
     width: 30px;
     vertical-align: middle;
 }
 
-.profilePic {
+img.profilePic {
     width: 40px;
     border-radius: 30px;
     border: 2px solid #118C4E;
-    float: right;
-    margin-right: 20px;
     vertical-align: middle;
+}
+
+#js-signout-link {
+    margin-right: 20px;
+}
+
+/*SIGNIN PAGE*/
+
+section.loginPage {
+    margin: auto;
+    width: 100%;
 }
 
 /* Overall message*/
 
-.overallMessage {
+p.overallMessage {
     width: 30%;
-    display: inline;
-    position: absolute;
+    display: inline-block;
     font-size: 20px;
+    vertical-align: top;
+    margin-top: 50px;
+    margin-left: 50px;
 }
 
 /* form */
 
-.loginForm {
-    width: 50%;
+div.loginForm {
+    width: 49%;
     margin-top: 50px;
-    left: 400px;
-    position: relative;
+    margin-left: 20px;
+    display: inline-block;
 }
 
-.login {
+form.login {
     border: 3px solid #118C4E;
-    width: 100%;
-    height: 250px;
-    margin: 0 auto;
+    width: 90%;
     padding: 20px;
 
 }
 
-.login input {
+form.login input {
     border: 2px dotted #C1E1A6;
     padding: 5px;
     font-family: 'Inconsolata', monospace;
-
+    width: 70%;
 }
 
-.login button {
+form.login button {
+    background-color: #FFB861;
+    padding: 10px;
+    color: #585858;
+}
+
+/*Register Form*/
+
+section.registerForm {
+    margin: auto;
+    width: 80%;
+}
+
+form.signup {
+    border: 3px solid #118C4E;
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+}
+
+form.signup input {
+    border: 2px dotted #C1E1A6;
+    padding: 5px;
+    font-family: 'Inconsolata', monospace;
+}
+
+form.signup button {
     background-color: #FFB861;
     padding: 10px;
     color: #585858;
@@ -112,14 +147,15 @@ div.picture {
     vertical-align: middle;
 }
 
-.mainProfilePic {
-    width: 200px;
+img.mainProfilePic {
+    width: 150px;
     border: 3px solid #118C4E;
     border-radius: 50%;
+    margin-top: 20px;
 
 }
 
-.profileDescription {
+div.profileDescription {
     width: 49%;
     display: inline-block;
     vertical-align: middle;
@@ -133,17 +169,17 @@ hr {
     margin-bottom: 30px;
 }
 
-.activityBoxes {
+section.activityBoxes {
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
     margin-bottom: 30px;
     text-align: center;
 
 }
 
-.activityBoxes div {
+section.activityBoxes div {
     border: 1px dotted darkcyan;
-    width: 30%;
+    width: 32%;
     display: inline-block;
     padding-top: 30px;
     background-color: #FFB861;
@@ -152,7 +188,7 @@ hr {
 
 }
 
-.activityIcon {
+img.activityIcon {
     width: 50px;
     background-color: white;
     border: 3px solid #C1E1A6;
@@ -160,7 +196,8 @@ hr {
     margin-bottom: 20px;
 }
 
-.checkbox {
+
+input.checkbox {
     margin-top: 10px;
     margin-bottom: 20px;
 }
@@ -169,12 +206,13 @@ input {
     color: #585858;
 }
 
-.textBox {
+textarea.textBox {
     border: 1px dashed #67BCDB;
     margin-top: 10px;
+    width: 90%;
 }
 
-.completedActivity {
+button.completedActivity {
     background-color: #C1E1A6;
     padding: 10px;
     color: #585858;
@@ -184,30 +222,30 @@ input {
 
 /* Individual feed*/
 
-.currentFeed {
+div.currentFeed {
     border: 2px solid #118C4E;
-    height: 200px;
     margin: 15px auto;
     width: 80%;
+    padding: 10px 0;
 }
 
-.pointsEarned {
+div.pointsEarned {
     display: inline-block;
     vertical-align: middle;
     width: 60%;
 }
 
-.points,
-.practice,
-.comment {
+h2.points,
+h3.practice,
+p.comment {
     padding: 10px;
     padding-left: 50px;
 }
 
-.proofPicture {
+img.proofPicture {
     margin-top: 20px;
     margin-left: 50px;
-    width: 150px;
+    width: 100px;
     display: inline-block;
     vertical-align: middle;
     border-radius: 100%;
@@ -217,34 +255,43 @@ input {
 
 /*Activities page*/
 
-.sustainCategories,
-.sustainPoints,
-.pullDownCategories {
+select.sustainCategories,
+select.sustainPoints,
+button.pullDownCategories {
     margin-top: 40px;
+    font-family: 'Inconsolata', monospace;
 }
 
-.sustainCategories {
+select.sustainCategories {
     margin-left: 70px;
 
 }
 
-.sustainCategories,
-.sustainPoints {
+select.sustainCategories,
+select.sustainPoints {
     border: 1px solid #118C4E;
 }
 
 
-.pullDownCategories {
+button.pullDownCategories {
     margin-left: 10px;
     background-color: #C1E1A6;
     padding: 10px;
     color: #585858;
 }
 
+button.addButton {
+    background-color: #C1E1A6;
+    padding: 10px;
+    color: #585858;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 /*Feed*/
 
-.feedPicture {
-    width: 50px;
+img.feedPicture {
+    width: 30px;
     vertical-align: middle;
     border-radius: 100%;
     margin-right: 10px;
@@ -252,11 +299,11 @@ input {
 
 /*Friends section*/
 
-.topPlayers {
+h2.topPlayers {
     text-align: center;
 }
 
-.topRated {
+div.topRated {
     border: 3px dashed #FFB861;
     margin: 0 auto;
     width: 80%;
@@ -269,7 +316,7 @@ div.topProfile {
 }
 
 img.topImages {
-    width: 50%;
+    width: 35%;
     display: inline-block;
     border-radius: 100%;
     margin-top: 20px;
@@ -282,9 +329,17 @@ div.topPlayerInfo {
     padding: 5px;
 }
 
+div.playerInfo {
+    border: 3px solid #118C4E;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 5px;
+    font-size: 0.95em;
+}
+
 form.search-bar {
-    margin: 40px auto;
-    width: 60%;
+    margin: 30px auto;
+    width: 70%;
 }
 
 input.searchFriends {
@@ -312,7 +367,7 @@ div.friendProfile {
 }
 
 img.friendImages {
-    width: 60%;
+    width: 35%;
     border-radius: 100%;
 
 }
@@ -323,4 +378,479 @@ footer {
     background-color: #C1E1A6;
     color: #118C4E;
     height: 100px;
+}
+
+div.footerInfo {
+    vertical-align: middle;
+}
+
+img.facebook,
+img.instagram,
+img.linkedIn,
+img.twitter {
+    width: 3%;
+    display: inline-block;
+    float: right;
+    vertical-align: middle;
+    margin-left: 20px;
+
+}
+
+/* Media Query*/
+
+@media only screen and (max-width: 800px) {
+    h3.activityName {
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+    }
+
+    div.picture {
+        margin-top: 20px;
+    }
+
+    img.mainProfilePic {
+        width: 130px;
+    }
+
+    div.profileDescription {
+        width: 49%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /*activities on profile page*/
+    textarea.textBox {
+        width: 90%;
+    }
+
+
+    /* Individual feed*/
+    div.pointsEarned {
+        display: inline-block;
+        vertical-align: middle;
+        width: 60%;
+    }
+
+    img.proofPicture {
+        width: 90px;
+        display: inline-block;
+    }
+
+    /*Overall Feed*/
+    img.feedPicture {
+        width: 25px;
+    }
+    /*Friends section*/
+    h2.pageTitle {
+        margin-bottom: 20px;
+    }
+
+    h2.topPlayers {
+        font-size: 1.4em;
+    }
+
+    div.topRated {
+        width: 85%;
+    }
+
+    img.topImages {
+        width: 30%;
+    }
+
+    div.topPlayerInfo {
+        font-size: 0.85em;
+    }
+
+    div.playerInfo {
+        font-size: 0.75em;
+    }
+
+    form.search-bar {
+        margin: 20px auto;
+        width: 60%;
+        font-size: 0.9em;
+    }
+
+    input.searchFriends {
+        width: 70%;
+        padding: 7px;
+    }
+
+    input.searchButton {
+        width: 20%;
+    }
+
+    div.currentFriends {
+        width: 100%;
+    }
+
+
+    div.friendProfile {
+        width: 15%;
+    }
+
+    img.friendImages {
+        width: 40%;
+    }
+}
+
+}
+
+@media only screen and (max-width: 640px) {
+    /*Nav */
+    h1 {
+        font-size: 1.5em;
+    }
+
+    div.navLinks {
+        font-size: 0.9em;
+    }
+
+    img.searchIcon {
+        width: 20px;
+        vertical-align: middle;
+    }
+
+    img.profilePic {
+        width: 30px;
+        border-radius: 30px;
+        border: 2px solid #118C4E;
+        vertical-align: middle;
+    }
+
+    /*sign-in page */
+    p.overallMessage {
+        width: 30%;
+        font-size: 1.0em;
+        margin-left: 30px;
+    }
+
+    div.loginForm {
+        width: 50%;
+    }
+
+    form.login input {
+        width: 95%;
+    }
+
+    /*register page */
+    section.registerForm {
+        margin: auto;
+        width: 80%;
+    }
+
+    form.signup {
+        width: 90%;
+    }
+
+    form.signup input {
+        width: 95%
+    }
+
+    /*Profile and overall Feed minus the profile pic*/
+    /*Prfile page*/
+    div.picture {
+        margin-left: 50px;
+        width: 35%;
+    }
+    img.mainProfilePic {
+        width: 130px;
+    }
+
+    div.profileDescription {
+        width: 40%;
+        font-size: 0.9em;
+    }
+
+    section.activityBoxes div {
+        width: 30%;
+    }
+
+    div.currentFeed {
+        width: 90%;
+    }
+
+    p.comment {
+        font-size: 0.8em;
+    }
+
+    h2.points,
+    h3.practice {
+        font-size: 1em;
+    }
+
+    img.proofPicture {
+        width: 75px;
+    }
+
+    /*Activities page*/
+    select.sustainCategories,
+    select.sustainPoints {
+        margin-top: 20px;
+        width: 35%;
+        font-size: 0.9em;
+    }
+
+    select.sustainCategories {
+        margin-left: 10px;
+
+    }
+
+    button.pullDownCategories {
+        width: 15%;
+        font-size: 0.8em
+    }
+
+    /*Feed*/
+    img.feedPicture {
+        width: 30px;
+    }
+    /*Friends section*/
+    h2.pageTitle {
+        margin-bottom: 20px;
+    }
+
+    h2.topPlayers {
+        font-size: 1.4em;
+    }
+
+    div.topRated {
+        width: 90%;
+    }
+
+    div.topPlayerInfo {
+        font-size: 0.8em;
+    }
+
+    div.playerInfo {
+        font-size: 0.7em;
+    }
+
+    form.search-bar {
+        margin: 20px auto;
+        width: 60%;
+        font-size: 0.8em;
+    }
+
+    input.searchFriends {
+        width: 70%;
+        padding: 7px;
+    }
+
+    input.searchButton {
+        width: 23%;
+    }
+
+    div.currentFriends {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    div.friendProfile {
+        width: 18%;
+    }
+
+    img.friendImages {
+        width: 45%;
+    }
+}
+
+
+@media only screen and (max-width: 480px) {
+
+    /* Nav */
+    h1 {
+        font-size: 1.0em;
+    }
+
+    div.navLinks {
+        font-size: 0.7em;
+    }
+
+    a.link {
+        margin-left: 10px;
+    }
+
+    img.searchIcon {
+        width: 15px;
+        vertical-align: middle;
+    }
+
+    img.profilePic {
+        width: 20px;
+    }
+
+    /* sign-in page */
+    p.overallMessage {
+        width: 80%;
+        display: block;
+        font-size: 1em;
+        vertical-align: top;
+        margin-top: 20px;
+    }
+
+    div.loginForm {
+        width: 100%;
+        display: block;
+        margin-top: 20px
+    }
+
+
+    section.registerForm {
+        margin: auto;
+        width: 95%;
+    }
+
+    /* Register Page */
+    form.signup {
+        width: 100%;
+    }
+
+    form.signup input {
+        width: 95%
+    }
+
+    /*Profile Page*/
+    div.picture {
+        display: block;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    img.mainProfilePic {
+        width: 100px;
+    }
+
+    div.profileDescription {
+        width: 90%;
+        display: block;
+        text-align: center;
+    }
+
+    /*activities on profile page*/
+    section.activityBoxes {
+        margin: auto;
+        width: 100%;
+    }
+
+    section.activityBoxes div {
+        width: 80%;
+        display: block;
+        margin: auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    h3.activityName {
+        width: 100%;
+        text-align: center;
+    }
+
+    textarea.textBox {
+        width: 85%
+    }
+
+    /* Individual and overall feed*/
+    div.currentFeed {
+        margin: 10px auto;
+        width: 90%;
+    }
+
+    div.pointsEarned {
+        width: 95%;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+
+    p.comment {
+        font-size: 0.8em;
+    }
+
+    h2.points,
+    h3.practice {
+        font-size: 1.1em;
+    }
+
+    img.proofPicture {
+        width: 70px;
+        margin-left: 115px;
+    }
+
+    /*Activities page*/
+    select.sustainCategories,
+    select.sustainPoints {
+        margin-top: 20px;
+        width: 35%;
+        font-size: 0.7em;
+    }
+
+    select.sustainCategories {
+        margin-left: 10px;
+
+    }
+
+    button.pullDownCategories {
+        width: 18%;
+        font-size: 0.8em;
+    }
+
+    /*Feed*/
+    img.feedPicture {
+        width: 25px;
+    }
+    /*Friends section*/
+    h2.pageTitle {
+        margin-bottom: 20px;
+    }
+
+    h2.topPlayers {
+        font-size: 1.2em;
+    }
+
+    div.topRated {
+        width: 90%;
+    }
+
+    div.topPlayerInfo {
+        font-size: 0.7em;
+    }
+
+    div.playerInfo {
+        font-size: 0.65em;
+    }
+
+    form.search-bar {
+        margin: 20px auto;
+        width: 60%;
+        font-size: 0.7em;
+    }
+
+    input.searchFriends {
+        width: 60%;
+        padding: 7px;
+    }
+
+    input.searchButton {
+        width: 30%;
+    }
+
+    div.currentFriends {
+        margin: auto;
+        width: 100%;
+        text-align: center;
+    }
+
+
+    div.friendProfile {
+        display: inline-block;
+        width: 15%;
+    }
+
+    img.friendImages {
+        width: 35%;
+        border-radius: 100%;
+
+    }
 }
