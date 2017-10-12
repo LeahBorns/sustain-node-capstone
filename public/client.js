@@ -212,98 +212,98 @@ $(document).ready(function () {
 
             // USER WITH ACCOUNT SIGNS IN
             document.getElementById('js-signin-button').addEventListener('click', function (event) {
-                    event.preventDefault();
-                    backToLandingPageToggle = false;
-                    // AJAX call to validate login info and sign user in
-                    const inputUname = $('input[name="signin-username"]').val();
-                    const inputPw = $('input[name="signin-pw"]').val();
-                    // check for spaces, empty, undefined
-                    if ((!inputUname) || (inputUname.length < 1) || (inputUname.indexOf(' ') > 0)) {
-                        alert('Invalid username');
-                    } else if ((!inputPw) || (inputPw.length < 1) || (inputPw.indexOf(' ') > 0)) {
-                        alert('Invalid password');
-                    } else {
-                        const unamePwObject = {
-                            username: inputUname,
-                            password: inputPw
-                        };
-                        user = inputUname;
-
-
-                        $.ajax({
-                                type: "POST",
-                                url: "/signin",
-                                dataType: 'json',
-                                data: JSON.stringify(unamePwObject),
-                                contentType: 'application/json'
-                            })
-                            .done(function (result) {
-                                // show the signout link in header as soon as user is signed in
-                                $('#js-signout-link').show();
-                                if (newUserToggle === true) {
-                                    showNewUserPage();
-                                } else {
-                                    showProfilePage();
-                                }
-                            })
-                            .fail(function (jqXHR, error, errorThrown) {
-                                console.log(jqXHR);
-                                console.log(error);
-                                console.log(errorThrown);
-                                alert('Invalid username and password combination. Pleae check your username and password and try again.');
-                            });
-                    };
-                };
-
-
-                //REGISTER PAGE
-                //2. Visitor wants to create an account. Clicks create an account
-                //Add username, email, password and verify password. Submit
-                //and brought back to sign in page to sign in
-                document.getElementById('js-new-account').addEventListener('click', function (event) {
-                    const form = document.body.querySelector('#new-user-form');
-                    if (form.checkValidity && !form.checkValidity()) {
-                        return;
-                    }
-                    const uname = $('input[name="username"]').val();
-                    const email = $('input[name="email"]').val();
-                    const pw = $('input[name="pw"]').val();
-                    const confirmPw = $('input[name="confirm-pw"]').val();
-                    if (pw !== confirmPw) {
                         event.preventDefault();
-                        alert('Passwords must match!');
-                    } else {
-                        event.preventDefault();
-                        const newUserObject = {
-                            username: uname,
-                            password: pw
+                        backToLandingPageToggle = false;
+                        // AJAX call to validate login info and sign user in
+                        const inputUname = $('input[name="signin-username"]').val();
+                        const inputPw = $('input[name="signin-pw"]').val();
+                        // check for spaces, empty, undefined
+                        if ((!inputUname) || (inputUname.length < 1) || (inputUname.indexOf(' ') > 0)) {
+                            alert('Invalid username');
+                        } else if ((!inputPw) || (inputPw.length < 1) || (inputPw.indexOf(' ') > 0)) {
+                            alert('Invalid password');
+                        } else {
+                            const unamePwObject = {
+                                username: inputUname,
+                                password: inputPw
+                            };
+                            user = inputUname;
+
+
+                            $.ajax({
+                                    type: "POST",
+                                    url: "/signin",
+                                    dataType: 'json',
+                                    data: JSON.stringify(unamePwObject),
+                                    contentType: 'application/json'
+                                })
+                                .done(function (result) {
+                                    // show the signout link in header as soon as user is signed in
+                                    $('#js-signout-link').show();
+                                    if (newUserToggle === true) {
+                                        showNewUserPage();
+                                    } else {
+                                        showProfilePage();
+                                    }
+                                })
+                                .fail(function (jqXHR, error, errorThrown) {
+                                    console.log(jqXHR);
+                                    console.log(error);
+                                    console.log(errorThrown);
+                                    alert('Invalid username and password combination. Pleae check your username and password and try again.');
+                                });
                         };
-                        // will assign a value to variable 'user' in signin step below
-                        // AJAX call to send form data up to server/DB and create new user
-                        $.ajax({
-                                type: 'POST',
-                                url: 'user/create',
-                                dataType: 'json',
-                                data: JSON.stringify(newUserObject),
-                                contentType: 'application/json'
-                            })
-                            .done(function (result) {
-                                event.preventDefault();
-                                newUserToggle = true;
-                                alert('Thanks for signing up! You may now sign in with your username and password.');
-                                showSignInPage();
-                            })
-                            .fail(function (jqXHR, error, errorThrown) {
-                                console.log(jqXHR);
-                                console.log(error);
-                                console.log(errorThrown);
-                            });
                     };
-                });
 
 
-                // ACTIVITIES: when user clicks Add activity button from #activities-page
-                document.getElementById('js-add-activity').addEventListener('click', function (event) {
+                    //REGISTER PAGE
+                    //2. Visitor wants to create an account. Clicks create an account
+                    //Add username, email, password and verify password. Submit
+                    //and brought back to sign in page to sign in
+                    document.getElementById('js-new-account').addEventListener('click', function (event) {
+                        const form = document.body.querySelector('#new-user-form');
+                        if (form.checkValidity && !form.checkValidity()) {
+                            return;
+                        }
+                        const uname = $('input[name="username"]').val();
+                        const email = $('input[name="email"]').val();
+                        const pw = $('input[name="pw"]').val();
+                        const confirmPw = $('input[name="confirm-pw"]').val();
+                        if (pw !== confirmPw) {
+                            event.preventDefault();
+                            alert('Passwords must match!');
+                        } else {
+                            event.preventDefault();
+                            const newUserObject = {
+                                username: uname,
+                                password: pw
+                            };
+                            // will assign a value to variable 'user' in signin step below
+                            // AJAX call to send form data up to server/DB and create new user
+                            $.ajax({
+                                    type: 'POST',
+                                    url: 'user/create',
+                                    dataType: 'json',
+                                    data: JSON.stringify(newUserObject),
+                                    contentType: 'application/json'
+                                })
+                                .done(function (result) {
+                                    event.preventDefault();
+                                    newUserToggle = true;
+                                    alert('Thanks for signing up! You may now sign in with your username and password.');
+                                    showSignInPage();
+                                })
+                                .fail(function (jqXHR, error, errorThrown) {
+                                    console.log(jqXHR);
+                                    console.log(error);
+                                    console.log(errorThrown);
+                                });
+                        };
+                    });
+
+
+                    // ACTIVITIES: when user clicks Add activity button from #activities-page
+                    document.getElementById('js-add-activity').addEventListener('click', function (event) {
                         event.preventDefault();
                         // console.log('user is ' + user);
                         backWarnToggle = true;
@@ -311,24 +311,28 @@ $(document).ready(function () {
                         let buildAddedActivity = "";
 
                         $.each(addedActivity, function (addedActivityKey, addedActivityValue) {
-                                buildAddedActivity += "<div class='activityBoxes animated flipOutY'>";
-                                buildAddedActivity += "<h1>"
-                                'Added' + addedActivityKey.name + "</h1>";
-                                buildAddedActivity += "</div>";
-                            };
-
-                            showAddPage();
+                            buildAddedActivity += "<div class='activityBoxes animated flipOutY'>";
+                            buildAddedActivity += "<h1>"
+                            'Added' + addedActivityKey.name + "</h1>";
+                            buildAddedActivity += "</div>";
                         });
 
-                    // when user clicks I Did This button from #profile-page
-                    document.getElementById('js-submit-activity').addEventListener('click', function (event) {
-                        // console.log('user is ' + user);
-                        submitFinishedActivity(user);
-                        newUserToggle = false;
-                    });
-                });
 
-            // when user clicks sign-out link in header
-            document.getElementById('js-signout-link').addEventListener('click', function (event) {
-                location.reload();
-            });
+                        // when user clicks I Did This button from #profile-page
+                        document.getElementById('js-submit-activity').addEventListener('click', function (event) {
+                            $.each(addedActivity, function (addedActivityKey, addedActivityValue) {
+                                buildAddedActivity += "<div class='activityBoxes animated flipOutY'>";
+                                buildAddedActivity += "<h1>" +
+                                    addedActivityKey.name + 'completed'
+                                "</h1>";
+                                buildAddedActivity += "</div>";
+                            });
+                            submitFinishedActivity(user);
+                            newUserToggle = false;
+                        });
+                    });
+
+                    // when user clicks sign-out link in header
+                    document.getElementById('js-signout-link').addEventListener('click', function (event) {
+                        location.reload();
+                    });
