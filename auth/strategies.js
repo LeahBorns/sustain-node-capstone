@@ -10,9 +10,7 @@ const {
     ExtractJwt
 } = require('passport-jwt');
 
-const {
-    User
-} = require('../models');
+const User = require('../models/user');
 const {
     JWT_SECRET
 } = require('../config');
@@ -62,6 +60,7 @@ const jwtStrategy = new JwtStrategy({
         done(null, payload.user);
     }
 );
+
 
 module.exports = {
     basicStrategy,

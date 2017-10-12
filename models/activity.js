@@ -13,7 +13,7 @@ const activitySchema = new mongoose.Schema({
     },
     points: {
         type: Number,
-        required: true;
+        required: true
     },
     committed: {
         type: Boolean,

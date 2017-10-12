@@ -1,5 +1,5 @@
-const User = require('.models/user');
-const activity = require('.models/activity');
+const User = require('./models/user');
+const activity = require('./models/activity');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
@@ -10,7 +10,8 @@ const moment = require('moment');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-const BasicStrategy = require('passport-http').BasicStrategy;
+//const BasicStrategy = require('passport-http').BasicStrategy;
+const morgan = require('morgan');
 
 const express = require('express');
 const app = express();
@@ -18,10 +19,82 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
 
+//JWT AUTHENTICATION
+//const {
+//    router: userRouter
+//} = require('./user');
+const {
+    router: authRouter,
+    BasicStrategy,
+    jwtStrategy
+} = require('./auth/index')
 mongoose.Promise = global.Promise;
 
+const {
+    PORT,
+    DATABASE_URL
+} = require('./config');
+
+
+// Logging
+app.use(morgan('common'));
+
+// CORS
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+    if (req.method === 'OPTIONS') {
+        return res.send(204);
+    }
+    next();
+});
+
+
+//passport.use(basicStrategy);
+passport.use(jwtStrategy);
+
+
+app.use('/api/users/', usersRouter);
+app.use('/api/auth/', authRouter);
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+passport.use(new JwtSession("dwibeiwiuwei"));
+
+options = {
+    secret: options.secret, //The decoding secret
+    requestKey: options.requestKey || 'user', //The key in the JWT that defines the user id
+    requestArg: options.requestArg || 'accessToken' /* The parameter name on the HTTP request that refers to the JWT. The middleware will look for this property in the query string, request body, and headers. The header name will be derived from a camelBack representation of the property name. For example, if the requestArg is "accessToken" (the default) then this instance of the middlware will look for the header name "x-access-token" */
+};
+
+app.use(passport.initialize());
+
+app.use(passport.authenticate('jwt', options));
+///////////////////////////////////////////////////////////////////////
+
+// A protected endpoint which needs a valid JWT to access it
+app.get(
+    '/api/protected',
+    passport.authenticate('jwt', {
+        session: false
+    }),
+    (req, res) => {
+        return res.json({
+            data: 'rosebud'
+        });
+    }
+);
+
+app.use('*', (req, res) => {
+    return res.status(404).json({
+        message: 'Not Found'
+    });
+});
+
 //RUN/CLOSE SERVER
-let server = undefined;
+let server;
 
 function runServer() {
     return new Promise((resolve, request) => {
@@ -99,9 +172,9 @@ app.post('/user/create', (req, res) => {
 });
 
 
-//GET -> User signing in
+//put -> User signing in
 
-app.get('/signin', function (req, res) {
+app.put('/signin', function (req, res) {
     const user = req.body.username;
     const pw = req.body.password;
     User
@@ -124,9 +197,9 @@ app.get('/signin', function (req, res) {
                         console.log('There was an error validating the password.');
                     }
                     if (!isValid) {
-                        return res.status(401).json({
-                            message: 'Not found'
-                        });
+                        //                        return res.status(401).json({
+                        //                            message: 'Not found'
+                        //                        });
                     } else {
                         var logInTime = new Date();
                         console.log('User logged in:' + req.body.username + 'at' + logInTime);
@@ -168,7 +241,7 @@ app.delete('/activity/:id', function (req, res) {
     Activity.findByIdAndRemove(req.params.id).exec().then(function (activity) {
         return res.status(204).end();
     }).catch(function (err) {
-        return .res.status(500).json({
+        return res.status(500).json({
             message: 'Internal server error'
         });
     });
@@ -184,120 +257,3 @@ app.use('*', (req, res) => {
 exports.app = app;
 exports.runServer = runServer;
 exports.closeServer = closeServer;
-
-
-//Pulled this from other github project
-/*var runServer = function (callback) {
-    mongoose.connect(config.DATABASE_URL, function (err) {
-        if (err && callback) {
-            return callback(err);
-        }
-
-        app.listen(config.PORT, function () {
-            console.log('Listening on localhost:' + config.PORT);
-            if (callback) {
-                callback();
-            }
-        });
-    });
-};
-
-if (require.main === module) {
-    runServer(function (err) {
-        if (err) {
-            console.error(err);
-        }
-    });
-};
-
-// external API call
-var getFromActive = function (searchTerm) {
-    var emitter = new events.EventEmitter();
-    //console.log("inside getFromActive function");
-    unirest.get("http://api.amp.active.com/v2/search?topicName=Running&registerable_only=true&category=races&attributeValue=5k&sort=date_asc&per_page=24&near=" + searchTerm + ",US&radius=50&api_key=2e4ra5w6b9augfrn54vjb4bx")
-        .header("Accept", "application/json")
-        .end(function (result) {
-            //console.log(result.status, result.headers, result.body);
-            //success scenario
-            if (result.ok) {
-                emitter.emit('end', result.body);
-            }
-            //failure scenario
-            else {
-                emitter.emit('error', result.code);
-            }
-        });
-
-    return emitter;
-};
-// local API endpoints
-app.get('/activity/:name', function (req, res) {
-
-
-    //    external api function call and response
-
-    var searchReq = getFromActive(req.params.name);
-
-    //get the data from the first api call
-    searchReq.on('end', function (item) {
-        res.json(item);
-    });
-
-    //error handling
-    searchReq.on('error', function (code) {
-        res.sendStatus(code);
-    });
-
-});
-
-
-
-
-app.post('/add-to-favorites', function (req, res) {
-
-    //db connection and data queries
-    activity.create({
-        name: req.body.name,
-        date: req.body.date,
-        place: req.body.place,
-        url: req.body.url
-    }, function (err, item) {
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        }
-        res.status(201).json(item);
-    });
-});
-
-app.get('/populate-favorites', function (req, res) {
-    activity.find(function (err, item) {
-        console.log(item);
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        }
-        res.status(200).json(item);
-    });
-});
-
-app.delete('/delete-favorites/:favoritesId', function (req, res) {
-    activity.findByIdAndRemove(req.params.favoritesId, function (err, items) {
-        if (err)
-            return res.status(404).json({
-                message: 'Item not found.'
-            });
-
-        res.status(201).json(items);
-    });
-});
-
-
-
-exports.app = app;
-exports.runServer = runServer;
-
-app.listen(3000);
-*/
