@@ -101,7 +101,7 @@ app.post('/user/create', (req, res) => {
 
 //GET -> User signing in
 
-app.put('/signin', function (req, res) {
+app.get('/signin', function (req, res) {
     const user = req.body.username;
     const pw = req.body.password;
     User
