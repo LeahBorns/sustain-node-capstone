@@ -7,6 +7,12 @@
     color: #585858;
 }
 
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
 a {
     text-decoration: none;
 }
@@ -14,6 +20,10 @@ a {
 main {
     margin: auto;
     width: 80%;
+}
+
+main.wrapper {
+    min-height: 100%;
 }
 
 h2.pageTitle {
@@ -59,6 +69,7 @@ img.profilePic {
     border-radius: 30px;
     border: 2px solid #118C4E;
     vertical-align: middle;
+    margin-right: 10px;
 }
 
 #js-signout-link {
@@ -68,7 +79,7 @@ img.profilePic {
 /*SIGNIN PAGE*/
 
 section.loginPage {
-    margin: auto;
+    margin: 20px auto;
     width: 100%;
 }
 
@@ -377,11 +388,23 @@ img.friendImages {
 footer {
     background-color: #C1E1A6;
     color: #118C4E;
-    height: 100px;
+}
+
+footer,
+div.push {
+    margin-bottom: -50px;
 }
 
 div.footerInfo {
     vertical-align: middle;
+    display: inline-block;
+}
+
+div.socialButtons {
+    width: 60%;
+    display: inline-block;
+    float: right;
+    margin: 20px 20px 0 0;
 }
 
 img.facebook,

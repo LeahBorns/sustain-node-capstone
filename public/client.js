@@ -18,29 +18,29 @@
 
 // Function and object definitions
 var user = undefined;
-var achievementId = undefined;
-var dateFormat = 'eu';
-var editToggle = false;
-var backWarnToggle = false;
-var backToLandingPageToggle = false;
-var newUserToggle = false;
-var backToHomePageToggle = true;
+//var achievementId = undefined;
+//var dateFormat = 'eu';
+//var editToggle = false;
+//var backWarnToggle = false;
+//var backToLandingPageToggle = false;
+//var newUserToggle = false;
+//var backToHomePageToggle = true;
 
-/*function submitNewUser(user) {
+function submitNewUser(user) {
     event.preventDefault();
     backWarnToggle = false;
     // AJAX call to send the form data up to the server/DB
     // take values from form inputs
     const signUpEmail = $('input[id="email"]').val();
-    var achHow = [];
-    // add all the cb values to the array achHow
-    var cbElements = $('input[type=checkbox]');
-    for (let i=0; i < cbElements.length; i++) {
-        if ($(cbElements[i]).is(':checked')) {
-            achHow.push(cbElements[i].value);
-        };
-    };
-    var achWhen = $('input[id="datepicker"]').val();
+    //    var achHow = [];
+    //    // add all the cb values to the array achHow
+    //    var cbElements = $('input[type=checkbox]');
+    //    for (let i=0; i < cbElements.length; i++) {
+    //        if ($(cbElements[i]).is(':checked')) {
+    //            achHow.push(cbElements[i].value);
+    //        };
+};
+/*var achWhen = $('input[id="datepicker"]').val();
     achWhen = Date.parse(achWhen);
     const achWhy = $('input[id="achieve-why"]').val();
     const newAchObject = {
@@ -125,7 +125,7 @@ function goBack() {
 }
 */
 function showSignInPage() {
-    backToLandingPageToggle = true;
+    //    backToLandingPageToggle = true;
     $('#friends-page').hide();
     $('#feed-page').hide();
     $('#activities-page').hide();
@@ -133,6 +133,7 @@ function showSignInPage() {
     $('#register-page').hide();
     $('#login-page').show();
     $('#js-signout-link').hide();
+    $('#nav-links').hide();
 }
 
 function showNewUserPage() {
@@ -144,15 +145,11 @@ function showNewUserPage() {
     $('#register-page').show();
     $('#js-signout-link').hide();
     $('#login-page').hide();
-    if (newUserToggle === true) {
-        $('#register-page').show();
-    } else {
-        $('#login-page').show();
-    };
+    $('#nav-links').hide();
 }
 
 function showProfilePage() {
-    backToHomePageToggle = true;
+    //    backToHomePageToggle = true;
     $('#friends-page').hide();
     $('#feed-page').hide();
     $('#activities-page').hide();
@@ -160,11 +157,12 @@ function showProfilePage() {
     $('#register-page').hide();
     $('#login-page').hide();
     $('#js-signout-link').show();
+    $('#nav-links').show();
 
 }
 
 function showActivitiesPage() {
-    backWarnToggle = false;
+    //    backWarnToggle = false;
     $('#friends-page').hide();
     $('#feed-page').hide();
     $('#activities-page').show();
@@ -172,10 +170,11 @@ function showActivitiesPage() {
     $('#register-page').hide();
     $('#login-page').hide();
     $('#js-signout-link').show();
+    $('#nav-links').show();
 }
 
 function showOverallFeedPage() {
-    backWarnToggle = false;
+    //    backWarnToggle = false;
     $('#friends-page').hide();
     $('#feed-page').show();
     $('#activities-page').hide();
@@ -183,10 +182,11 @@ function showOverallFeedPage() {
     $('#register-page').hide();
     $('#login-page').hide();
     $('#js-signout-link').show();
+    $('#nav-links').show();
 }
 
 function showFriendsPage() {
-    backWarnToggle = false;
+    //    backWarnToggle = false;
     $('#friends-page').show();
     $('#feed-page').hide();
     $('#activities-page').hide();
@@ -194,6 +194,7 @@ function showFriendsPage() {
     $('#register-page').hide();
     $('#login-page').hide();
     $('#js-signout-link').show();
+    $('#nav-links').show();
 }
 
 
@@ -202,18 +203,22 @@ function showFriendsPage() {
 $(document).ready(function () {
     // when page first loads
     $('*').scrollTop(0);
-    backToLandingPageToggle = false;
+    //    backToLandingPageToggle = false;
     $('#friends-page').hide();
     $('#feed-page').hide();
     $('#activities-page').hide();
     $('#profile-page').hide();
     $('#register-page').hide();
     $('#login-page').show();
+    $('#js-signout-link').hide();
+    $('#nav-links').hide();
 
     // USER WITH ACCOUNT SIGNS IN
+
     $('#js-signin-button').on('click', function (event) {
         event.preventDefault();
-        backToLandingPageToggle = false;
+
+        //        backToLandingPageToggle = false;
         // AJAX call to validate login info and sign user in
         const inputUname = $('input[name="signin-username"]').val();
         const inputPw = $('input[name="signin-pw"]').val();
@@ -240,11 +245,11 @@ $(document).ready(function () {
                 .done(function (result) {
                     // show the signout link in header as soon as user is signed in
                     $('#js-signout-link').show();
-                    if (newUserToggle === true) {
-                        showNewUserPage();
-                    } else {
-                        showProfilePage();
-                    }
+                    //                    if (newUserToggle === true) {
+                    showProfilePage();
+                    //                    } else {
+                    //                        showProfilePage();
+                    //                    }
                 })
                 .fail(function (jqXHR, error, errorThrown) {
                     console.log(jqXHR);
@@ -260,6 +265,9 @@ $(document).ready(function () {
     //Add username, email, password and verify password. Submit
     //and brought back to sign in page to sign in
     $('#js-new-account').on('click', function (event) {
+        showNewUserPage();
+    });
+    $('#signup-button').on('click', function (event) {
         const form = document.body.querySelector('#new-user-form');
         if (form.checkValidity && !form.checkValidity()) {
             return;
@@ -275,20 +283,21 @@ $(document).ready(function () {
             event.preventDefault();
             const newUserObject = {
                 username: uname,
-                password: pw
+                password: pw,
+                email: email
             };
             // will assign a value to variable 'user' in signin step below
             // AJAX call to send form data up to server/DB and create new user
             $.ajax({
                     type: 'POST',
-                    url: 'user/create',
+                    url: '/signup',
                     dataType: 'json',
                     data: JSON.stringify(newUserObject),
                     contentType: 'application/json'
                 })
                 .done(function (result) {
                     event.preventDefault();
-                    newUserToggle = true;
+                    //                    newUserToggle = true;
                     alert('Thanks for signing up! You may now sign in with your username and password.');
                     showSignInPage();
                 })
@@ -305,7 +314,7 @@ $(document).ready(function () {
     $('#js-add-activity').on('click', function (event) {
         event.preventDefault();
         // console.log('user is ' + user);
-        backWarnToggle = true;
+        //        backWarnToggle = true;
         //create an empty variable to store a new list item for each result
         let buildAddedActivity = "";
 

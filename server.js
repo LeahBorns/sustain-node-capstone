@@ -23,81 +23,86 @@ app.use(cors());
 //const {
 //    router: userRouter
 //} = require('./user');
-const {
-    router: authRouter,
-    BasicStrategy,
-    jwtStrategy
-} = require('./auth/index')
+//const {
+//    router: authRouter,
+//    BasicStrategy,
+//    jwtStrategy
+//} = require('./auth/index')
+
+// Mongoose internally uses a promise-like object,
+// but its better to make Mongoose use built in es6 promises
 mongoose.Promise = global.Promise;
 
-const {
-    PORT,
-    DATABASE_URL
-} = require('./config');
 
-
-// Logging
-app.use(morgan('common'));
-
-// CORS
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-    if (req.method === 'OPTIONS') {
-        return res.send(204);
-    }
-    next();
-});
-
-
-//passport.use(basicStrategy);
-passport.use(jwtStrategy);
-
-
-app.use('/api/users/', usersRouter);
-app.use('/api/auth/', authRouter);
-
-/////////////////////////////////////////////////////////////////////////////
-
-
-passport.use(new JwtSession("dwibeiwiuwei"));
-
-options = {
-    secret: options.secret, //The decoding secret
-    requestKey: options.requestKey || 'user', //The key in the JWT that defines the user id
-    requestArg: options.requestArg || 'accessToken' /* The parameter name on the HTTP request that refers to the JWT. The middleware will look for this property in the query string, request body, and headers. The header name will be derived from a camelBack representation of the property name. For example, if the requestArg is "accessToken" (the default) then this instance of the middlware will look for the header name "x-access-token" */
-};
-
-app.use(passport.initialize());
-
-app.use(passport.authenticate('jwt', options));
+//
+//const {
+//    PORT,
+//    DATABASE_URL
+//} = require('./config');
+//
+//
+//// Logging
+//app.use(morgan('common'));
+//
+//// CORS
+//app.use(function (req, res, next) {
+//    res.header('Access-Control-Allow-Origin', '*');
+//    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+//    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+//    if (req.method === 'OPTIONS') {
+//        return res.send(204);
+//    }
+//    next();
+//});
+//
+//
+////passport.use(basicStrategy);
+//passport.use(jwtStrategy);
+//
+//
+//app.use('/api/users/', usersRouter);
+//app.use('/api/auth/', authRouter);
+//
+///////////////////////////////////////////////////////////////////////////////
+//
+//
+//passport.use(new JwtSession("dwibeiwiuwei"));
+//
+//options = {
+//    secret: options.secret, //The decoding secret
+//    requestKey: options.requestKey || 'user', //The key in the JWT that defines the user id
+//    requestArg: options.requestArg || 'accessToken' /* The parameter name on the HTTP request that refers to the JWT. The middleware will look for this property in the query string, request body, and headers. The header name will be derived from a camelBack representation of the property name. For example, if the requestArg is "accessToken" (the default) then this instance of the middlware will look for the header name "x-access-token" */
+//};
+//
+//app.use(passport.initialize());
+//
+//app.use(passport.authenticate('jwt', options));
 ///////////////////////////////////////////////////////////////////////
 
 // A protected endpoint which needs a valid JWT to access it
-app.get(
-    '/api/protected',
-    passport.authenticate('jwt', {
-        session: false
-    }),
-    (req, res) => {
-        return res.json({
-            data: 'rosebud'
-        });
-    }
-);
-
-app.use('*', (req, res) => {
-    return res.status(404).json({
-        message: 'Not Found'
-    });
-});
+//app.get(
+//    '/api/protected',
+//    passport.authenticate('jwt', {
+//        session: false
+//    }),
+//    (req, res) => {
+//        return res.json({
+//            data: 'rosebud'
+//        });
+//    }
+//);
+//
+//app.use('*', (req, res) => {
+//    return res.status(404).json({
+//        message: 'Not Found'
+//    });
+//});
 
 //RUN/CLOSE SERVER
 let server;
 
 function runServer() {
-    return new Promise((resolve, request) => {
+    return new Promise((resolve, reject) => {
         mongoose.connect(config.DATABASE_URL, err => {
             if (err) {
                 return reject(err);
@@ -131,12 +136,19 @@ function closeServer() {
 
 // USER ENDPOINTS
 //POST -> Creating a new user (Registration)
-
-app.post('/user/create', (req, res) => {
+app.post('/signup', (req, res) => {
     let username = req.body.username;
+    console.log(username);
     username = username.trim();
+
     let password = req.body.password;
+    console.log(password);
     password = password.trim();
+
+    let email = req.body.email;
+    console.log(email);
+    email = email.trim();
+
     bcrypt.genSalt(10, (err, salt) => {
         if (err) {
             return res.status(500).json({
@@ -154,6 +166,7 @@ app.post('/user/create', (req, res) => {
             User.create({
                 username,
                 password: hash,
+                verifyPw: hash,
             }, (err, item) => {
                 if (err) {
                     return res.status(500).json({
@@ -174,7 +187,7 @@ app.post('/user/create', (req, res) => {
 
 //put -> User signing in
 
-app.put('/signin', function (req, res) {
+app.post('/signin/', function (req, res) {
     const user = req.body.username;
     const pw = req.body.password;
     User

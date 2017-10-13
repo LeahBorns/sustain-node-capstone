@@ -15,7 +15,7 @@
     <nav id="nav-bar">
         <h1>Sustain</h1>
 
-        <div class="navLinks">
+        <div class="navLinks" id="nav-links">
             <a href="/activities" class="link">Activities</a>
             <a href="/feed" class="link">Feed</a>
             <a href="/find-friends" class="link"><img class="searchIcon" src="images/find.png" alt="search icon"></a>
@@ -26,7 +26,7 @@
     </nav>
 
     <!-- Login Page -->
-    <main id="login-page">
+    <main id="login-page" class="wrapper">
         <section class="loginPage">
             <p class="overallMessage">Join BØRNS on a quest toward a healthier future.<br><br>Commit to daily practices, share your experience, get points!</p>
 
@@ -37,17 +37,18 @@
                     <input type="username" name="signin-username" id="username" placeholder="username" required="true"><br><br>
                     <label for="password">Password</label>
                     <input type="password" name="signin-pw" id="password" placeholder="password" required="true"><br><br><br>
-                    <button id="enter-site" role="button" type="submit">Enter</button>
+                    <button id="js-signin-button" role="button" type="submit">Enter</button>
                 </form><br>
                 <div class="sign-up">
-                    <p>Want to join? <a href="/signup">Create an account</a></p>
+                    <p>Want to join? <a id="js-new-account">Create an account</a></p>
                 </div>
             </div>
         </section>
+        <div class="push"></div>
     </main>
 
     <!-- register page -->
-    <main id="register-page">
+    <main id="register-page" class="wrapper">
         <section class="registerForm">
             <form class="signup" id="new-user-form" role="form" action="/signup/" method="post">
                 <h2>Join Sustain</h2><br>
@@ -62,9 +63,12 @@
                 <button id="signup-button" role="button" type="submit">Submit</button>
             </form>
         </section>
+        <div class="push"></div>
     </main>
-    <!-- profile -->
-    <main id="profile-page">
+
+
+    <!-- PROFILE PAGE -->
+    <main id="profile-page" class="wrapper">
         <section class="profileInfo">
             <div class="picture"><img class="mainProfilePic" src="images/IMG_2436.JPG" alt="Profile picture"></div>
             <div class="profileDescription">
@@ -133,12 +137,13 @@
                 </div>
             </div>
         </section>
+        <div class="push"></div>
     </main>
 
 
 
-    <!--Activiies page -->
-    <main id="activities-page">
+    <!--ACTIVITIES PAGE -->
+    <main id="activities-page" class="wrapper">
         <section class="activitiesSection">
             <h2 class="pageTitle">ACTIVITIES</h2>
             <select name="Categories" class="sustainCategories" id="categories">
@@ -240,9 +245,11 @@
                 <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
         </section>
+        <div class="push"></div>
     </main>
-    <!--Overall Feed -->
-    <main id="feed-page">
+
+    <!--OVERALL FEED PAGE -->
+    <main id="feed-page" class="wrapper">
         <section class="overallFeed">
             <h2 class="pageTitle">FEED</h2>
             <div class="currentFeed">
@@ -271,10 +278,11 @@
                 </div>
             </div>
         </section>
+        <div class="push"></div>
     </main>
 
-    <!--Friends page -->
-    <main id="friends-page">
+    <!--FRIENDS PAGE -->
+    <main id="friends-page" class="wrapper">
         <section class="friendsSection">
             <h2 class="pageTitle">FRIENDS</h2>
             <h2 class="topPlayers">Most CO2 diverted</h2>
@@ -386,6 +394,7 @@
                 </div>
             </div>
         </section>
+        <div class="push"></div>
     </main>
     <footer>
         <div class="footerInfo">
