@@ -18,6 +18,7 @@
 
 // Function and object definitions
 var user = undefined;
+var loggedinUserName = '';
 //var achievementId = undefined;
 //var dateFormat = 'eu';
 //var editToggle = false;
@@ -148,7 +149,7 @@ function showNewUserPage() {
     $('#nav-links').hide();
 }
 
-function showProfilePage() {
+function showProfilePage(loggedinUserName) {
     //    backToHomePageToggle = true;
     $('#friends-page').hide();
     $('#feed-page').hide();
@@ -157,7 +158,9 @@ function showProfilePage() {
     $('#register-page').hide();
     $('#login-page').hide();
     $('#js-signout-link').show();
+    $('#js-signout-link').text("Sign out " + loggedinUserName);
     $('#nav-links').show();
+    $('.profileDescription').text(loggedinUserName);
 
 }
 
@@ -243,10 +246,12 @@ $(document).ready(function () {
                     contentType: 'application/json'
                 })
                 .done(function (result) {
+                    console.log(result);
+                    loggedinUserName = result.username;
                     // show the signout link in header as soon as user is signed in
                     $('#js-signout-link').show();
                     //                    if (newUserToggle === true) {
-                    showProfilePage();
+                    showProfilePage(loggedinUserName);
                     //                    } else {
                     //                        showProfilePage();
                     //                    }
@@ -311,6 +316,10 @@ $(document).ready(function () {
 
 
     // ACTIVITIES: when user clicks Add activity button from #activities-page
+    $('#js-activities').on('click', function (event) {
+        showActivitiesPage();
+    });
+
     $('#js-add-activity').on('click', function (event) {
         event.preventDefault();
         // console.log('user is ' + user);
@@ -338,6 +347,82 @@ $(document).ready(function () {
             submitFinishedActivity(user);
             newUserToggle = false;
         });
+    });
+
+    //FEED PAGE from nav menu
+    $('#js-feed').on('click', function (event) {
+        showOverallFeedPage();
+    });
+    //    $.ajax({
+    //            type: 'POST',
+    //            url: '/feed/post',
+    //            dataType: 'json',
+    //            data: JSON.stringify(newUserObject),
+    //            contentType: 'application/json'
+    //        })
+    //        .done(function (result) {
+    //            event.preventDefault();
+    //            alert('Congrats! You completed todays task');
+    //        })
+    //        .fail(function (jqXHR, error, errorThrown) {
+    //            console.log(jqXHR);
+    //            console.log(error);
+    //            console.log(errorThrown);
+    //        });
+
+    //FRIENDS PAGE from search icon on nav
+    $('#js-search-friends').on('click', function (event) {
+        showFriendsPage();
+    });
+
+    //PROFILE PAGE from image in nav
+    $('#js-profile').on('click', function (event) {
+        showProfilePage();
+    });
+
+    //1. If box is checked and textbox is filled in.
+    //2. "I did it" button is pressed.
+    //3. 'Card' spins around and says completed.
+    //4. information from card shows up in feed
+    $('.completedActivity').on('click', function (event) {
+        const checkBox = $('.checkbox').val();
+        const textBox = $('.textBox').val();
+        const activityNameValue = $('.activityNameValue').val();
+        const activityImageValue = $('.activityImageValue').val();
+        const activityPointsValue = $('.activityPointsValue').val();
+
+        console.log(checkBox);
+        console.log(textBox, activityNameValue, activityImageValue, activityPointsValue);
+
+        if (checkBox != 'completed') {
+            alert('Must be checked');
+        } else if (textBox.length < 10) {
+            alert('Must be at least 10 characters');
+        } else {
+            const newActivityCompleted = {
+                activityDescription: textBox,
+                activityName: activityNameValue,
+                activityImage: activityImageValue,
+                activityPoints: activityPointsValue,
+                username: loggedinUserName
+            };
+            $.ajax({
+                    type: 'POST',
+                    url: '/profile/commit',
+                    dataType: 'json',
+                    data: JSON.stringify(newActivityCompleted),
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    event.preventDefault();
+                    alert('Congrats! You completed todays task');
+                })
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                });
+        };
     });
 
     // when user clicks sign-out link in header

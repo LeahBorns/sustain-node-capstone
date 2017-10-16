@@ -16,11 +16,11 @@
         <h1>Sustain</h1>
 
         <div class="navLinks" id="nav-links">
-            <a href="/activities" class="link">Activities</a>
-            <a href="/feed" class="link">Feed</a>
-            <a href="/find-friends" class="link"><img class="searchIcon" src="images/find.png" alt="search icon"></a>
-            <a href="/profile" class="link"><img class="profilePic" src="images/IMG_2436.JPG" alt="profile picture"></a>
-            <a href="/signout" class="link" id="js-signout-link">Sign out</a>
+            <a class="link" id="js-activities">Activities</a>
+            <a class="link" id="js-feed">Feed</a>
+            <a class="link" id="js-search-friends"><img class="searchIcon" src="images/find.png" alt="search icon"></a>
+            <a class="link" id="js-profile"><img class="profilePic" src="images/IMG_2436.JPG" alt="profile picture"></a>
+            <a class="link" id="js-signout-link">Sign out</a>
         </div>
 
     </nav>
@@ -83,6 +83,9 @@
                 <h3 class="activityName">Take Public Transit</h3><br>
                 <h3>Points: 6</h3> <br>
                 <label for="checkbox">Committed</label>
+<input class="activityNameValue" type="hidden" name="activityNameValue" value="Take Public Transit">
+<input class="activityImageValue" type="hidden" name="activityImageValue" value="bus.png">
+<input class="activityPointsValue" type="hidden" name="activityPointsValue" value="6">
                 <input class="checkbox" type="checkbox" name="completed" value="completed"><br>
                 <p>Tell us about your experience</p> <textarea class="textBox" name="textBox" id="text-box"></textarea>
                 <button class="completedActivity" role="button" type="submit">I did it</button>
