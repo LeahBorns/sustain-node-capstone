@@ -1,6 +1,91 @@
 "use strict";
 
-
+const myActivities = [
+    {
+        category: 'Food',
+        activityName: 'Buy locally',
+        activityImage: 'food.png',
+        activityPoints: 4
+    },
+    {
+        category: 'Food',
+        activityName: 'Eat less meat',
+        activityImage: 'food.png',
+        activityPoints: 6
+    },
+    {
+        category: 'Transportation',
+        activityName: 'Pedal Power',
+        activityImage: 'bike.png',
+        activityPoints: 8
+    },
+    {
+        category: 'Transportation',
+        activityName: 'Look into carbon offsets',
+        activityImage: 'bike.png',
+        activityPoints: 10
+    },
+    {
+        category: 'Water',
+        activityName: "If it's yellow let it mellow",
+        activityImage: 'water-drop.png',
+        activityPoints: 2
+    },
+    {
+        category: 'Water',
+        activityName: 'Shorter you shower',
+        activityImage: 'water-drop.png',
+        activityPoints: 4
+    },
+    {
+        category: 'Energy',
+        activityName: 'Change bulbs to LED',
+        activityImage: 'lightbulb.png',
+        activityPoints: 10
+    },
+    {
+        category: 'Energy',
+        activityName: 'Keep house temp at 68&deg;F',
+        activityImage: 'lightbulb.png',
+        activityPoints: 6
+    },
+    {
+        category: 'Waste',
+        activityName: 'Use reuseable water bottle',
+        activityImage: 'recycle.png',
+        activityPoints: 4
+    },
+    {
+        category: 'Waste',
+        activityName: 'Avoid anything disposable',
+        activityImage: 'recycle.png',
+        activityPoints: 8
+    },
+    {
+        category: 'Nature',
+        activityName: 'Go outside for 30 minutes',
+        activityImage: 'nature.png',
+        activityPoints: 8
+    },
+    {
+        category: 'Nature',
+        activityName: 'Remove self from tech for 30 minutes',
+        activityImage: 'nature.png',
+        activityPoints: 6
+    },
+    {
+        category: 'Health',
+        activityName: 'Exercise 3x a week',
+        activityImage: 'exercise.png',
+        activityPoints: 8
+    },
+    {
+        category: 'Health',
+        activityName: 'Eat mindfully',
+        activityImage: 'exercise.png',
+        activityPoints: 6
+    }
+    ];
 
 
 
@@ -19,114 +104,10 @@
 // Function and object definitions
 var user = undefined;
 var loggedinUserName = '';
-//var achievementId = undefined;
-//var dateFormat = 'eu';
-//var editToggle = false;
-//var backWarnToggle = false;
-//var backToLandingPageToggle = false;
-//var newUserToggle = false;
-//var backToHomePageToggle = true;
+var sustainGoals = '';
 
-function submitNewUser(user) {
-    event.preventDefault();
-    backWarnToggle = false;
-    // AJAX call to send the form data up to the server/DB
-    // take values from form inputs
-    const signUpEmail = $('input[id="email"]').val();
-    //    var achHow = [];
-    //    // add all the cb values to the array achHow
-    //    var cbElements = $('input[type=checkbox]');
-    //    for (let i=0; i < cbElements.length; i++) {
-    //        if ($(cbElements[i]).is(':checked')) {
-    //            achHow.push(cbElements[i].value);
-    //        };
-};
-/*var achWhen = $('input[id="datepicker"]').val();
-    achWhen = Date.parse(achWhen);
-    const achWhy = $('input[id="achieve-why"]').val();
-    const newAchObject = {
-        user: user,
-        achieveWhat: achWhat,
-        achieveHow: achHow,
-        achieveWhen: achWhen,
-        achieveWhy: achWhy
-    };
-    if (editToggle === false) {
-        $.ajax({
-            type: 'POST',
-            url: 'new/create',
-            dataType: 'json',
-            data: JSON.stringify(newAchObject),
-            contentType: 'application/json'
-        })
-            .done(function (result) {
-            showTimeline();
-        })
-            .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
-    } else if (editToggle === true) {
-        $.ajax({
-            type: 'PUT',
-            url: 'achievement/' + achievementId,
-            dataType: 'json',
-            data: JSON.stringify(newAchObject),
-            contentType: 'application/json'
-        })
-            .done(function (result) {
-            showTimeline();
-            editToggle = false;
-        })
-            .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
-    };
-}
 
-// can't seem to use--asynchronicity is ruining the world
-function getUserAchievements(user) {
-    // console.log('user is ' + user);
-    // let achArray = [];
-    // $.getJSON('achievements', function(res) {
-    //     for (let i=0; i<res.achievements.length; i++) {
-    //         if (res.achievements[i].user === user) {
-    //             achArray.push(res.achievements[i]);
-    //         };
-    //     };
-    // });
-    // console.log(achArray);
-    // if (achArray.length === 0) {
-    //     newUserToggle = true;
-    //     return achArray;
-    // } else {
-    //     return achArray;
-    // }
-}
-
-function goBack() {
-    if (backToLandingPageToggle === true) {
-        location.reload();
-    } else if (backWarnToggle === true) {
-        event.preventDefault();
-        if (confirm('Are you sure you want to go back? Your changes will not be saved.') == true) {
-            if (backToHomePageToggle === true) {
-                showHomePage();
-            } else {
-                showTimeline();
-            }
-            backWarnToggle = false;
-        }
-    } else {
-        showHomePage();
-    };
-}
-*/
 function showSignInPage() {
-    //    backToLandingPageToggle = true;
     $('#friends-page').hide();
     $('#feed-page').hide();
     $('#activities-page').hide();
@@ -149,8 +130,8 @@ function showNewUserPage() {
     $('#nav-links').hide();
 }
 
-function showProfilePage(loggedinUserName) {
-    //    backToHomePageToggle = true;
+function showProfilePage(loggedinUserName, sustainGoals) {
+
     $('#friends-page').hide();
     $('#feed-page').hide();
     $('#activities-page').hide();
@@ -160,12 +141,12 @@ function showProfilePage(loggedinUserName) {
     $('#js-signout-link').show();
     $('#js-signout-link').text("Sign out " + loggedinUserName);
     $('#nav-links').show();
-    $('.profileDescription').text(loggedinUserName);
-
+    $('.profileUsername').text(loggedinUserName);
+    $('.profileDescription').text(sustainGoals);
 }
 
 function showActivitiesPage() {
-    //    backWarnToggle = false;
+
     $('#friends-page').hide();
     $('#feed-page').hide();
     $('#activities-page').show();
@@ -177,7 +158,7 @@ function showActivitiesPage() {
 }
 
 function showOverallFeedPage() {
-    //    backWarnToggle = false;
+
     $('#friends-page').hide();
     $('#feed-page').show();
     $('#activities-page').hide();
@@ -189,7 +170,7 @@ function showOverallFeedPage() {
 }
 
 function showFriendsPage() {
-    //    backWarnToggle = false;
+
     $('#friends-page').show();
     $('#feed-page').hide();
     $('#activities-page').hide();
@@ -206,7 +187,7 @@ function showFriendsPage() {
 $(document).ready(function () {
     // when page first loads
     $('*').scrollTop(0);
-    //    backToLandingPageToggle = false;
+
     $('#friends-page').hide();
     $('#feed-page').hide();
     $('#activities-page').hide();
@@ -248,10 +229,12 @@ $(document).ready(function () {
                 .done(function (result) {
                     console.log(result);
                     loggedinUserName = result.username;
+                    sustainGoals = result.goals;
+
                     // show the signout link in header as soon as user is signed in
                     $('#js-signout-link').show();
                     //                    if (newUserToggle === true) {
-                    showProfilePage(loggedinUserName);
+                    showProfilePage(loggedinUserName, sustainGoals);
                     //                    } else {
                     //                        showProfilePage();
                     //                    }
@@ -281,6 +264,7 @@ $(document).ready(function () {
         const email = $('input[name="email"]').val();
         const pw = $('input[name="pw"]').val();
         const confirmPw = $('input[name="confirm-pw"]').val();
+        const goals = $('input[name="goals"]').val();
         if (pw !== confirmPw) {
             event.preventDefault();
             alert('Passwords must match!');
@@ -289,7 +273,8 @@ $(document).ready(function () {
             const newUserObject = {
                 username: uname,
                 password: pw,
-                email: email
+                email: email,
+                goals: goals
             };
             // will assign a value to variable 'user' in signin step below
             // AJAX call to send form data up to server/DB and create new user
@@ -387,12 +372,12 @@ $(document).ready(function () {
     $('.completedActivity').on('click', function (event) {
         const checkBox = $('.checkbox').val();
         const textBox = $('.textBox').val();
-        const activityNameValue = $('.activityNameValue').val();
-        const activityImageValue = $('.activityImageValue').val();
-        const activityPointsValue = $('.activityPointsValue').val();
+        const profileActivityName = $('activityNameValue').val(myActivities.activityName);
+        const profileActivityImage = $('activityImageValue').val(myActivities.activityImage);
+        const profileActivityPoints = $('activityPointsValue').val(myActivities.activityPoints);
 
         console.log(checkBox);
-        console.log(textBox, activityNameValue, activityImageValue, activityPointsValue);
+        console.log(textBox, profileActivityName, profileActivityImage, profileActivityPoints);
 
         if (checkBox != 'completed') {
             alert('Must be checked');
@@ -401,14 +386,15 @@ $(document).ready(function () {
         } else {
             const newActivityCompleted = {
                 activityDescription: textBox,
-                activityName: activityNameValue,
-                activityImage: activityImageValue,
-                activityPoints: activityPointsValue,
+                activityName: profileActivityName,
+                activityImage: profileActivityImage,
+                activityPoints: profileActivityPoints,
                 username: loggedinUserName
             };
+            console.log(newActivityCompleted);
             $.ajax({
                     type: 'POST',
-                    url: '/profile/commit',
+                    url: '/profile/:activity',
                     dataType: 'json',
                     data: JSON.stringify(newActivityCompleted),
                     contentType: 'application/json'

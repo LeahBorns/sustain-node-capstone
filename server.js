@@ -141,6 +141,9 @@ app.post('/signup', (req, res) => {
     console.log(username);
     username = username.trim();
 
+    let goals = req.body.goals;
+    console.log(goals);
+
     let password = req.body.password;
     console.log(password);
     password = password.trim();
@@ -264,20 +267,18 @@ app.delete('/activity/:id', function (req, res) {
 
 //Profile Activtiy
 // Completing a new activity
-app.post('/profile/commit', (req, res) => {
+app.post('/profile/activity', (req, res) => {
     console.log(req.body);
-    let activtyImg = req.body.img;
+    let activityImg = req.body.img;
     let activityName = req.body.activityName;
     let activityPoints = req.body.activityPoints;
-    let checkBox = req.body.checkBox;
     let textBox = req.body.textBox;
     let user = req.body.user;
 
-    Activity.create({
+    activity.create({
         user,
-        checkBox,
         textBox,
-        img,
+        activityImg,
         activityName,
         activityPoints
     }, (err, item) => {

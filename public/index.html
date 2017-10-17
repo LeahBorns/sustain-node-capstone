@@ -60,6 +60,8 @@
                 <input type="password" name="pw" id="password" placeholder="password" required="true"><br><br>
                 <label for="password">Re-enter Password</label>
                 <input type="password" name="confirm-pw" id="verify-password" placeholder="verify password" required="true"><br><br>
+                <label for="goals">Goals for Sustain</label>
+                <input type="text" name="goals" id="goals" placeholder="short description" required="false"><br><br>
                 <button id="signup-button" role="button" type="submit">Submit</button>
             </form>
         </section>
@@ -70,10 +72,9 @@
     <!-- PROFILE PAGE -->
     <main id="profile-page" class="wrapper">
         <section class="profileInfo">
-            <div class="picture"><img class="mainProfilePic" src="images/IMG_2436.JPG" alt="Profile picture"></div>
-            <div class="profileDescription">
-                <h2>Leah Borns</h2>
-                <p>Sed haec quis possit intrepidus aestimare tellus. Contra legem facit qui id facit quod lex prohibet. Morbi fringilla convallis sapien, id pulvinar odio volutpat.</p>
+            <div class="profileHeader">
+                <h2 class="profileUsername">Leah Borns</h2>
+                <p class="profileDescription">Sed haec quis possit intrepidus aestimare tellus. Contra legem facit qui id facit quod lex prohibet. Morbi fringilla convallis sapien, id pulvinar odio volutpat.</p>
             </div>
         </section>
         <hr>
@@ -83,9 +84,9 @@
                 <h3 class="activityName">Take Public Transit</h3><br>
                 <h3>Points: 6</h3> <br>
                 <label for="checkbox">Committed</label>
-<input class="activityNameValue" type="hidden" name="activityNameValue" value="Take Public Transit">
-<input class="activityImageValue" type="hidden" name="activityImageValue" value="bus.png">
-<input class="activityPointsValue" type="hidden" name="activityPointsValue" value="6">
+                <input class="activityNameValue" type="hidden" name="activityNameValue" value="Take Public Transit">
+                <input class="activityImageValue" type="hidden" name="activityImageValue" value="bus.png">
+                <input class="activityPointsValue" type="hidden" name="activityPointsValue" value="6">
                 <input class="checkbox" type="checkbox" name="completed" value="completed"><br>
                 <p>Tell us about your experience</p> <textarea class="textBox" name="textBox" id="text-box"></textarea>
                 <button class="completedActivity" role="button" type="submit">I did it</button>
