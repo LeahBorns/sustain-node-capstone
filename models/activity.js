@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 
 const activitySchema = new mongoose.Schema({
-    user: {
+    username: {
         type: String,
         required: false
     },
@@ -11,19 +11,20 @@ const activitySchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    points: {
+    activityPoints: {
         type: Number,
-        required: true
+        required: false
     },
-    committed: {
-        type: Boolean,
-        required: true
-    },
-    experience: {
+    activityDescription: {
         type: String,
-        required: true
+        required: false
+    },
+    activityImage: {
+        type: String,
+        required: false
     }
 });
+
 
 const Activity = mongoose.model('Activity', activitySchema);
 

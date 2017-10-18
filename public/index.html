@@ -83,13 +83,16 @@
                 <img class="activityIcon" src="images/bus.png" alt="bus icon">
                 <h3 class="activityName">Take Public Transit</h3><br>
                 <h3>Points: 6</h3> <br>
-                <label for="checkbox">Committed</label>
-                <input class="activityNameValue" type="hidden" name="activityNameValue" value="Take Public Transit">
-                <input class="activityImageValue" type="hidden" name="activityImageValue" value="bus.png">
-                <input class="activityPointsValue" type="hidden" name="activityPointsValue" value="6">
-                <input class="checkbox" type="checkbox" name="completed" value="completed"><br>
-                <p>Tell us about your experience</p> <textarea class="textBox" name="textBox" id="text-box"></textarea>
-                <button class="completedActivity" role="button" type="submit">I did it</button>
+                <form action="" class="activityForm">
+                    <label for="checkbox">Committed</label>
+                    <input class="checkbox" type="checkbox" name="completed" value="completed"><br>
+                    <p>Tell us about your experience</p>
+                    <textarea class="textBox" name="textBox" id="text-box"></textarea>
+                    <input class="activityNameValue" type="hidden" name="activityNameValue" value="Take Public Transit">
+                    <input class="activityImageValue" type="hidden" name="activityImageValue" value="bus.png">
+                    <input class="activityPointsValue" type="hidden" name="activityPointsValue" value="6">
+                    <button class="completedActivity" role="button" type="submit">I did it</button>
+                </form>
             </div>
             <div>
                 <img class="activityIcon" src="images/short-shower.png" alt="bus icon">

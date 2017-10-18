@@ -138,18 +138,18 @@ function closeServer() {
 //POST -> Creating a new user (Registration)
 app.post('/signup', (req, res) => {
     let username = req.body.username;
-    console.log(username);
+    //    console.log(username);
     username = username.trim();
 
     let goals = req.body.goals;
-    console.log(goals);
+    //    console.log(goals);
 
     let password = req.body.password;
-    console.log(password);
+    //    console.log(password);
     password = password.trim();
 
     let email = req.body.email;
-    console.log(email);
+    //    console.log(email);
     email = email.trim();
 
     bcrypt.genSalt(10, (err, salt) => {
@@ -229,8 +229,8 @@ app.post('/signin/', function (req, res) {
 //ACTIVITY ENDPOINTS (CREATE?, FIND, DELETE?)
 //FIND/GET -> accessing all of users activties
 app.get('/activity/:user', function (req, res) {
-    console.log(req.params.user);
-    Activity
+    //    console.log(req.params.user);
+    activity
         .find()
         .sort()
         .then(function (activity) {
@@ -256,7 +256,7 @@ app.get('/activity/:user', function (req, res) {
 
 //DELETE -> an activity by ID
 app.delete('/activity/:id', function (req, res) {
-    Activity.findByIdAndRemove(req.params.id).exec().then(function (activity) {
+    activity.findByIdAndRemove(req.params.id).exec().then(function (activity) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({
@@ -267,20 +267,25 @@ app.delete('/activity/:id', function (req, res) {
 
 //Profile Activtiy
 // Completing a new activity
-app.post('/profile/activity', (req, res) => {
-    console.log(req.body);
-    let activityImg = req.body.img;
+app.post('/activity/add', (req, res) => {
+
+    let activityImage = req.body.activityImage;
     let activityName = req.body.activityName;
     let activityPoints = req.body.activityPoints;
-    let textBox = req.body.textBox;
-    let user = req.body.user;
+    let activityDescription = req.body.activityDescription;
+    let username = req.body.username;
+
+
+
+    //    console.log(username, activityName, activityPoints, activityDescription, activityImage);
+    console.log("-->", activityDescription, "<---");
 
     activity.create({
-        user,
-        textBox,
-        activityImg,
-        activityName,
-        activityPoints
+        username: username,
+        activityName: activityName,
+        activityPoints: activityPoints,
+        activityDescription: activityDescription,
+        activityImage: activityImage
     }, (err, item) => {
         if (err) {
             return res.status(500).json({
@@ -288,16 +293,16 @@ app.post('/profile/activity', (req, res) => {
             });
         }
         if (item) {
-            console.log(`Activity \`${activityName}\` completed.`);
+            console.log(`activity \`${activityName}\` completed.`);
             return res.json(item);
         }
     });
 });
 
 //Take completed activity and put in feed
-app.get('/profile/feed', function (req, res) {
-    console.log(req.params.user);
-    Activity
+app.get('/activity/show', function (req, res) {
+    //    console.log(req.params.user);
+    activity
         .find()
         .sort()
         .then(function (activity) {
@@ -322,13 +327,13 @@ app.get('/profile/feed', function (req, res) {
 //Feed page
 // Indiv activity completion
 app.post('/feed/post', (req, res) => {
-    console.log(req.body);
+    //    console.log(req.body);
     let activtyImg = req.body.img;
     let activityName = req.body.activityName;
     let activityPoints = req.body.activityPoints;
     let user = req.body.user;
 
-    Activity.create({
+    activity.create({
         user,
         img,
         activityName,
@@ -340,7 +345,7 @@ app.post('/feed/post', (req, res) => {
             });
         }
         if (item) {
-            console.log(`Activity \`${activityName}\` completed.`);
+            console.log(`activity \`${activityName}\` completed.`);
             return res.json(item);
         }
     });
@@ -348,8 +353,8 @@ app.post('/feed/post', (req, res) => {
 
 //Take completed activity and put in feed
 app.get('/feed/post', function (req, res) {
-    console.log(req.params.user);
-    Activity
+    //    console.log(req.params.user);
+    activity
         .find()
         .sort()
         .then(function (activity) {
