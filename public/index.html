@@ -78,38 +78,45 @@
             </div>
         </section>
         <hr>
-        <section class="activityBoxes">
-            <div>
-                <img class="activityIcon" src="images/bus.png" alt="bus icon">
-                <h3 class="activityName">Take Public Transit</h3><br>
-                <h3>Points: 6</h3> <br>
+        <section class="pointsSection">
+            <div class="pointsTotal">
+                <h3>Points Total</h3><br>
+                <p id="total-points">5</p>
+
+            </div>
+        </section>
+        <hr>
+        <section class="activityBoxesSection">
+            <div class="activityBoxes">
+                <img class="activityImageValue" src="images/bus.png" alt="bus icon">
+                <h3 class="activityNameValueValue">Take Public Transit</h3><br>
+                <h3 class="activityPointsValue">Points: 6</h3> <br>
                 <form action="" class="activityForm">
                     <label for="checkbox">Committed</label>
                     <input class="checkbox" type="checkbox" name="completed" value="completed"><br>
                     <p>Tell us about your experience</p>
                     <textarea class="textBox" name="textBox" id="text-box"></textarea>
-                    <input class="activityNameValue" type="hidden" name="activityNameValue" value="Take Public Transit">
-                    <input class="activityImageValue" type="hidden" name="activityImageValue" value="bus.png">
-                    <input class="activityPointsValue" type="hidden" name="activityPointsValue" value="6">
                     <button class="completedActivity" role="button" type="submit">I did it</button>
                 </form>
             </div>
-            <div>
-                <img class="activityIcon" src="images/short-shower.png" alt="bus icon">
-                <h3 class="activityName">Take 5 minute shower</h3><br>
-                <h3>Points: 2</h3><br>
+            <div class="activityBoxes">
+                <img class="activityImageValue" src="images/short-shower.png" alt="bus icon">
+                <h3 class="activityNameValueValue">Take 5 minute shower</h3><br>
+                <h3 class="activityPointsValue">Points: 2</h3><br>
                 <label for="checkbox">Committed</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
                 <p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>
-                <button class="completedActivity" role="button" type="submit">I did it</button></div>
-            <div>
-                <img class="activityIcon" src="images/water-bottle.png" alt="bus icon">
-                <h3 class="activityName">Use a reusable bottle </h3><br>
-                <h3>Points: 4</h3><br>
+                <button class="completedActivity" role="button" type="submit">I did it</button>
+            </div>
+            <div class="activityBoxes">
+                <img class="activityImageValue" src="images/water-bottle.png" alt="bus icon">
+                <h3 class="activityNameValueValue">Use a reusable bottle </h3><br>
+                <h3 class="activityPointsValue">Points: 4</h3><br>
                 <label for="checkbox">Committed</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
                 <p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>
-                <button class="completedActivity" role="button" type="submit">I did it</button></div>
+                <button class="completedActivity" role="button" type="submit">I did it</button>
+            </div>
         </section>
         <hr>
 
@@ -174,79 +181,79 @@
             <button class="pullDownCategories" role="button" type="search">Search</button>
         </section>
         <hr>
-        <section class="activityBoxes">
-            <div>
-                <img class="activityIcon" src="images/bus.png" alt="bus icon">
-                <h3 class="activityName">Take Public Transit</h3><br>
-                <h3>Points: 6</h3> <br>
+        <section class="activityBoxesSection">
+            <div class="activityBoxes">
+                <img class="activityImageValue" src="images/bus.png" alt="bus icon">
+                <h3 class="activityNameValue">Take Public Transit</h3><br>
+                <h3 class="activityPointsValue">Points: 6</h3> <br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
                 <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
-            <div>
-                <img class="activityIcon" src="images/short-shower.png" alt="short shower icon">
-                <h3 class="activityName">Take 5 minute shower</h3><br>
-                <h3>Points: 2</h3><br>
+            <div class="activityBoxes">
+                <img class="activityImageValue" src="images/short-shower.png" alt="short shower icon">
+                <h3 class="activityNameValue">Take 5 minute shower</h3><br>
+                <h3 class="activityPointsValue">Points: 2</h3><br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
                 <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
-            <div>
-                <img class="activityIcon" src="images/water-bottle.png" alt="waterbottle icon">
-                <h3 class="activityName">Use a reusable bottle </h3><br>
-                <h3>Points: 4</h3><br>
-                <label for="checkbox">Commit</label>
-                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
-                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
-            </div>
-        </section>
-        <section class="activityBoxes">
-            <div>
-                <img class="activityIcon" src="images/toilet.png" alt="toilet icon">
-                <h3 class="activityName">If yellow let mellow</h3><br>
-                <h3>Points: 2</h3> <br>
-                <label for="checkbox">Commit</label>
-                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
-                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
-            </div>
-            <div>
-                <img class="activityIcon" src="images/lightbulb.png" alt="lightbulb icon">
-                <h3 class="activityName">Switch to LED bulbs</h3><br>
-                <h3>Points: 6</h3><br>
-                <label for="checkbox">Commit</label>
-                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
-                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
-            </div>
-            <div>
-                <img class="activityIcon" src="images/exercise.png" alt="Exercise icon">
-                <h3 class="activityName">Exercise 3x a week </h3><br>
-                <h3>Points: 4</h3><br>
+            <div class="activityBoxes">
+                <img class="activityImageValue" src="images/water-bottle.png" alt="waterbottle icon">
+                <h3 class="activityNameValue">Use a reusable bottle </h3><br>
+                <h3 class="activityPointsValue">Points: 4</h3><br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
                 <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
         </section>
-        <section class="activityBoxes">
-            <div>
-                <img class="activityIcon" src="images/recycle.png" alt="recycle icon">
-                <h3 class="activityName">Recycle all items</h3><br>
-                <h3>Points: 4</h3> <br>
+        <section class="activityBoxesSection">
+            <div class="activityBoxes">
+                <img class="activityImageValue" src="images/toilet.png" alt="toilet icon">
+                <h3 class="activityNameValue">If yellow let mellow</h3><br>
+                <h3 class="activityPointsValue">Points: 2</h3> <br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
                 <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
-            <div>
-                <img class="activityIcon" src="images/bike.png" alt="lightbulb icon">
-                <h3 class="activityName">Ride your bike vs drive</h3><br>
-                <h3>Points: 6</h3><br>
+            <div class="activityBoxes">
+                <img class="activityImageValue" src="images/lightbulb.png" alt="lightbulb icon">
+                <h3 class="activityNameValue">Switch to LED bulbs</h3><br>
+                <h3 class="activityPointsValue">Points: 6</h3><br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
                 <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
             </div>
-            <div>
-                <img class="activityIcon" src="images/nature.png" alt="nature icon">
-                <h3 class="activityName">Get outside for at least 30 mins </h3><br>
-                <h3>Points: 6</h3><br>
+            <div class="activityBoxes">
+                <img class="activityImageValue" src="images/exercise.png" alt="Exercise icon">
+                <h3 class="activityNameValue">Exercise 3x a week </h3><br>
+                <h3 class="activityPointsValue">Points: 4</h3><br>
+                <label for="checkbox">Commit</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
+            </div>
+        </section>
+        <section class="activityBoxesSection">
+            <div class="activityBoxes">
+                <img class="activityImageValue" src="images/recycle.png" alt="recycle icon">
+                <h3 class="activityNameValue">Recycle all items</h3><br>
+                <h3 class="activityPointsValue">Points: 4</h3> <br>
+                <label for="checkbox">Commit</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
+            </div>
+            <div class="activityBoxes">
+                <img class="activityImageValue" src="images/bike.png" alt="lightbulb icon">
+                <h3 class="activityNameValue">Ride your bike vs drive</h3><br>
+                <h3 class="activityPointsValue">Points: 6</h3><br>
+                <label for="checkbox">Commit</label>
+                <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
+                <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>
+            </div>
+            <div class="activityBoxes">
+                <img class="activityImageValue" src="images/nature.png" alt="nature icon">
+                <h3 class="activityNameValue">Get outside for at least 30 mins </h3><br>
+                <h3 class="activityPointsValue">Points: 6</h3><br>
                 <label for="checkbox">Commit</label>
                 <input class="checkbox" type="checkbox" name="completed" value="completed"> <br>
                 <button class="addButton" id="add-button" role="button" type="submit">Add</button><br>

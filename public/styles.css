@@ -157,16 +157,30 @@ section.profileInfo {
 }
 
 div.profileHeader {
-    width: 49%;
-    display: inline-block;
-    vertical-align: middle;
+    width: 50%;
+    margin: auto;
 }
 
 h2.profileUsername {
-    width: 25%;
-    display: inline-block;
     margin-top: 20px;
+    margin-bottom: 10px;
     font-size: 2em;
+    text-align: center;
+}
+
+p.profileDescription {
+    text-align: center;
+}
+
+section.pointsSection {
+    width: 80%;
+    margin: auto;
+}
+
+div.pointsTotal {
+    width: 50%;
+    margin: auto;
+    text-align: center;
 }
 
 /*activities on profile page*/
@@ -177,7 +191,7 @@ hr {
     margin-bottom: 30px;
 }
 
-section.activityBoxes {
+section.activityBoxesSection {
     margin: 0 auto;
     width: 100%;
     margin-bottom: 30px;
@@ -185,7 +199,7 @@ section.activityBoxes {
 
 }
 
-section.activityBoxes div {
+section.activityBoxesSection div {
     border: 1px dotted darkcyan;
     width: 32%;
     display: inline-block;
@@ -196,7 +210,7 @@ section.activityBoxes div {
 
 }
 
-img.activityIcon {
+img.activityImageValue {
     width: 50px;
     background-color: white;
     border: 3px solid #C1E1A6;
@@ -420,7 +434,7 @@ img.twitter {
 /* Media Query*/
 
 @media only screen and (max-width: 800px) {
-    h3.activityName {
+    h3.activityNameValue {
         width: 100%;
         text-align: center;
         padding: 20px;
@@ -584,7 +598,7 @@ img.twitter {
         font-size: 0.9em;
     }
 
-    section.activityBoxes div {
+    section.activityBoxesSection div {
         width: 30%;
     }
 
@@ -751,12 +765,12 @@ img.twitter {
     }
 
     /*activities on profile page*/
-    section.activityBoxes {
+    section.activityBoxesSection {
         margin: auto;
         width: 100%;
     }
 
-    section.activityBoxes div {
+    section.activityBoxesSection div {
         width: 80%;
         display: block;
         margin: auto;
@@ -764,7 +778,7 @@ img.twitter {
         margin-bottom: 5px;
     }
 
-    h3.activityName {
+    h3.activityNameValue {
         width: 100%;
         text-align: center;
     }

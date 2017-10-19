@@ -105,7 +105,8 @@ const myActivities = [
 var user = undefined;
 var loggedinUserName = '';
 var sustainGoals = '';
-
+var currentScore = 5;
+var allActivities = [];
 
 function showSignInPage() {
     $('#friends-page').hide();
@@ -143,9 +144,10 @@ function showProfilePage(loggedinUserName, sustainGoals) {
     $('#nav-links').show();
     $('.profileUsername').text(loggedinUserName);
     $('.profileDescription').text(sustainGoals);
+    $('#total-points').text(currentScore + myActivities.activityPoints);
 }
 
-function showActivitiesPage() {
+function showActivitiesPage(allActivities) {
 
     $('#friends-page').hide();
     $('#feed-page').hide();
@@ -202,7 +204,6 @@ $(document).ready(function () {
     $('#js-signin-button').on('click', function (event) {
         event.preventDefault();
 
-        //        backToLandingPageToggle = false;
         // AJAX call to validate login info and sign user in
         const inputUname = $('input[name="signin-username"]').val();
         const inputPw = $('input[name="signin-pw"]').val();
@@ -229,7 +230,9 @@ $(document).ready(function () {
                 .done(function (result) {
                     console.log(result);
                     loggedinUserName = result.username;
+                    console.log(loggedinUserName);
                     sustainGoals = result.goals;
+                    console.log(sustainGoals);
 
                     // show the signout link in header as soon as user is signed in
                     $('#js-signout-link').show();
@@ -300,42 +303,99 @@ $(document).ready(function () {
     });
 
 
-    // ACTIVITIES: when user clicks Add activity button from #activities-page
+    // ACTIVITIES: Show all activities.
+    //allow user to pick from pull down certain activities/points
+    //when user clicks Add activity button from #activities-page
     $('#js-activities').on('click', function (event) {
-        showActivitiesPage();
+        showActivitiesPage(allActivities);
+
+        event.preventDefault();
+
+        function displayActivities(activityBoxesSection) {
+            const activityBoxesSection = $('.activityBoxesSection').val();
+            for (var key in myActivities) {
+                allActivities.push(myActivities[category, activityName, activityImage, activityPoints])
+                let buildActivity = "";
+                $.each(activityArray, function (myActivities) {
+                    buildActivity += "<div class='activityBoxes'>";
+                    buildActivity += "<img class='activityImageValue' src='" + myActivities.activityImage + "' alt='" + myActivities.category + "' category>";
+                    buildActivity += "<h3 class='activityNameValue'> " + myActivities.activityName + "</h3><br>";
+                    buildActivity += "<h3 class='activityPointsValue'> "
+                    'Points:' + myActivities.activityPoints + "</h3><br>";
+                    buildActivity += "<label for='checkbox'>Commit</label>";
+                    buildActivity += "<input class='checkbox' type='checkbox' name='complete' value='complete'><br>";
+                    buildActivity += "<p>Tell us about your experience</p><textarea class='textBox' name='textBox' id='text-box'></textarea>";
+                    buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add</button><br>";
+                    buildActivity += "</div>";
+                });
+
+                $('.activityBoxesSection').html(buildActivity);
+                console.log(allActivities);
+            };
+        };
     });
 
+
+
+    //Activity added
     $('#js-add-activity').on('click', function (event) {
         event.preventDefault();
-        const profileActivityName = myActivities.activityName;
-        const profileActivityImage = myActivities.activityImage;
-        const profileActivityPoints = myActivities.activityPoints;
+        const categoryCheckBox = $('.checkbox').val();
+        const categoryActivityName = $('.activityNameValue').val();
+        const categoryActivityImage = $('.activityImageValue').val();
+        const categoryActivityPoints = $('.activityPointsValue').val();
 
-        // console.log('user is ' + user);
-        //        backWarnToggle = true;
-        //create an empty variable to store a new list item for each result
-        //        let buildAddedActivity = "";
-        //
-        //        $.each(addedActivity, function (addedActivityKey, addedActivityValue) {
-        //            buildAddedActivity += "<div class='activityBoxes animated flipOutY'>";
-        //            buildAddedActivity += "<h1>"
-        //            'Added' + addedActivityKey.name + "</h1>";
-        //            buildAddedActivity += "</div>";
-        //        });
-        //
-        //
-        //        // when user clicks I Did This button from #profile-page
-        //        document.getElementById('js-submit-activity').addEventListener('click', function (event) {
-        //            $.each(addedActivity, function (addedActivityKey, addedActivityValue) {
-        //                buildAddedActivity += "<div class='activityBoxes animated flipOutY'>";
-        //                buildAddedActivity += "<h1>" +
-        //                    addedActivityKey.name + 'completed'
-        //                "</h1>";
-        //                buildAddedActivity += "</div>";
-        //            });
-        //            submitFinishedActivity(user);
-        //            newUserToggle = false;
-        //        });
+        console.log(categoryCheckBox);
+        console.log(activityDescription, categoryActivityName, categoryActivityImage, categoryActivityPoints, loggedinUserName);
+
+        if (categoryCheckBox != 'completed') {
+            alert('Must be checked');
+        } else {
+            function completedActivity(completeActivityArray) {
+
+                let buildCompletedActivity = "";
+                $.each(activityArray, function (complete) {
+                    buildCompletedActivity += "<div class='animated flipOutY'>";
+                    buildCompletedActivity += "<h3>Congrats!</h3>"
+                    buildCompletedActivity += "<p> You completed " + myActivities.activityName + '!'
+                    "<p>";
+                    buildCompletedActivity += "</div>";
+                });
+                $('.activityBoxes').html(buildCompletedActivity);
+            };
+            console.log(newAddedActivity);
+
+            $.ajax({
+                    type: 'POST',
+                    url: '/category/add',
+                    dataType: 'json',
+                    data: JSON.stringify(newAddedActivity),
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    event.preventDefault();
+                    alert('Congrats! You added a task');
+
+                    function completedActivity(completeActivityArray) {
+
+                        let buildAddedActivity = "";
+                        $.each(activityArray, function (complete) {
+                            buildCompletedActivity += "<div class='animated flipOutY'>";
+                            buildCompletedActivity += "<h3>Congrats!</h3>"
+                            buildCompletedActivity += "<p> You added " + myActivities.activityName + '!'
+                            "<p>";
+                            buildCompletedActivity += "</div>";
+                        });
+                        $('.activityBoxes').html(buildAddedActivity);
+                    };
+                })
+
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                });
+        };
     });
 
     //FEED PAGE from nav menu
@@ -402,6 +462,26 @@ $(document).ready(function () {
             };
             console.log(newActivityCompleted);
 
+            //            function displayResults(activityArray) {
+            //
+            //                console.log(activityArray);
+            //                for (i = 0; i < myActivities; i++) {
+            //                    let buildActivity = "";
+            //                    $.each(activityArray, function (myActivities) {
+            //                        buildActivity += "<div>";
+            //                        buildActivity += "<img class='activityImageValue' src='" + myActivities.activityImage + "' alt='" + myActivities.category + "' category>";
+            //                        buildActivity += "<h3 class='activityNameValue'> " + myActivities.activityName + "</h3><br>";
+            //                        buildActivity += "<h3 class='activityPointsValue'> "
+            //                        'Points:' + myActivities.activityPoints + "</h3><br>";
+            //                        buildActivity += "<label for='checkbox'>Committed</label>";
+            //                        buildActivity += "<input class='checkbox' type='checkbox' name='completed' value='completed'><br>";
+            //                        buildActivity += "<p>Tell us about your experience</p><textarea class='textBox' name='textBox' id='text-box'></textarea>";
+            //                        buildActivity += "<button class='completedActivity' role='button' type='submit'>I did it</button>";
+            //                        buildActivity += "</div>";
+            //                    });
+            //                    $('.activityBoxes').append(buildActivity);
+            //                };
+            //            };
 
             $.ajax({
                     type: 'POST',
@@ -413,32 +493,90 @@ $(document).ready(function () {
                 .done(function (result) {
                     event.preventDefault();
                     alert('Congrats! You completed todays task');
+
+                    function completedActivity(completeActivityArray) {
+
+                        let buildCompletedActivity = "";
+                        $.each(activityArray, function (complete) {
+                            buildCompletedActivity += "<div class='animated flipOutY'>";
+                            buildCompletedActivity += "<h3>Congrats!</h3>"
+                            buildCompletedActivity += "<p> You completed " + myActivities.activityName + '!'
+                            "<p>";
+                            buildCompletedActivity += "</div>";
+                        });
+                        $('.activityBoxes').html(buildCompletedActivity);
+                    };
                 })
+
                 .fail(function (jqXHR, error, errorThrown) {
                     console.log(jqXHR);
                     console.log(error);
                     console.log(errorThrown);
                 });
-            //
-            //            $.ajax({
-            //                    type: 'GET',
-            //                    url: '/activity/show',
-            //                    dataType: 'json',
-            //                    data: JSON.stringify(newActivityCompleted),
-            //                    contentType: 'application/json'
-            //                })
-            //                .done(function (result) {
-            //                    event.preventDefault();
-            //                    alert('Congrats! You completed todays task');
-            //                })
-            //                .fail(function (jqXHR, error, errorThrown) {
-            //                    console.log(jqXHR);
-            //                    console.log(error);
-            //                    console.log(errorThrown);
-            //                });
         };
     });
 
+    //PROFILE ACTIVITY POSTED TO FEED
+    //    $('.activityForm').on('submit', function (event) {
+    //        const profileActivityName = $('.activityNameValue').val();
+    //        const profileActivityImage = $('.activityImageValue').val();
+    //        const profileActivityPoints = $('.activityPointsValue').val();
+    //
+    //        console.log(activityDescription, profileActivityName, profileActivityImage, profileActivityPoints, loggedinUserName);
+    //
+    //        if (checkBox != 'completed') {
+    //            alert('Must be checked');
+    //        } else if (activityDescription.length < 10) {
+    //            alert('Must be at least 10 characters');
+    //        } else {
+    //            const newActivityCompleted = {
+    //                activityDescription: activityDescription,
+    //                activityName: profileActivityName,
+    //                activityImage: profileActivityImage,
+    //                activityPoints: profileActivityPoints,
+    //                username: loggedinUserName
+    //            };
+    //            console.log(newActivityCompleted);
+    //
+    //            function displayResults(activityArray) {
+    //
+    //                console.log(activityArray);
+    //                for (i = 0; i < myActivities; i++) {
+    //                    let buildCompletedActivity = "";
+    //                    $.each(activityArray, function (myActivities) {
+    //                        buildCompletedActivity += "<div>";
+    //                        buildCompletedActivity += "<img class='activityImageValue' src='" + myActivities.activityImage + "' alt='" + myActivities.category + "' category>";
+    //                        buildCompletedActivity += "<h3 class='activityNameValue'> " + myActivities.activityName + "</h3><br>";
+    //                        buildCompletedActivity += "<h3 class='activityPointsValue'> "
+    //                        'Points:' + myActivities.activityPoints + "</h3><br>";
+    //                        buildCompletedActivity += "<label for='checkbox'>Committed</label>";
+    //                        buildCompletedActivity += "<input class='checkbox' type='checkbox' name='completed' value='completed'><br>";
+    //                        buildCompletedActivity += "<p>Tell us about your experience</p><textarea class='textBox' name='textBox' id='text-box'></textarea>";
+    //                        buildCompletedActivity += "<button class='completedActivity' role='button' type='submit'>I did it</button>";
+    //                        buildCompletedActivity += "</div>";
+    //                    });
+    //                    $('.activityBoxes').append(buildCompletedActivity);
+    //                };
+    //            };
+    //
+    //            $.ajax({
+    //                    type: 'GET',
+    //                    url: '/activity/show',
+    //                    dataType: 'json',
+    //                    data: JSON.stringify(newActivityCompleted),
+    //                    contentType: 'application/json'
+    //                })
+    //                .done(function (result) {
+    //                    event.preventDefault();
+    //                    alert('Congrats! You completed todays task');
+    //                })
+    //                .fail(function (jqXHR, error, errorThrown) {
+    //                    console.log(jqXHR);
+    //                    console.log(error);
+    //                    console.log(errorThrown);
+    //                });
+    //        };
+    //    });
     // when user clicks sign-out link in header
     document.getElementById('js-signout-link').addEventListener('click', function (event) {
         location.reload();

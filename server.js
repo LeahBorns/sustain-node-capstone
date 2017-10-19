@@ -228,28 +228,35 @@ app.post('/signin/', function (req, res) {
 
 //ACTIVITY ENDPOINTS (CREATE?, FIND, DELETE?)
 //FIND/GET -> accessing all of users activties
-app.get('/activity/:user', function (req, res) {
+//adding new activity
+app.post('/category/add', function (req, res) {
     //    console.log(req.params.user);
-    activity
-        .find()
-        .sort()
-        .then(function (activity) {
-            let activityOutput = [];
-            activity.map(function (activity) {
-                if (activity.user == req.params.user) {
-                    activityOutput.push(activity);
-                }
+    let addActivityImage = req.body.activityImage;
+    let addActivityName = req.body.activityName;
+    let addActivityPoints = req.body.activityPoints;
+    let username = req.body.username;
+
+
+
+    //    console.log(username, activityName, activityPoints, activityDescription, activityImage);
+    console.log("-->", activityName, "<---");
+
+    activity.create({
+        username: username,
+        activityName: addActivityName,
+        activityPoints: addActivityPoints,
+        activityImage: addActivityImage
+    }, (err, item) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
             });
-            res.json({
-                activityOutput
-            });
-        })
-        .catch(function (err) {
-            console.error(err);
-            res.status(500).json({
-                message: 'Internal server error'
-            });
-        });
+        }
+        if (item) {
+            console.log(`activity \`${activityName}\` added.`);
+            return res.json(item);
+        }
+    });
 });
 
 
