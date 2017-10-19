@@ -200,7 +200,7 @@ function displayAllActivities() {
         buildActivity += "<h3 class='activityPointsValue'> "
         'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
 
-        buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add Category</button><br>";
+        buildActivity += "<button class='addButton' id='add-button' role='button' type='button'>Add Category</button><br>";
         buildActivity += "</div>";
     });
 
@@ -227,7 +227,6 @@ function displaySelectedActivities(categoryName, categoryPoints) {
             buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
             buildActivity += "<h3 class='activityPointsValue'> "
             'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
-
             buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
         } else if (((categoryName == "") && (categoryPoints !== "") && (categoryPoints == myActivitiesValue.activityPoints))) {
@@ -246,6 +245,20 @@ function displaySelectedActivities(categoryName, categoryPoints) {
 
     $('.activityBoxesSection').html(buildActivity);
 };
+
+function addedActivity() {
+
+    let buildAddedActivity = "";
+    $.each(activityArray, function (addedKey, addedValue) {
+        buildCompletedActivity += "<div class='animated flipOutY'>";
+        buildCompletedActivity += "<h3>Congrats!</h3>"
+        buildCompletedActivity += "<p> You added " + addedValue.activityName + '!'
+        "<p>";
+        buildCompletedActivity += "</div>";
+    });
+    $('.activityBoxes').html(buildAddedActivity);
+};
+
 
 //Page loads to SIGN-IN PAGE
 //1. User enters user name and password. Press enter to enter site
@@ -381,58 +394,48 @@ $(document).ready(function () {
     });
 
     //Activity added
-    $('#js-add-activity').on('click', function (event) {
+    $('#add-button').on('click', function (event) {
         event.preventDefault();
-        const categoryCheckBox = $('.checkbox').val();
-        const categoryActivityName = $('.activityNameValue').val();
-        const categoryActivityImage = $('.activityImageValue').val();
-        const categoryActivityPoints = $('.activityPointsValue').val();
+        addedActivity();
+        console.log(addedActivity);
+        //        const categoryCheckBox = $('.checkbox').val();
+        //        const categoryActivityName = $('.activityNameValue').val();
+        //        const categoryActivityImage = $('.activityImageValue').val();
+        //        const categoryActivityPoints = $('.activityPointsValue').val();
+        //
+        //        console.log(categoryCheckBox);
+        //        console.log(activityDescription, categoryActivityName, categoryActivityImage, categoryActivityPoints, loggedinUserName);
 
-        console.log(categoryCheckBox);
-        console.log(activityDescription, categoryActivityName, categoryActivityImage, categoryActivityPoints, loggedinUserName);
+        //        if (categoryCheckBox != 'completed') {
+        //            alert('Must be checked');
+        //        } else {
+        //            const newAddedActivity = {
+        //                activityName: categoryActivityName,
+        //                activityImage: categoryActivityImage,
+        //                activityPoints: categoryActivityPoints,
+        //                username: loggedinUserName
+        //            };
+        //            console.log(newAddedActivity);
 
-        if (categoryCheckBox != 'completed') {
-            alert('Must be checked');
-        } else {
-            const newAddedActivity = {
-                activityName: categoryActivityName,
-                activityImage: categoryActivityImage,
-                activityPoints: categoryActivityPoints,
-                username: loggedinUserName
-            };
-            console.log(newAddedActivity);
+        $.ajax({
+                type: 'POST',
+                url: '/category/add',
+                dataType: 'json',
+                data: JSON.stringify(addedActivity),
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                event.preventDefault();
+                alert('Congrats! You added a task');
+                addedActivity();
+            })
 
-            $.ajax({
-                    type: 'POST',
-                    url: '/category/add',
-                    dataType: 'json',
-                    data: JSON.stringify(newAddedActivity),
-                    contentType: 'application/json'
-                })
-                .done(function (result) {
-                    event.preventDefault();
-                    alert('Congrats! You added a task');
-
-                    function completedActivity(completeActivityArray) {
-
-                        let buildAddedActivity = "";
-                        $.each(activityArray, function (complete) {
-                            buildCompletedActivity += "<div class='animated flipOutY'>";
-                            buildCompletedActivity += "<h3>Congrats!</h3>"
-                            buildCompletedActivity += "<p> You added " + myActivities.activityName + '!'
-                            "<p>";
-                            buildCompletedActivity += "</div>";
-                        });
-                        $('.activityBoxes').html(buildAddedActivity);
-                    };
-                })
-
-                .fail(function (jqXHR, error, errorThrown) {
-                    console.log(jqXHR);
-                    console.log(error);
-                    console.log(errorThrown);
-                });
-        };
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+        //        };
     });
 
     //FEED PAGE from nav menu

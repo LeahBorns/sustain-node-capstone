@@ -210,6 +210,10 @@ section.activityBoxesSection div {
     vertical-align: top;
 }
 
+div.activityBoxes {
+    margin: 10px;
+}
+
 h3.activityNameValue {
     height: 40px;
     overflow-y: hidden;
