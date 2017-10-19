@@ -207,7 +207,16 @@ section.activityBoxesSection div {
     background-color: #FFB861;
     margin: auto;
     color: white;
+    vertical-align: top;
+}
 
+h3.activityNameValue {
+    height: 40px;
+    overflow-y: hidden;
+    width: 100%;
+    text-align: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
 img.activityImageValue {

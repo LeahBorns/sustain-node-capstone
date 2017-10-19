@@ -84,6 +84,12 @@ const myActivities = [
         activityName: 'Eat mindfully',
         activityImage: 'exercise.png',
         activityPoints: 6
+    },
+    {
+        category: 'Health',
+        activityName: 'Eat mindfully',
+        activityImage: 'exercise.png',
+        activityPoints: 6
     }
     ];
 
@@ -120,7 +126,7 @@ function showSignInPage() {
 }
 
 function showNewUserPage() {
-    $('*').scrollTop(0);
+    //    $('*').scrollTop(0);
     $('#friends-page').hide();
     $('#feed-page').hide();
     $('#activities-page').hide();
@@ -183,6 +189,63 @@ function showFriendsPage() {
     $('#nav-links').show();
 }
 
+function displayAllActivities() {
+
+    let buildActivity = "";
+    $.each(myActivities, function (myActivitiesKey, myActivitiesValue) {
+
+        buildActivity += "<div class='activityBoxes'>";
+        buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
+        buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
+        buildActivity += "<h3 class='activityPointsValue'> "
+        'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
+
+        buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add Category</button><br>";
+        buildActivity += "</div>";
+    });
+
+    $('.activityBoxesSection').html(buildActivity);
+};
+
+
+function displaySelectedActivities(categoryName, categoryPoints) {
+
+    let buildActivity = "";
+    $.each(myActivities, function (myActivitiesKey, myActivitiesValue) {
+
+        if ((categoryName !== "") && (categoryName == myActivitiesValue.activityName) && (categoryPoints !== "") && (categoryPoints == myActivitiesValue.activityPoints)) {
+            buildActivity += "<div class='activityBoxes'>";
+            buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
+            buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
+            buildActivity += "<h3 class='activityPointsValue'> "
+            'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
+            buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add Category</button><br>";
+            buildActivity += "</div>";
+        } else if ((categoryName !== "") && (categoryName == myActivitiesValue.activityName) && (categoryPoints == "")) {
+            buildActivity += "<div class='activityBoxes'>";
+            buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
+            buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
+            buildActivity += "<h3 class='activityPointsValue'> "
+            'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
+
+            buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add Category</button><br>";
+            buildActivity += "</div>";
+        } else if (((categoryName == "") && (categoryPoints !== "") && (categoryPoints == myActivitiesValue.activityPoints))) {
+            buildActivity += "<div class='activityBoxes'>";
+            buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
+            buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
+            buildActivity += "<h3 class='activityPointsValue'> "
+            'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
+
+            buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add Category</button><br>";
+            buildActivity += "</div>";
+        } else {
+            buildActivity += "<h3 class='activityNameValue'> Please select category name or points</h3>";
+        }
+    });
+
+    $('.activityBoxesSection').html(buildActivity);
+};
 
 //Page loads to SIGN-IN PAGE
 //1. User enters user name and password. Press enter to enter site
@@ -307,35 +370,15 @@ $(document).ready(function () {
     //allow user to pick from pull down certain activities/points
     //when user clicks Add activity button from #activities-page
     $('#js-activities').on('click', function (event) {
-        showActivitiesPage(allActivities);
-
         event.preventDefault();
-
-        function displayActivities(activityBoxesSection) {
-            const activityBoxesSection = $('.activityBoxesSection').val();
-            for (var key in myActivities) {
-                allActivities.push(myActivities[category, activityName, activityImage, activityPoints])
-                let buildActivity = "";
-                $.each(activityArray, function (myActivities) {
-                    buildActivity += "<div class='activityBoxes'>";
-                    buildActivity += "<img class='activityImageValue' src='" + myActivities.activityImage + "' alt='" + myActivities.category + "' category>";
-                    buildActivity += "<h3 class='activityNameValue'> " + myActivities.activityName + "</h3><br>";
-                    buildActivity += "<h3 class='activityPointsValue'> "
-                    'Points:' + myActivities.activityPoints + "</h3><br>";
-                    buildActivity += "<label for='checkbox'>Commit</label>";
-                    buildActivity += "<input class='checkbox' type='checkbox' name='complete' value='complete'><br>";
-                    buildActivity += "<p>Tell us about your experience</p><textarea class='textBox' name='textBox' id='text-box'></textarea>";
-                    buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add</button><br>";
-                    buildActivity += "</div>";
-                });
-
-                $('.activityBoxesSection').html(buildActivity);
-                console.log(allActivities);
-            };
-        };
+        showActivitiesPage(allActivities);
+        displayAllActivities();
     });
 
-
+    $('.pullDownCategories').on('click', function (event) {
+        event.preventDefault();
+        displaySelectedActivities();
+    });
 
     //Activity added
     $('#js-add-activity').on('click', function (event) {
@@ -351,17 +394,11 @@ $(document).ready(function () {
         if (categoryCheckBox != 'completed') {
             alert('Must be checked');
         } else {
-            function completedActivity(completeActivityArray) {
-
-                let buildCompletedActivity = "";
-                $.each(activityArray, function (complete) {
-                    buildCompletedActivity += "<div class='animated flipOutY'>";
-                    buildCompletedActivity += "<h3>Congrats!</h3>"
-                    buildCompletedActivity += "<p> You completed " + myActivities.activityName + '!'
-                    "<p>";
-                    buildCompletedActivity += "</div>";
-                });
-                $('.activityBoxes').html(buildCompletedActivity);
+            const newAddedActivity = {
+                activityName: categoryActivityName,
+                activityImage: categoryActivityImage,
+                activityPoints: categoryActivityPoints,
+                username: loggedinUserName
             };
             console.log(newAddedActivity);
 
