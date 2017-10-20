@@ -199,8 +199,10 @@ function displayAllActivities() {
         buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
         buildActivity += "<h3 class='activityPointsValue'> "
         'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
-
+        buildActivity += "<form action="
+        " class='addActivityForm'>";
         buildActivity += "<button class='addButton' id='add-button' role='button' type='button'>Add Category</button><br>";
+        buildActivity += "</form>";
         buildActivity += "</div>";
     });
 
@@ -209,11 +211,15 @@ function displayAllActivities() {
 
 
 function displaySelectedActivities(categoryName, categoryPoints) {
-
+    console.log(categoryName, categoryPoints);
     let buildActivity = "";
-    $.each(myActivities, function (myActivitiesKey, myActivitiesValue) {
+    let emptyActivities = 0;
 
-        if ((categoryName !== "") && (categoryName == myActivitiesValue.activityName) && (categoryPoints !== "") && (categoryPoints == myActivitiesValue.activityPoints)) {
+    $.each(myActivities, function (myActivitiesKey, myActivitiesValue) {
+        console.log(myActivitiesValue.category);
+        console.log(myActivitiesValue.activityPoints);
+
+        if ((categoryName !== "") && (categoryName == myActivitiesValue.category) && (categoryPoints !== "") && (categoryPoints == myActivitiesValue.activityPoints)) {
             buildActivity += "<div class='activityBoxes'>";
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
             buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
@@ -221,7 +227,7 @@ function displaySelectedActivities(categoryName, categoryPoints) {
             'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
             buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
-        } else if ((categoryName !== "") && (categoryName == myActivitiesValue.activityName) && (categoryPoints == "")) {
+        } else if ((categoryName !== "") && (categoryName == myActivitiesValue.category) && (categoryPoints == "")) {
             buildActivity += "<div class='activityBoxes'>";
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
             buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
@@ -238,19 +244,43 @@ function displaySelectedActivities(categoryName, categoryPoints) {
 
             buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
-        } else {
-            buildActivity += "<h3 class='activityNameValue'> Please select category name or points</h3>";
+        } else if ((categoryName == "") && (categoryPoints == "")) {
+            emptyActivities++;
         }
     });
+    if (emptyActivities > 0) {
+        buildActivity += "<h3 class='activityNameValue'> Please select category name or points</h3>";
+    }
 
     $('.activityBoxesSection').html(buildActivity);
 };
 
+function displayProfileActivities() {
+
+    let buildProfileActivity = "";
+    $.each(myActivities, function (myProfileKey, myProfileValue) {
+        buildActivity += "<div class='activityBoxes'>";
+        buildActivity += "<img class='activityImageValue' src='images/" + myProfileValue.activityImage + "' alt='" + myProfileValue.category + "category' >";
+        buildActivity += "<h3 class='activityNameValue'> " + myProfileValue.activityName + "</h3><br>";
+        buildActivity += "<h3 class='activityPointsValue'> "
+        'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
+        buildActivity += "<form action="
+        " class='CompletedActivityForm'>";
+        buildActivity += "<label for='checkbox'>Committed</label>";
+        buildActivity += "<input class='checkbox' type='checkbox' name='completed' value='completed'><br><p>Tell us about your experience</p>";
+        buildActivity += "<textarea class='textBox' name='textBox' id='text-box'></textarea>";
+        buildActivity += "<button class='completedActivity' id='completedActivity' role='submit' type='button'>Add Category</button><br>";
+        buildActivity += "</div>";
+    });
+    $('.activityBoxesSection').html(buildActivity);
+};
+
+//Activity/Category Page card flip
 function addedActivity() {
 
     let buildAddedActivity = "";
-    $.each(activityArray, function (addedKey, addedValue) {
-        buildCompletedActivity += "<div class='animated flipOutY'>";
+    $.each(myActivities, function (addedKey, addedValue) {
+        buildCompletedActivity += "<div class='activityBoxes animated flipOutY'>";
         buildCompletedActivity += "<h3>Congrats!</h3>"
         buildCompletedActivity += "<p> You added " + addedValue.activityName + '!'
         "<p>";
@@ -259,6 +289,20 @@ function addedActivity() {
     $('.activityBoxes').html(buildAddedActivity);
 };
 
+//Profile page card flip
+
+function completedActivity() {
+
+    let buildCompletedActivity = "";
+    $.each(myActivities, function (completedKey, completedValue) {
+        buildCompletedActivity += "<div class='activityBoxes animated flipOutY'>";
+        buildCompletedActivity += "<h3>Congrats!</h3>"
+        buildCompletedActivity += "<p> You completed " + completedValue.activityName + '!'
+        "<p>";
+        buildCompletedActivity += "</div>";
+    });
+    $('.activityBoxes').html(buildCompletedActivity);
+};
 
 //Page loads to SIGN-IN PAGE
 //1. User enters user name and password. Press enter to enter site
@@ -390,11 +434,13 @@ $(document).ready(function () {
 
     $('.pullDownCategories').on('click', function (event) {
         event.preventDefault();
-        displaySelectedActivities();
+        const categoryName = $('.sustainCategories').val();
+        const categoryPoints = $('.sustainPoints').val();
+        displaySelectedActivities(categoryName, categoryPoints);
     });
 
     //Activity added
-    $('#add-button').on('click', function (event) {
+    $('.addActivityForm').on('submit', function (event) {
         event.preventDefault();
         addedActivity();
         console.log(addedActivity);
@@ -473,8 +519,9 @@ $(document).ready(function () {
     //2. "I did it" button is pressed.
     //3. 'Card' spins around and says completed.
     //4. information from card shows up in feed
-    $('.activityForm').on('submit', function (event) {
+    $('.completedActivityForm').on('submit', function (event) {
         event.preventDefault();
+        //        displayProfileActivities();
         const checkBox = $('.checkbox').val();
         const activityDescription = $('.textBox').val();
         const profileActivityName = $('.activityNameValue').val();
@@ -533,19 +580,19 @@ $(document).ready(function () {
                 .done(function (result) {
                     event.preventDefault();
                     alert('Congrats! You completed todays task');
-
-                    function completedActivity(completeActivityArray) {
-
-                        let buildCompletedActivity = "";
-                        $.each(activityArray, function (complete) {
-                            buildCompletedActivity += "<div class='animated flipOutY'>";
-                            buildCompletedActivity += "<h3>Congrats!</h3>"
-                            buildCompletedActivity += "<p> You completed " + myActivities.activityName + '!'
-                            "<p>";
-                            buildCompletedActivity += "</div>";
-                        });
-                        $('.activityBoxes').html(buildCompletedActivity);
-                    };
+                    completedActivity();
+                    //                    function completedActivity(completeActivityArray) {
+                    //
+                    //                        let buildCompletedActivity = "";
+                    //                        $.each(activityArray, function (complete) {
+                    //                            buildCompletedActivity += "<div class='animated flipOutY'>";
+                    //                            buildCompletedActivity += "<h3>Congrats!</h3>"
+                    //                            buildCompletedActivity += "<p> You completed " + myActivities.activityName + '!'
+                    //                            "<p>";
+                    //                            buildCompletedActivity += "</div>";
+                    //                        });
+                    //                        $('.activityBoxes').html(buildCompletedActivity);
+                    //                    };
                 })
 
                 .fail(function (jqXHR, error, errorThrown) {
