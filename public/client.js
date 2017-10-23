@@ -189,6 +189,7 @@ function showFriendsPage() {
     $('#nav-links').show();
 }
 
+///////////////////////////////////////////ACTIVITY PAGE FUNCTIONS///////////////////////////////////////////////
 function displayAllActivities() {
 
     let buildActivity = "";
@@ -197,12 +198,8 @@ function displayAllActivities() {
         buildActivity += "<div class='activityBoxes'>";
         buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
         buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
-        buildActivity += "<h3 class='activityPointsValue'> "
-        'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
-        buildActivity += "<form action="
-        " class='addActivityForm'>";
-        buildActivity += "<button class='addButton' id='add-button' role='button' type='button'>Add Category</button><br>";
-        buildActivity += "</form>";
+        buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
+        buildActivity += "<button class='addButton' id='add-button' role='submit' type='button'>Add Category</button><br>";
         buildActivity += "</div>";
     });
 
@@ -223,25 +220,21 @@ function displaySelectedActivities(categoryName, categoryPoints) {
             buildActivity += "<div class='activityBoxes'>";
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
             buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
-            buildActivity += "<h3 class='activityPointsValue'> "
-            'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
+            buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
             buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
         } else if ((categoryName !== "") && (categoryName == myActivitiesValue.category) && (categoryPoints == "")) {
             buildActivity += "<div class='activityBoxes'>";
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
             buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
-            buildActivity += "<h3 class='activityPointsValue'> "
-            'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
+            buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
             buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
         } else if (((categoryName == "") && (categoryPoints !== "") && (categoryPoints == myActivitiesValue.activityPoints))) {
             buildActivity += "<div class='activityBoxes'>";
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
             buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
-            buildActivity += "<h3 class='activityPointsValue'> "
-            'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
-
+            buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
             buildActivity += "<button class='addButton' id='add-button' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
         } else if ((categoryName == "") && (categoryPoints == "")) {
@@ -262,8 +255,7 @@ function displayProfileActivities() {
         buildActivity += "<div class='activityBoxes'>";
         buildActivity += "<img class='activityImageValue' src='images/" + myProfileValue.activityImage + "' alt='" + myProfileValue.category + "category' >";
         buildActivity += "<h3 class='activityNameValue'> " + myProfileValue.activityName + "</h3><br>";
-        buildActivity += "<h3 class='activityPointsValue'> "
-        'Points:' + myActivitiesValue.activityPoints + "</h3><br>";
+        buildActivity += "<h3 class='activityPointsValue'> 'Points:'" + myActivitiesValue.activityPoints + "</h3><br>";
         buildActivity += "<form action="
         " class='CompletedActivityForm'>";
         buildActivity += "<label for='checkbox'>Committed</label>";
@@ -289,6 +281,36 @@ function addedActivity() {
     $('.activityBoxes').html(buildAddedActivity);
 };
 
+///////////////////////////////////////////PROFILE FUNCTIONS///////////////////////////////////////////////
+
+//Profile activity card
+function displayAddedActivities() {
+
+    let buildActivity = "";
+    $.each(myActivities, function (myActivitiesKey, myActivitiesValue) {
+
+        buildActivity += "<div>";
+        buildActivity += "<img class='activityImageValue' src='" + myActivities.activityImage + "' alt='" + myActivities.category + "' category>";
+        buildActivity += "<h3 class='activityNameValue'> " + myActivities.activityName + "</h3><br>";
+        buildActivity += "<h3 class='activityPointsValue'> Points: " + myActivities.activityPoints + "</h3><br>";
+        buildActivity += "<label for='checkbox'>Committed</label>";
+        buildActivity += "<input class='checkbox' type='checkbox' name='completed' value='completed'><br>";
+        buildActivity += "<p>Tell us about your experience</p><textarea class='textBox' name='textBox' id='text-box'></textarea>";
+        buildActivity += "<button class='completedActivity' role='button' type='submit'>I did it</button>";
+        buildActivity += "</div>";
+    });
+
+    $('.activityBoxesSection').html(buildActivity);
+};
+
+////Profile card add
+function profileActivityLayout(displayAddedActivities) {
+    $('.profileActivityBoxesSection').empty();
+    //if ($('#add-button') == 'click') {
+    //
+    //}
+
+}
 //Profile page card flip
 
 function completedActivity() {
@@ -304,6 +326,7 @@ function completedActivity() {
     $('.activityBoxes').html(buildCompletedActivity);
 };
 
+///////////////////////////////////////////SIGN-IN TRIGGERS///////////////////////////////////////////////
 //Page loads to SIGN-IN PAGE
 //1. User enters user name and password. Press enter to enter site
 $(document).ready(function () {
@@ -371,7 +394,7 @@ $(document).ready(function () {
         };
     });
     //
-    //REGISTER PAGE
+    ///////////////////////////////////////////REGISTER PAGE TRIGGERS///////////////////////////////////////////////
     //2. Visitor wants to create an account. Clicks create an account
     //Add username, email, password and verify password. Submit
     //and brought back to sign in page to sign in
@@ -422,8 +445,8 @@ $(document).ready(function () {
         };
     });
 
-
-    // ACTIVITIES: Show all activities.
+    ///////////////////////////////////////////ACTIVITY PAGE TRIGGERS///////////////////////////////////////////////
+    //Show all activities.
     //allow user to pick from pull down certain activities/points
     //when user clicks Add activity button from #activities-page
     $('#js-activities').on('click', function (event) {
@@ -440,7 +463,7 @@ $(document).ready(function () {
     });
 
     //Activity added
-    $('.addActivityForm').on('submit', function (event) {
+    $('#add-button').on('click', function (event) {
         event.preventDefault();
         addedActivity();
         console.log(addedActivity);
@@ -483,7 +506,7 @@ $(document).ready(function () {
             });
         //        };
     });
-
+    ///////////////////////////////////////////FEED PAGE TRIGGERS///////////////////////////////////////////////
     //FEED PAGE from nav menu
     $('#js-feed').on('click', function (event) {
         showOverallFeedPage();
@@ -505,14 +528,17 @@ $(document).ready(function () {
     //            console.log(errorThrown);
     //        });
 
+    ///////////////////////////////////////////FRIENDS PAGE TRIGGERS///////////////////////////////////////////////
     //FRIENDS PAGE from search icon on nav
     $('#js-search-friends').on('click', function (event) {
         showFriendsPage();
     });
 
+    ///////////////////////////////////////////PROFILE PAGE TRIGGERS///////////////////////////////////////////////
     //PROFILE PAGE from image in nav
     $('#js-profile').on('click', function (event) {
         showProfilePage();
+        profileActivityLayout(displayAddedActivities);
     });
 
     //1. If box is checked and textbox is filled in.

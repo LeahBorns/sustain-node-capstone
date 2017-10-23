@@ -27,6 +27,7 @@ main.wrapper {
 }
 
 h2.pageTitle {
+    margin-top: 20px;
     margin-left: 70px;
 }
 
@@ -201,18 +202,17 @@ section.activityBoxesSection {
 
 section.activityBoxesSection div {
     border: 1px dotted darkcyan;
-    width: 32%;
+    width: 30%;
     display: inline-block;
     padding-top: 30px;
     background-color: #FFB861;
     margin: auto;
     color: white;
     vertical-align: top;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
-div.activityBoxes {
-    margin: 10px;
-}
 
 h3.activityNameValue {
     height: 40px;
@@ -321,6 +321,7 @@ button.addButton {
     color: #585858;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-family: 'Inconsolata', monospace;
 }
 
 /*Feed*/
@@ -778,18 +779,19 @@ img.twitter {
     }
 
     /*activities on profile page*/
-    section.activityBoxesSection {
+    section.profileActivityBoxesSection {
         margin: auto;
         width: 100%;
     }
 
-    section.activityBoxesSection div {
+    section.profileActivityBoxesSection div {
         width: 80%;
         display: block;
         margin: auto;
         margin-top: 5px;
         margin-bottom: 5px;
     }
+
 
     h3.activityNameValue {
         width: 100%;
@@ -827,6 +829,19 @@ img.twitter {
     }
 
     /*Activities page*/
+    section.activityBoxesSection {
+        margin: auto;
+        width: 100%;
+    }
+
+    section.activityBoxesSection div {
+        width: 80%;
+        display: block;
+        margin: auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
     select.sustainCategories,
     select.sustainPoints {
         margin-top: 20px;
