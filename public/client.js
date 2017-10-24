@@ -304,13 +304,16 @@ function displayAddedActivities() {
 };
 
 ////Profile card add
-function profileActivityLayout(displayAddedActivities) {
-    $('.profileActivityBoxesSection').empty();
-    //if ($('#add-button') == 'click') {
-    //
-    //}
-
-}
+//function profileActivityLayout(displayAddedActivities) {
+//
+//    if ($('#add-button') !== 'submit') {
+//        $('.profileActivityBoxesSection').empty();
+//    } else if ($('#add-button') == 'submit') {
+//        $('.activityBoxes').show();
+//    }
+//
+//
+//}
 //Profile page card flip
 
 function completedActivity() {
@@ -464,9 +467,16 @@ $(document).ready(function () {
 
     //Activity added
     $('#add-button').on('click', function (event) {
+        const activityTrigger = $('#add-button');
         event.preventDefault();
         addedActivity();
         console.log(addedActivity);
+
+        if (activityTrigger !== 'submit') {
+            $('.profileActivityBoxesSection').empty();
+        } else if (activityTrigger == 'submit') {
+            displayAddedActivities();
+        }
         //        const categoryCheckBox = $('.checkbox').val();
         //        const categoryActivityName = $('.activityNameValue').val();
         //        const categoryActivityImage = $('.activityImageValue').val();
