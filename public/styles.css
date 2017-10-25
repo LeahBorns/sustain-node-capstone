@@ -299,7 +299,11 @@ button.pullDownCategories {
 
 select.sustainCategories {
     margin-left: 70px;
+}
 
+p.categoryPageDescription {
+    margin-left: 70px;
+    margin-top: 20px;
 }
 
 select.sustainCategories,

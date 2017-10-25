@@ -151,6 +151,7 @@ function showProfilePage(loggedinUserName, sustainGoals) {
     $('.profileUsername').text(loggedinUserName);
     $('.profileDescription').text(sustainGoals);
     $('#total-points').text(currentScore + myActivities.activityPoints);
+//    $('.profileActivityBoxesSection').text(displayProfileActivities(myActivities));
 }
 
 function showActivitiesPage(allActivities) {
@@ -190,7 +191,7 @@ function showFriendsPage() {
 }
 
 ///////////////////////////////////////////ACTIVITY PAGE FUNCTIONS///////////////////////////////////////////////
-function displayAllActivities() {
+function displayAllActivities(myActivities) {
 
     let buildActivity = "";
     $.each(myActivities, function (myActivitiesKey, myActivitiesValue) {
@@ -198,8 +199,11 @@ function displayAllActivities() {
         buildActivity += "<div class='activityBoxes'>";
         buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
         buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
+        buildActivity += "<input type='hidden' class='activityCategoryNameInputValue' value=" + myActivitiesValue.activityName + " >";
         buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
+        buildActivity += "<input type='hidden'  class='activityCategoryPointsInputValue' value=" + myActivitiesValue.activityPoints + " >";
         buildActivity += "<button class='addButton' id='add-button' role='submit' type='button'>Add Category</button><br>";
+
         buildActivity += "</div>";
     });
 
@@ -248,14 +252,14 @@ function displaySelectedActivities(categoryName, categoryPoints) {
     $('.activityBoxesSection').html(buildActivity);
 };
 
-function displayProfileActivities() {
+function displayProfileActivities(myActivities) {
 
-    let buildProfileActivity = "";
+    let buildActivity = "";
     $.each(myActivities, function (myProfileKey, myProfileValue) {
         buildActivity += "<div class='activityBoxes'>";
         buildActivity += "<img class='activityImageValue' src='images/" + myProfileValue.activityImage + "' alt='" + myProfileValue.category + "category' >";
         buildActivity += "<h3 class='activityNameValue'> " + myProfileValue.activityName + "</h3><br>";
-        buildActivity += "<h3 class='activityPointsValue'> 'Points:'" + myActivitiesValue.activityPoints + "</h3><br>";
+        buildActivity += "<h3 class='activityPointsValue'> 'Points:'" + myProfileValue.activityPoints + "</h3><br>";
         buildActivity += "<form action="
         " class='CompletedActivityForm'>";
         buildActivity += "<label for='checkbox'>Committed</label>";
@@ -268,7 +272,7 @@ function displayProfileActivities() {
 };
 
 //Activity/Category Page card flip
-function addedActivity() {
+function addedActivity(myActivities) {
 
     let buildAddedActivity = "";
     $.each(myActivities, function (addedKey, addedValue) {
@@ -284,7 +288,7 @@ function addedActivity() {
 ///////////////////////////////////////////PROFILE FUNCTIONS///////////////////////////////////////////////
 
 //Profile activity card
-function displayAddedActivities() {
+function displayAddedActivities(myActivities) {
 
     let buildActivity = "";
     $.each(myActivities, function (myActivitiesKey, myActivitiesValue) {
@@ -304,19 +308,19 @@ function displayAddedActivities() {
 };
 
 ////Profile card add
-//function profileActivityLayout(displayAddedActivities) {
-//
-//    if ($('#add-button') !== 'submit') {
-//        $('.profileActivityBoxesSection').empty();
-//    } else if ($('#add-button') == 'submit') {
-//        $('.activityBoxes').show();
-//    }
-//
-//
+//function profileActivityLayout() {
+//    //
+//    //    if ($('#add-button') !== 'submit') {
+//    //        $('.profileActivityBoxesSection').empty();
+//    //    } else if ($('#add-button') == 'submit') {
+//    //        $('.activityBoxes').show();
+//    //    }
+//    //
+//    //
 //}
 //Profile page card flip
 
-function completedActivity() {
+function completedActivity(myActivities) {
 
     let buildCompletedActivity = "";
     $.each(myActivities, function (completedKey, completedValue) {
@@ -377,16 +381,12 @@ $(document).ready(function () {
                     console.log(result);
                     loggedinUserName = result.username;
                     console.log(loggedinUserName);
-                    sustainGoals = result.goals;
-                    console.log(sustainGoals);
 
                     // show the signout link in header as soon as user is signed in
                     $('#js-signout-link').show();
-                    //                    if (newUserToggle === true) {
-                    showProfilePage(loggedinUserName, sustainGoals);
-                    //                    } else {
-                    //                        showProfilePage();
-                    //                    }
+
+                    showActivitiesPage(allActivities);
+                    displayAllActivities(myActivities);
                 })
                 .fail(function (jqXHR, error, errorThrown) {
                     console.log(jqXHR);
@@ -405,6 +405,7 @@ $(document).ready(function () {
         showNewUserPage();
     });
     $('#signup-button').on('click', function (event) {
+        event.preventDefault();
         const form = document.body.querySelector('#new-user-form');
         if (form.checkValidity && !form.checkValidity()) {
             return;
@@ -415,7 +416,7 @@ $(document).ready(function () {
         const confirmPw = $('input[name="confirm-pw"]').val();
         const goals = $('input[name="goals"]').val();
         if (pw !== confirmPw) {
-            event.preventDefault();
+
             alert('Passwords must match!');
         } else {
             event.preventDefault();
@@ -436,7 +437,6 @@ $(document).ready(function () {
                 })
                 .done(function (result) {
                     event.preventDefault();
-                    //                    newUserToggle = true;
                     alert('Thanks for signing up! You may now sign in with your username and password.');
                     showSignInPage();
                 })
@@ -450,14 +450,15 @@ $(document).ready(function () {
 
     ///////////////////////////////////////////ACTIVITY PAGE TRIGGERS///////////////////////////////////////////////
     //Show all activities.
-    //allow user to pick from pull down certain activities/points
-    //when user clicks Add activity button from #activities-page
+
+    //when user clicks Activity Categories from menu
     $('#js-activities').on('click', function (event) {
         event.preventDefault();
         showActivitiesPage(allActivities);
-        displayAllActivities();
+        displayAllActivities(myActivities);
     });
 
+    //allow user to pick from pull down certain activities/points
     $('.pullDownCategories').on('click', function (event) {
         event.preventDefault();
         const categoryName = $('.sustainCategories').val();
@@ -467,15 +468,27 @@ $(document).ready(function () {
 
     //Activity added
     $('#add-button').on('click', function (event) {
-        const activityTrigger = $('#add-button');
         event.preventDefault();
-        addedActivity();
-        console.log(addedActivity);
+
+        const activityTrigger = $('#add-button');
+        const activityCategoryImage = $('.activityImageValue').val();
+        const activityCategoryNameInputValue = $('.activityCategoryNameInputValue').val();
+        const activityCategoryPointsInputValue = $('.activityCategoryPointsInputValue').val();
+
+
+        const newActivityCategoryObject = {
+            username: loggedinUserName,
+            activityCategoryImage: activityCategoryImage,
+            activityCategoryName: activityCategoryNameInputValue,
+            activityCategoryPoints: activityCategoryPointsInputValue
+        };
+
+        console.log(newActivityCategoryObject);
 
         if (activityTrigger !== 'submit') {
             $('.profileActivityBoxesSection').empty();
         } else if (activityTrigger == 'submit') {
-            displayAddedActivities();
+            displayAddedActivities(myActivities);
         }
         //        const categoryCheckBox = $('.checkbox').val();
         //        const categoryActivityName = $('.activityNameValue').val();
@@ -500,13 +513,13 @@ $(document).ready(function () {
                 type: 'POST',
                 url: '/category/add',
                 dataType: 'json',
-                data: JSON.stringify(addedActivity),
+                data: JSON.stringify(newActivityCategoryObject),
                 contentType: 'application/json'
             })
             .done(function (result) {
                 event.preventDefault();
                 alert('Congrats! You added a task');
-                addedActivity();
+                addedActivity(myActivities);
             })
 
             .fail(function (jqXHR, error, errorThrown) {
@@ -547,8 +560,7 @@ $(document).ready(function () {
     ///////////////////////////////////////////PROFILE PAGE TRIGGERS///////////////////////////////////////////////
     //PROFILE PAGE from image in nav
     $('#js-profile').on('click', function (event) {
-        showProfilePage();
-        profileActivityLayout(displayAddedActivities);
+        showProfilePage(loggedinUserName, sustainGoals);
     });
 
     //1. If box is checked and textbox is filled in.
@@ -557,7 +569,7 @@ $(document).ready(function () {
     //4. information from card shows up in feed
     $('.completedActivityForm').on('submit', function (event) {
         event.preventDefault();
-        //        displayProfileActivities();
+        //        displayProfileActivities(myActivities);
         const checkBox = $('.checkbox').val();
         const activityDescription = $('.textBox').val();
         const profileActivityName = $('.activityNameValue').val();
@@ -616,7 +628,7 @@ $(document).ready(function () {
                 .done(function (result) {
                     event.preventDefault();
                     alert('Congrats! You completed todays task');
-                    completedActivity();
+                completedActivity(myActivities);
                     //                    function completedActivity(completeActivityArray) {
                     //
                     //                        let buildCompletedActivity = "";

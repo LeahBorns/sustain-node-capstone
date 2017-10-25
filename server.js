@@ -1,5 +1,6 @@
 const User = require('./models/user');
 const activity = require('./models/activity');
+const activityCategory = require('./models/activityCategory');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
@@ -231,21 +232,20 @@ app.post('/signin/', function (req, res) {
 //adding new activity
 app.post('/category/add', function (req, res) {
     //    console.log(req.params.user);
-    let addActivityImage = req.body.activityImage;
-    let addActivityName = req.body.activityName;
-    let addActivityPoints = req.body.activityPoints;
     let username = req.body.username;
-
+    let activityCategoryImage = req.body.activityCategoryImage;
+    let activityCategoryName = req.body.activityCategoryName;
+    let activityCategoryPoints = req.body.activityCategoryPoints;
 
 
     //    console.log(username, activityName, activityPoints, activityDescription, activityImage);
-    console.log("-->", activityName, "<---");
+    console.log("-->", activityCategoryName, "<---");
 
-    activity.create({
+    activityCategory.create({
         username: username,
-        activityName: addActivityName,
-        activityPoints: addActivityPoints,
-        activityImage: addActivityImage
+        activityCategoryImage: activityCategoryImage,
+        activityCategoryName: activityCategoryName,
+        activityCategoryPoints: activityCategoryPoints
     }, (err, item) => {
         if (err) {
             return res.status(500).json({
@@ -253,7 +253,7 @@ app.post('/category/add', function (req, res) {
             });
         }
         if (item) {
-            console.log(`activity \`${activityName}\` added.`);
+            console.log(`activity \`${activityCategoryName}\` added.`);
             return res.json(item);
         }
     });
