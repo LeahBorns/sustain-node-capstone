@@ -259,7 +259,31 @@ app.post('/category/add', function (req, res) {
     });
 });
 
+app.get('/category/show/:user', function (req, res) {
+    console.log(req.params.user);
+    activityCategory
+        .find()
+        .sort()
+        .then(function (category) {
 
+            console.log("user categories->", category);
+            let categoryOutput = [];
+            category.map(function (category) {
+                if (category.username == req.params.user) {
+                    categoryOutput.push(category);
+                }
+            });
+            res.json({
+                categoryOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
 
 //DELETE -> an activity by ID
 app.delete('/activity/:id', function (req, res) {
@@ -272,7 +296,7 @@ app.delete('/activity/:id', function (req, res) {
     });
 });
 
-//Profile Activtiy
+//////////////////////////Profile Activtiy/////////////////////////////////////////////
 // Completing a new activity
 app.post('/activity/add', (req, res) => {
 
