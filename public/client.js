@@ -305,7 +305,7 @@ function displayAddedActivities(myActivities) {
         buildActivity += "</div>";
     });
 
-    $('.activityBoxesSection').html(buildActivity);
+    $('.activityBoxes').html(buildActivity);
 };
 
 ////Profile card add
@@ -330,7 +330,7 @@ function completedActivity(myActivities) {
         buildCompletedActivity += "<p> You completed " + completedValue.activityName + "!</p>";
         buildCompletedActivity += "</div>";
     });
-    $('.activityBoxes').html(buildCompletedActivity);
+    $('.activityBoxes animated flipOutY').html(buildCompletedActivity);
 };
 
 ///////////////////////////////////////////SIGN-IN TRIGGERS///////////////////////////////////////////////
@@ -697,11 +697,11 @@ $(document).on('click', '#activityAddButton', function (event) {
 
     console.log(newActivityCategoryObject);
 
-    if (activityTrigger !== 'submit') {
-        $('.profileActivityBoxesSection').empty();
-    } else if (activityTrigger == 'submit') {
-        displayAddedActivities(myActivities);
-    }
+//    if (activityTrigger !== 'submit') {
+//        $('.profileActivityBoxesSection').empty();
+//    } else if (activityTrigger == 'submit') {
+//        displayAddedActivities(myActivities);
+//    }
     //        const categoryCheckBox = $('.checkbox').val();
     //        const categoryActivityName = $('.activityNameValue').val();
     //        const categoryActivityImage = $('.activityImageValue').val();
@@ -731,6 +731,25 @@ $(document).on('click', '#activityAddButton', function (event) {
         .done(function (result) {
             event.preventDefault();
             addedActivity(myActivities);
+        })
+
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+
+    $.ajax({
+            type: 'GET',
+            url: '/activity/add/' + loggedinUserName,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            console.log(result);
+            event.preventDefault();
+            displayAddedActivities(myActivities);
+
         })
 
         .fail(function (jqXHR, error, errorThrown) {
