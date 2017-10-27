@@ -192,7 +192,8 @@ hr {
     margin-bottom: 30px;
 }
 
-section.activityBoxesSection {
+section.activityBoxesSection,
+section.activityDetailsBoxesSection {
     margin: 0 auto;
     width: 100%;
     margin-bottom: 30px;
@@ -200,7 +201,8 @@ section.activityBoxesSection {
 
 }
 
-section.activityBoxesSection div {
+section.activityBoxesSection div,
+section.activityDetailsBoxesSection div {
     border: 1px dotted darkcyan;
     width: 30%;
     display: inline-block;
@@ -247,7 +249,8 @@ textarea.textBox {
     width: 90%;
 }
 
-button.completedActivity {
+button.completedActivity,
+button.completedActivityButton {
     background-color: #C1E1A6;
     padding: 10px;
     color: #585858;
@@ -616,7 +619,8 @@ img.twitter {
         font-size: 0.9em;
     }
 
-    section.activityBoxesSection div {
+    section.activityBoxesSection div,
+    section.activityDetailsBoxesSection div {
         width: 30%;
     }
 
@@ -833,12 +837,14 @@ img.twitter {
     }
 
     /*Activities page*/
-    section.activityBoxesSection {
+    section.activityBoxesSection,
+    section.activityDetailsBoxesSection {
         margin: auto;
         width: 100%;
     }
 
-    section.activityBoxesSection div {
+    section.activityBoxesSection div,
+    section.activityDetailsBoxesSection div {
         width: 80%;
         display: block;
         margin: auto;
