@@ -114,6 +114,7 @@ var sustainGoals = '';
 var currentScore = 5;
 var allActivities = [];
 
+///////////////////////////////REGISTER AND SIGN UP////////////////////////////
 function showSignInPage() {
     $('#friends-page').hide();
     $('#feed-page').hide();
@@ -137,6 +138,9 @@ function showNewUserPage() {
     $('#nav-links').hide();
 }
 
+////////////////////////////PROFILE PAGE FUNCTIONS////////////////////////////////
+
+// SHOW PROFILE PAGE
 function showProfilePage(loggedinUserName, sustainGoals) {
 
     $('#friends-page').hide();
@@ -155,6 +159,29 @@ function showProfilePage(loggedinUserName, sustainGoals) {
     //        $('.profileActivityBoxesSection').text(displayProfileActivities(myActivities));
 }
 
+//SHOW ACTIVITY/CATEGORIES ON PROFILE PAGE
+function displayProfileActivities(myActivities) {
+
+    let buildActivity = "";
+    $.each(myActivities, function (myProfileKey, myProfileValue) {
+
+        buildActivity += '<div class="activityBoxes">';
+        buildActivity += '<img class="activityImageValue" src="images/' + myProfileValue.activityImage + '" alt="' + myProfileValue.category + ' category">';
+        buildActivity += '<h3 class="activityNameValueValue">' + myProfileValue.activityName + '</h3><br>';
+        buildActivity += '<h3 class="activityPointsValue">Points: ' + myProfileValue.activityPoints + '</h3><br>';
+
+        buildActivity += '<label for="checkbox">Committed</label>';
+        buildActivity += '<input class="checkbox" type="checkbox" name="completed" value="completed"> <br>';
+        buildActivity += '<p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>';
+        buildActivity += '<button class="completedActivityButton" role="button">I did it</button>';
+
+        buildActivity += "</div>";
+    });
+    $('.activityDetailsBoxesSection').html(buildActivity);
+};
+
+///////////////////////////////ACTIVITY OR CATEGORY PAGE FUNCTIONS/////////////////////////
+//SHOW ACTIVTY/CATEGORY PAGE
 function showActivitiesPage(allActivities) {
 
     $('#friends-page').hide();
@@ -167,31 +194,7 @@ function showActivitiesPage(allActivities) {
     $('#nav-links').show();
 }
 
-function showOverallFeedPage() {
-
-    $('#friends-page').hide();
-    $('#feed-page').show();
-    $('#activities-page').hide();
-    $('#profile-page').hide();
-    $('#register-page').hide();
-    $('#login-page').hide();
-    $('#js-signout-link').show();
-    $('#nav-links').show();
-}
-
-function showFriendsPage() {
-
-    $('#friends-page').show();
-    $('#feed-page').hide();
-    $('#activities-page').hide();
-    $('#profile-page').hide();
-    $('#register-page').hide();
-    $('#login-page').hide();
-    $('#js-signout-link').show();
-    $('#nav-links').show();
-}
-
-///////////////////////////////////////////ACTIVITY PAGE FUNCTIONS///////////////////////////////////////////////
+//FUNCTION TO SHOW ALL ACTIVITIES IN 'CARD' FORM
 function displayAllActivities(myActivities) {
 
     let buildActivity = "";
@@ -213,7 +216,20 @@ function displayAllActivities(myActivities) {
     $('.activityBoxesSection').html(buildActivity);
 };
 
+//Profile page card flip
+function completedActivity(myActivities) {
 
+    let buildCompletedActivity = "";
+    $.each(myActivities, function (completedKey, completedValue) {
+        buildCompletedActivity += "<div class='activityBoxes animated flipOutY'>";
+        buildCompletedActivity += "<h3>Congrats!</h3>"
+        buildCompletedActivity += "<p> You completed " + completedValue.activityName + "!</p>";
+        buildCompletedActivity += "</div>";
+    });
+    $('.activityBoxes animated flipOutY').html(buildCompletedActivity);
+};
+
+//PULL DOWN MENU CONDITIONAL
 function displaySelectedActivities(categoryName, categoryPoints) {
     console.log(categoryName, categoryPoints);
     let buildActivity = "";
@@ -253,26 +269,6 @@ function displaySelectedActivities(categoryName, categoryPoints) {
     $('.activityBoxesSection').html(buildActivity);
 };
 
-function displayProfileActivities(myActivities) {
-
-    let buildActivity = "";
-    $.each(myActivities, function (myProfileKey, myProfileValue) {
-
-        buildActivity += '<div class="activityBoxes">';
-        buildActivity += '<img class="activityImageValue" src="images/' + myProfileValue.activityImage + '" alt="' + myProfileValue.category + ' category">';
-        buildActivity += '<h3 class="activityNameValueValue">' + myProfileValue.activityName + '</h3><br>';
-        buildActivity += '<h3 class="activityPointsValue">Points: ' + myProfileValue.activityPoints + '</h3><br>';
-
-        buildActivity += '<label for="checkbox">Committed</label>';
-        buildActivity += '<input class="checkbox" type="checkbox" name="completed" value="completed"> <br>';
-        buildActivity += '<p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>';
-        buildActivity += '<button class="completedActivityButton" role="button">I did it</button>';
-
-        buildActivity += "</div>";
-    });
-    $('.activityDetailsBoxesSection').html(buildActivity);
-};
-
 //Activity/Category Page card flip
 function addedActivity(myActivities) {
 
@@ -286,52 +282,31 @@ function addedActivity(myActivities) {
     $('.activityBoxes').html(buildAddedActivity);
 };
 
-///////////////////////////////////////////PROFILE FUNCTIONS///////////////////////////////////////////////
-
-//Profile activity card
-//function displayAddedActivities(myActivities) {
+////////////////////////OVERALL FEED AND FRIENDS PAGE...MAY REMOVE///////////////////////
+//function showOverallFeedPage() {
 //
-//    let buildActivity = "";
-//    $.each(myActivities, function (myActivitiesKey, myActivitiesValue) {
-//
-//        buildActivity += "<div>";
-//        buildActivity += "<img class='activityImageValue' src='" + myActivities.activityImage + "' alt='" + myActivities.category + "' category>";
-//        buildActivity += "<h3 class='activityNameValue'> " + myActivities.activityName + "</h3><br>";
-//        buildActivity += "<h3 class='activityPointsValue'> Points: " + myActivities.activityPoints + "</h3><br>";
-//        buildActivity += "<label for='checkbox'>Committed</label>";
-//        buildActivity += "<input class='checkbox' type='checkbox' name='completed' value='completed'><br>";
-//        buildActivity += "<p>Tell us about your experience</p><textarea class='textBox' name='textBox' id='text-box'></textarea>";
-//        buildActivity += "<button class='completedActivityButton' role='button' type='submit'>I did it</button>";
-//        buildActivity += "</div>";
-//    });
-//
-//    $('.activityBoxes').html(buildActivity);
-//};
-
-////Profile card add
-//function profileActivityLayout() {
-//    //
-//    //    if ($('#activityAddButton') !== 'submit') {
-//    //        $('.profileActivityBoxesSection').empty();
-//    //    } else if ($('#activityAddButton') == 'submit') {
-//    //        $('.activityBoxes').show();
-//    //    }
-//    //
-//    //
+//    $('#friends-page').hide();
+//    $('#feed-page').show();
+//    $('#activities-page').hide();
+//    $('#profile-page').hide();
+//    $('#register-page').hide();
+//    $('#login-page').hide();
+//    $('#js-signout-link').show();
+//    $('#nav-links').show();
 //}
-//Profile page card flip
+//
+//function showFriendsPage() {
+//
+//    $('#friends-page').show();
+//    $('#feed-page').hide();
+//    $('#activities-page').hide();
+//    $('#profile-page').hide();
+//    $('#register-page').hide();
+//    $('#login-page').hide();
+//    $('#js-signout-link').show();
+//    $('#nav-links').show();
+//}
 
-function completedActivity(myActivities) {
-
-    let buildCompletedActivity = "";
-    $.each(myActivities, function (completedKey, completedValue) {
-        buildCompletedActivity += "<div class='activityBoxes animated flipOutY'>";
-        buildCompletedActivity += "<h3>Congrats!</h3>"
-        buildCompletedActivity += "<p> You completed " + completedValue.activityName + "!</p>";
-        buildCompletedActivity += "</div>";
-    });
-    $('.activityBoxes animated flipOutY').html(buildCompletedActivity);
-};
 
 ///////////////////////////////////////////SIGN-IN TRIGGERS///////////////////////////////////////////////
 //Page loads to SIGN-IN PAGE
@@ -467,33 +442,34 @@ $(document).ready(function () {
     });
 
 
-    ///////////////////////////////////////////FEED PAGE TRIGGERS///////////////////////////////////////////////
-    //FEED PAGE from nav menu
-    $('#js-feed').on('click', function (event) {
-        showOverallFeedPage();
-    });
-    //    $.ajax({
-    //            type: 'POST',
-    //            url: '/feed/post',
-    //            dataType: 'json',
-    //            data: JSON.stringify(newUserObject),
-    //            contentType: 'application/json'
-    //        })
-    //        .done(function (result) {
-    //            event.preventDefault();
-    //            alert('Congrats! You completed todays task');
-    //        })
-    //        .fail(function (jqXHR, error, errorThrown) {
-    //            console.log(jqXHR);
-    //            console.log(error);
-    //            console.log(errorThrown);
-    //        });
-
-    ///////////////////////////////////////////FRIENDS PAGE TRIGGERS///////////////////////////////////////////////
-    //FRIENDS PAGE from search icon on nav
-    $('#js-search-friends').on('click', function (event) {
-        showFriendsPage();
-    });
+    // ??? MAY NOT USE THESE PAGES FOR CAPSTONE
+    //    ///////////////////////////////////////////FEED PAGE TRIGGERS///////////////////////////////////////////////
+    //    //FEED PAGE from nav menu
+    //    $('#js-feed').on('click', function (event) {
+    //        showOverallFeedPage();
+    //    });
+    //    //    $.ajax({
+    //    //            type: 'POST',
+    //    //            url: '/feed/post',
+    //    //            dataType: 'json',
+    //    //            data: JSON.stringify(newUserObject),
+    //    //            contentType: 'application/json'
+    //    //        })
+    //    //        .done(function (result) {
+    //    //            event.preventDefault();
+    //    //            alert('Congrats! You completed todays task');
+    //    //        })
+    //    //        .fail(function (jqXHR, error, errorThrown) {
+    //    //            console.log(jqXHR);
+    //    //            console.log(error);
+    //    //            console.log(errorThrown);
+    //    //        });
+    //
+    //    ///////////////////////////////////////////FRIENDS PAGE TRIGGERS///////////////////////////////////////////////
+    //    //FRIENDS PAGE from search icon on nav
+    //    $('#js-search-friends').on('click', function (event) {
+    //        showFriendsPage();
+    //    });
 
     ///////////////////////////////////////////PROFILE PAGE TRIGGERS///////////////////////////////////////////////
     //PROFILE PAGE from image in nav
@@ -739,41 +715,41 @@ $(document).on('click', '#activityAddButton', function (event) {
     //            };
     //            console.log(newAddedActivity);
 
-//    $.ajax({
-            //            type: 'POST',
-            //            url: '/category/add',
-            //            dataType: 'json',
-            //            data: JSON.stringify(newActivityCategoryObject),
-            //            contentType: 'application/json'
-            //        })
-            //        .done(function (result) {
-            //            event.preventDefault();
-            //            addedActivity(myActivities);
-            //        })
-            //
-            //        .fail(function (jqXHR, error, errorThrown) {
-            //            console.log(jqXHR);
-            //            console.log(error);
-            //            console.log(errorThrown);
-            //        });
-            //
-            //    $.ajax({
-            //            type: 'GET',
-            //            url: '/activity/add/' + loggedinUserName,
-            //            dataType: 'json',
-            //            contentType: 'application/json'
-            //        })
-            //        .done(function (result) {
-            //            console.log(result);
-            //            event.preventDefault();
-            //            displayAddedActivities(myActivities);
-            //
-            //        })
-            //
-            //        .fail(function (jqXHR, error, errorThrown) {
-            //            console.log(jqXHR);
-            //            console.log(error);
-            //            console.log(errorThrown);
-            //        });
+    //    $.ajax({
+    //            type: 'POST',
+    //            url: '/category/add',
+    //            dataType: 'json',
+    //            data: JSON.stringify(newActivityCategoryObject),
+    //            contentType: 'application/json'
+    //        })
+    //        .done(function (result) {
+    //            event.preventDefault();
+    //            addedActivity(myActivities);
+    //        })
+    //
+    //        .fail(function (jqXHR, error, errorThrown) {
+    //            console.log(jqXHR);
+    //            console.log(error);
+    //            console.log(errorThrown);
+    //        });
+    //
+    //    $.ajax({
+    //            type: 'GET',
+    //            url: '/activity/add/' + loggedinUserName,
+    //            dataType: 'json',
+    //            contentType: 'application/json'
+    //        })
+    //        .done(function (result) {
+    //            console.log(result);
+    //            event.preventDefault();
+    //            displayAddedActivities(myActivities);
+    //
+    //        })
+    //
+    //        .fail(function (jqXHR, error, errorThrown) {
+    //            console.log(jqXHR);
+    //            console.log(error);
+    //            console.log(errorThrown);
+    //        });
     //        };
 });
