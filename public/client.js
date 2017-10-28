@@ -477,6 +477,7 @@ $(document).ready(function () {
         showProfilePage(loggedinUserName, sustainGoals);
 
 
+
         $.ajax({
                 type: 'GET',
                 url: '/category/show/' + loggedinUserName,
@@ -518,35 +519,39 @@ $(document).ready(function () {
     //2. "I did it" button is pressed.
     //3. 'Card' spins around and says completed.
     //4. information from card shows up in feed
-    $('.completedActivity').on('click', function (event) {
-        event.preventDefault();
-        //        displayProfileActivities(myActivities);
-        const checkBox = $(this).parent().find('.checkbox').val();
-        const activityDescription = $(this).parent().find('.textBox').val();
-        const profileActivityName = $(this).parent().find('.activityNameValue').val();
-        const profileActivityImage = $(this).parent().find('.activityImageValue').val();
-        const profileActivityPoints = $(this).parent().find('.activityPointsValue').val();
 
-        //        const profileActivityName = $('.activityNameValue').val(myActivities.activityName);
-        //        const profileActivityImage = $('.activityImageValue').val(myActivities.activityImage);
-        //        const profileActivityPoints = $('.activityPointsValue').val(myActivities.activityPoints);
-
-        console.log(checkBox);
-        console.log(activityDescription, profileActivityName, profileActivityImage, profileActivityPoints, loggedinUserName);
-
-        if (checkBox != 'completed') {
-            alert('Must be checked');
-        } else if (activityDescription.length < 10) {
-            alert('Must be at least 10 characters');
-        } else {
-            const newActivityCompleted = {
-                activityDescription: activityDescription,
-                activityName: profileActivityName,
-                activityImage: profileActivityImage,
-                activityPoints: profileActivityPoints,
-                username: loggedinUserName
-            };
-            console.log(newActivityCompleted);
+    //???
+//    $('.completedActivity').on('click', function (event) {
+            //        event.preventDefault();
+            //        //        displayProfileActivities(myActivities);
+            //        const checkBox = $(this).parent().find('.checkbox').val();
+            //        const activityDescription = $(this).parent().find('.textBox').val();
+            //        const profileActivityName = $(this).parent().find('.activityNameValue').val();
+            //        const profileActivityImage = $(this).parent().find('.activityImageValue').val();
+            //        const profileActivityPoints = $(this).parent().find('.activityPointsValue').val();
+            //
+            //        //        const profileActivityName = $('.activityNameValue').val(myActivities.activityName);
+            //        //        const profileActivityImage = $('.activityImageValue').val(myActivities.activityImage);
+            //        //        const profileActivityPoints = $('.activityPointsValue').val(myActivities.activityPoints);
+            //
+            //        console.log(checkBox);
+            //        console.log(activityDescription, profileActivityName, profileActivityImage, profileActivityPoints, loggedinUserName);
+            //
+            //        if (checkBox != 'completed') {
+            //            alert('Must be checked');
+            //        } else if (activityDescription.length < 10) {
+            //            alert('Must be at least 10 characters');
+            //        } else {
+            //            const newActivityCompleted = {
+            //                activityDescription: activityDescription,
+            //                activityName: profileActivityName,
+            //                activityImage: profileActivityImage,
+            //                activityPoints: profileActivityPoints,
+            //                username: loggedinUserName
+            //            };
+            //            console.log(newActivityCompleted);
+            //
+            // ???
 
             //            function displayResults(activityArray) {
             //
@@ -569,38 +574,28 @@ $(document).ready(function () {
             //                };
             //            };
 
-            $.ajax({
-                    type: 'POST',
-                    url: '/activity/add',
-                    dataType: 'json',
-                    data: JSON.stringify(newActivityCompleted),
-                    contentType: 'application/json'
-                })
-                .done(function (result) {
-                    event.preventDefault();
-                    alert('Congrats! You completed todays task');
-                    completedActivity(myActivities);
-                    //                    function completedActivity(completeActivityArray) {
-                    //
-                    //                        let buildCompletedActivity = "";
-                    //                        $.each(activityArray, function (complete) {
-                    //                            buildCompletedActivity += "<div class='animated flipOutY'>";
-                    //                            buildCompletedActivity += "<h3>Congrats!</h3>"
-                    //                            buildCompletedActivity += "<p> You completed " + myActivities.activityName + '!'
-                    //                            "<p>";
-                    //                            buildCompletedActivity += "</div>";
-                    //                        });
-                    //                        $('.activityBoxes').html(buildCompletedActivity);
-                    //                    };
-                })
-
-                .fail(function (jqXHR, error, errorThrown) {
-                    console.log(jqXHR);
-                    console.log(error);
-                    console.log(errorThrown);
-                });
-        };
-    });
+            //???
+//            $.ajax({
+//                    type: 'POST',
+//                    url: '/activity/add',
+//                    dataType: 'json',
+//                    data: JSON.stringify(newActivityCompleted),
+//                    contentType: 'application/json'
+//                })
+//                .done(function (result) {
+//                    event.preventDefault();
+//                    alert('Congrats! You completed todays task');
+//                    completedActivity(myActivities);
+//                })
+//
+//                .fail(function (jqXHR, error, errorThrown) {
+//                    console.log(jqXHR);
+//                    console.log(error);
+//                    console.log(errorThrown);
+//                });
+//        };
+//    });
+    // ???
 
     //PROFILE ACTIVITY POSTED TO FEED
     //    $('.activityForm').on('submit', function (event) {
@@ -671,7 +666,7 @@ $(document).ready(function () {
 });
 
 
-//Activity added
+//Activity/category added
 $(document).on('click', '#activityAddButton', function (event) {
     console.log("add button clicked");
     event.preventDefault();
@@ -691,48 +686,49 @@ $(document).on('click', '#activityAddButton', function (event) {
 
     console.log(newActivityCategoryObject);
 
-    //    if (activityTrigger !== 'submit') {
-    //        $('.profileActivityBoxesSection').empty();
-    //    } else if (activityTrigger == 'submit') {
-    //        displayAddedActivities(myActivities);
-    //    }
-    //        const categoryCheckBox = $('.checkbox').val();
-    //        const categoryActivityName = $('.activityNameValue').val();
-    //        const categoryActivityImage = $('.activityImageValue').val();
-    //        const categoryActivityPoints = $('.activityPointsValue').val();
     //
-    //        console.log(categoryCheckBox);
-    //        console.log(activityDescription, categoryActivityName, categoryActivityImage, categoryActivityPoints, loggedinUserName);
+    //        if (activityTrigger !== 'submit') {
+    //            $('.profileActivityBoxesSection').empty();
+    //        } else if (activityTrigger == 'submit') {
+    //            displayAddedActivities(myActivities);
+    //        }
 
-    //        if (categoryCheckBox != 'completed') {
-    //            alert('Must be checked');
-    //        } else {
-    //            const newAddedActivity = {
-    //                activityName: categoryActivityName,
-    //                activityImage: categoryActivityImage,
-    //                activityPoints: categoryActivityPoints,
-    //                username: loggedinUserName
-    //            };
-    //            console.log(newAddedActivity);
+    //Adds card with flip and shows profile version of cards correctly
+    const categoryCheckBox = $('.checkbox').val();
+    const categoryActivityName = $('.activityNameValue').val();
+    const categoryActivityImage = $('.activityImageValue').val();
+    const categoryActivityPoints = $('.activityPointsValue').val();
+    //
+    //    console.log(categoryCheckBox);
+    //    console.log(activityDescription, categoryActivityName, categoryActivityImage, categoryActivityPoints, loggedinUserName);
+    //
+    //    if (categoryCheckBox != 'completed') {
+    //        alert('Must be checked');
+    //    } else {
+    //        const newAddedActivity = {
+    //            activityName: categoryActivityName,
+    //            activityImage: categoryActivityImage,
+    //            activityPoints: categoryActivityPoints,
+    //            username: loggedinUserName
+    //        };
+    //        console.log(newAddedActivity);
+    $.ajax({
+            type: 'POST',
+            url: '/category/add',
+            dataType: 'json',
+            data: JSON.stringify(newActivityCategoryObject),
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            event.preventDefault();
+            addedActivity(myActivities);
+        })
 
-    //    $.ajax({
-    //            type: 'POST',
-    //            url: '/category/add',
-    //            dataType: 'json',
-    //            data: JSON.stringify(newActivityCategoryObject),
-    //            contentType: 'application/json'
-    //        })
-    //        .done(function (result) {
-    //            event.preventDefault();
-    //            addedActivity(myActivities);
-    //        })
-    //
-    //        .fail(function (jqXHR, error, errorThrown) {
-    //            console.log(jqXHR);
-    //            console.log(error);
-    //            console.log(errorThrown);
-    //        });
-    //
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
     //    $.ajax({
     //            type: 'GET',
     //            url: '/activity/add/' + loggedinUserName,
@@ -742,7 +738,7 @@ $(document).on('click', '#activityAddButton', function (event) {
     //        .done(function (result) {
     //            console.log(result);
     //            event.preventDefault();
-    //            displayAddedActivities(myActivities);
+    //            displayProfileActivities(myActivities);
     //
     //        })
     //
@@ -751,5 +747,93 @@ $(document).on('click', '#activityAddButton', function (event) {
     //            console.log(error);
     //            console.log(errorThrown);
     //        });
-    //        };
 });
+
+$(document).on('click', '.completedActivity', function (event) {
+    console.log("completed button clicked");
+    event.preventDefault();
+    const checkBox = $(this).parent().find('.checkbox').val();
+    const activityDescription = $(this).parent().find('.textBox').val();
+    const profileActivityName = $(this).parent().find('.activityNameValue').val();
+    const profileActivityImage = $(this).parent().find('.activityImageValue').val();
+    const profileActivityPoints = $(this).parent().find('.activityPointsValue').val();
+
+
+    console.log(checkBox);
+    console.log(activityDescription, profileActivityName, profileActivityImage, profileActivityPoints, loggedinUserName);
+
+    if (checkBox != 'completed') {
+        alert('Must be checked');
+    } else if (activityDescription.length < 10) {
+        alert('Must be at least 10 characters');
+    } else {
+        const newActivityCompleted = {
+            activityDescription: activityDescription,
+            activityName: profileActivityName,
+            activityImage: profileActivityImage,
+            activityPoints: profileActivityPoints,
+            username: loggedinUserName
+        };
+        console.log(newActivityCompleted);
+
+        //            function displayResults(activityArray) {
+        //
+        //                console.log(activityArray);
+        //                for (i = 0; i < myActivities; i++) {
+        //                    let buildActivity = "";
+        //                    $.each(activityArray, function (myActivities) {
+        //                        buildActivity += "<div>";
+        //                        buildActivity += "<img class='activityImageValue' src='" + myActivities.activityImage + "' alt='" + myActivities.category + "' category>";
+        //                        buildActivity += "<h3 class='activityNameValue'> " + myActivities.activityName + "</h3><br>";
+        //                        buildActivity += "<h3 class='activityPointsValue'> "
+        //                        'Points:' + myActivities.activityPoints + "</h3><br>";
+        //                        buildActivity += "<label for='checkbox'>Committed</label>";
+        //                        buildActivity += "<input class='checkbox' type='checkbox' name='completed' value='completed'><br>";
+        //                        buildActivity += "<p>Tell us about your experience</p><textarea class='textBox' name='textBox' id='text-box'></textarea>";
+        //                        buildActivity += "<button class='completedActivity' role='button' type='submit'>I did it</button>";
+        //                        buildActivity += "</div>";
+        //                    });
+        //                    $('.activityBoxes').append(buildActivity);
+        //                };
+        //            };
+
+        $.ajax({
+                type: 'POST',
+                url: '/activity/add',
+                dataType: 'json',
+                data: JSON.stringify(newActivityCompleted),
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                event.preventDefault();
+                alert('Congrats! You completed todays task');
+                completedActivity(myActivities);
+            })
+
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+
+
+    $.ajax({
+                    type: 'GET',
+                        url: '/activity/add/' + loggedinUserName,
+                        dataType: 'json',
+                        contentType: 'application/json'
+                    })
+                    .done(function (result) {
+                            console.log(result);
+                            event.preventDefault();
+                            displayProfileActivities(myActivities);
+
+                        })
+
+                        .fail(function (jqXHR, error, errorThrown) {
+                            console.log(jqXHR);
+                            console.log(error);
+                            console.log(errorThrown);
+                        });
+    };
+    });
