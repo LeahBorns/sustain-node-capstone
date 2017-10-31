@@ -233,19 +233,19 @@ app.post('/signin/', function (req, res) {
 app.post('/category/add', function (req, res) {
     //    console.log(req.params.user);
     let username = req.body.username;
-    let activityCategoryImage = req.body.activityCategoryImage;
-    let activityCategoryName = req.body.activityCategoryName;
-    let activityCategoryPoints = req.body.activityCategoryPoints;
+    let image = req.body.image;
+    let name = req.body.name;
+    let points = req.body.points;
 
 
-    //    console.log(username, activityName, activityPoints, activityDescription, activityImage);
-    console.log("-->", activityCategoryName, "<---");
+    //    console.log(username, name, points, description, image);
+    console.log("-->", name, "<---");
 
     activityCategory.create({
         username: username,
-        activityCategoryImage: activityCategoryImage,
-        activityCategoryName: activityCategoryName,
-        activityCategoryPoints: activityCategoryPoints
+        image: image,
+        name: name,
+        points: points
     }, (err, item) => {
         if (err) {
             return res.status(500).json({
@@ -253,7 +253,7 @@ app.post('/category/add', function (req, res) {
             });
         }
         if (item) {
-            console.log(`activity \`${activityCategoryName}\` added.`);
+            console.log(`activity \`${name}\` added.`);
             return res.json(item);
         }
     });
@@ -326,23 +326,24 @@ app.get('/activity/add/:user', function (req, res) {
 
 app.post('/activity/add', (req, res) => {
 
-    let activityImage = req.body.activityImage;
-    let activityName = req.body.activityName;
-    let activityPoints = req.body.activityPoints;
-    let activityDescription = req.body.activityDescription;
+    let image = req.body.image;
+    let name = req.body.name;
+    let points = req.body.points;
+    let description = req.body.description;
+    let commited = req.body.commited;
     let username = req.body.username;
 
 
 
-    //    console.log(username, activityName, activityPoints, activityDescription, activityImage);
-    console.log("-->", activityDescription, "<---");
+    //    console.log(username, name, points, description, image);
+    console.log("-->", description, "<---");
 
     activity.create({
         username: username,
-        activityName: activityName,
-        activityPoints: activityPoints,
-        activityDescription: activityDescription,
-        activityImage: activityImage
+        name: name,
+        points: points,
+        description: description,
+        image: image
     }, (err, item) => {
         if (err) {
             return res.status(500).json({
@@ -350,7 +351,7 @@ app.post('/activity/add', (req, res) => {
             });
         }
         if (item) {
-            console.log(`activity \`${activityName}\` completed.`);
+            console.log(`activity \`${name}\` completed.`);
             return res.json(item);
         }
     });
@@ -386,15 +387,15 @@ app.get('/activity/show', function (req, res) {
 app.post('/feed/post', (req, res) => {
     //    console.log(req.body);
     let activtyImg = req.body.img;
-    let activityName = req.body.activityName;
-    let activityPoints = req.body.activityPoints;
+    let name = req.body.name;
+    let points = req.body.points;
     let user = req.body.user;
 
     activity.create({
         user,
         img,
-        activityName,
-        activityPoints
+        name,
+        points
     }, (err, item) => {
         if (err) {
             return res.status(500).json({
@@ -402,7 +403,7 @@ app.post('/feed/post', (req, res) => {
             });
         }
         if (item) {
-            console.log(`activity \`${activityName}\` completed.`);
+            console.log(`activity \`${name}\` completed.`);
             return res.json(item);
         }
     });

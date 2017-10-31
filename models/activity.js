@@ -3,26 +3,12 @@
 const mongoose = require('mongoose');
 
 const activitySchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: false
-    },
-    activityName: {
-        type: String,
-        required: false
-    },
-    activityPoints: {
-        type: Number,
-        required: false
-    },
-    activityDescription: {
-        type: String,
-        required: false
-    },
-    activityImage: {
-        type: String,
-        required: false
-    }
+    username: String,
+    name: String,
+    points: Number,
+    description: String,
+    image: String,
+    commited: Boolean
 });
 
 

@@ -258,7 +258,7 @@ function displaySelectedActivities(categoryName, categoryPoints) {
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
             buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
             buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
-            buildActivity += "<button class='addButton' id='activityAddButton' role='button' type='submit'>Add Category</button><br>";
+            buildActivity += "<button class='addCategoryButton' id='activityAddButton' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
         } else if ((categoryName == "") && (categoryPoints == "")) {
             emptyActivities++;
