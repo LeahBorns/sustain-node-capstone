@@ -241,7 +241,7 @@ app.post('/category/add', function (req, res) {
     //    console.log(username, name, points, description, image);
     console.log("-->", name, "<---");
 
-    activityCategory.create({
+    activity.create({
         username: username,
         image: image,
         name: name,
@@ -324,6 +324,20 @@ app.get('/activity/add/:user', function (req, res) {
         });
 });
 
+app.post('/activity/card', (req, res) => {
+
+    activity.find({
+        username: req.body.username
+    }, (err, activity) => {
+
+        if (err) {
+            res.send(err)
+        }
+
+        res.json(activity)
+    })
+})
+
 app.post('/activity/add', (req, res) => {
 
     let image = req.body.image;
@@ -382,57 +396,57 @@ app.get('/activity/show', function (req, res) {
         });
 });
 
-//Feed page
-// Indiv activity completion
-app.post('/feed/post', (req, res) => {
-    //    console.log(req.body);
-    let activtyImg = req.body.img;
-    let name = req.body.name;
-    let points = req.body.points;
-    let user = req.body.user;
-
-    activity.create({
-        user,
-        img,
-        name,
-        points
-    }, (err, item) => {
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        }
-        if (item) {
-            console.log(`activity \`${name}\` completed.`);
-            return res.json(item);
-        }
-    });
-});
-
-//Take completed activity and put in feed
-app.get('/feed/post', function (req, res) {
-    //    console.log(req.params.user);
-    activity
-        .find()
-        .sort()
-        .then(function (activity) {
-            let activityOutput = [];
-            activity.map(function (activity) {
-                if (activity.user == req.params.user) {
-                    activityOutput.push(activity);
-                }
-            });
-            res.json({
-                activityOutput
-            });
-        })
-        .catch(function (err) {
-            console.error(err);
-            res.status(500).json({
-                message: 'Internal server error'
-            });
-        });
-});
+////Feed page
+//// Indiv activity completion
+//app.post('/feed/post', (req, res) => {
+//    //    console.log(req.body);
+//    let activtyImg = req.body.img;
+//    let name = req.body.name;
+//    let points = req.body.points;
+//    let user = req.body.user;
+//
+//    activity.create({
+//        user,
+//        img,
+//        name,
+//        points
+//    }, (err, item) => {
+//        if (err) {
+//            return res.status(500).json({
+//                message: 'Internal Server Error'
+//            });
+//        }
+//        if (item) {
+//            console.log(`activity \`${name}\` completed.`);
+//            return res.json(item);
+//        }
+//    });
+//});
+//
+////Take completed activity and put in feed
+//app.get('/feed/post', function (req, res) {
+//    //    console.log(req.params.user);
+//    activity
+//        .find()
+//        .sort()
+//        .then(function (activity) {
+//            let activityOutput = [];
+//            activity.map(function (activity) {
+//                if (activity.user == req.params.user) {
+//                    activityOutput.push(activity);
+//                }
+//            });
+//            res.json({
+//                activityOutput
+//            });
+//        })
+//        .catch(function (err) {
+//            console.error(err);
+//            res.status(500).json({
+//                message: 'Internal server error'
+//            });
+//        });
+//});
 
 //MISC -> catch-all endpoint if client makes request to non-existent endpoint
 app.use('*', (req, res) => {

@@ -216,6 +216,8 @@ section.activityDetailsBoxesSection div {
 }
 
 
+
+
 h3.activityNameValue {
     height: 40px;
     overflow-y: hidden;
@@ -450,6 +452,12 @@ img.twitter {
     vertical-align: middle;
     margin-left: 20px;
 
+}
+
+
+.activityBoxeCompleted {
+    color: red !important;
+    background-color: gray !important;
 }
 
 /* Media Query*/

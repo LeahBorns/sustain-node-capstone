@@ -180,6 +180,38 @@ function displayProfileActivities(myActivities) {
     $('.activityDetailsBoxesSection').html(buildActivity);
 };
 
+function displayProfileActivitiesByUser(myActivities, userActivities) {
+
+    console.log(myActivities, userActivities);
+
+    let buildActivity = "";
+
+    //loop all activities
+    $.each(myActivities, function (myProfileKey, myProfileValue) {
+
+        //loop user selected activities
+        $.each(userActivities, function (userActivitiesKey, userActivitiesValue) {
+
+            //            if the user activity matches the name from all activities
+            if (myProfileValue.activityName == userActivitiesValue.activityCategoryName) {
+
+                buildActivity += '<div class="activityBoxes">';
+                buildActivity += '<img class="activityImageValue" src="images/' + myProfileValue.activityImage + '" alt="' + myProfileValue.category + ' category">';
+                buildActivity += '<h3 class="activityNameValueValue">' + myProfileValue.activityName + '</h3><br>';
+                buildActivity += '<h3 class="activityPointsValue">Points: ' + myProfileValue.activityPoints + '</h3><br>';
+
+                buildActivity += '<label for="checkbox">Committed</label>';
+                buildActivity += '<input class="checkbox" type="checkbox" name="completed" value="completed"> <br>';
+                buildActivity += '<p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>';
+                buildActivity += '<button class="completedActivityButton" role="button">I did it</button>';
+
+                buildActivity += "</div>";
+            }
+        });
+    });
+    $('.activityDetailsBoxesSection').html(buildActivity);
+};
+
 //Profile page card flip
 function completedActivity(myActivities) {
 
@@ -233,7 +265,7 @@ function displayAllActivities(myActivities) {
 
 //PULL DOWN MENU CONDITIONAL
 function displaySelectedActivities(categoryName, categoryPoints) {
-    console.log(categoryName, categoryPoints);
+    // console.log(categoryName, categoryPoints);
     let buildActivity = "";
     let emptyActivities = 0;
 
@@ -284,30 +316,6 @@ function addedActivity(myActivities) {
     $('.activityBoxes').html(buildAddedActivity);
 };
 
-////////////////////////OVERALL FEED AND FRIENDS PAGE...MAY REMOVE///////////////////////
-//function showOverallFeedPage() {
-//
-//    $('#friends-page').hide();
-//    $('#feed-page').show();
-//    $('#activities-page').hide();
-//    $('#profile-page').hide();
-//    $('#register-page').hide();
-//    $('#login-page').hide();
-//    $('#js-signout-link').show();
-//    $('#nav-links').show();
-//}
-//
-//function showFriendsPage() {
-//
-//    $('#friends-page').show();
-//    $('#feed-page').hide();
-//    $('#activities-page').hide();
-//    $('#profile-page').hide();
-//    $('#register-page').hide();
-//    $('#login-page').hide();
-//    $('#js-signout-link').show();
-//    $('#nav-links').show();
-//}
 
 
 ///////////////////////////////////////////SIGN-IN TRIGGERS///////////////////////////////////////////////
@@ -355,9 +363,8 @@ $(document).ready(function () {
                     contentType: 'application/json'
                 })
                 .done(function (result) {
-                    console.log(result);
+                    // console.log(result);
                     loggedinUserName = result.username;
-                    console.log(loggedinUserName);
 
                     // show the signout link in header as soon as user is signed in
                     $('#js-signout-link').show();
@@ -443,36 +450,6 @@ $(document).ready(function () {
         displaySelectedActivities(categoryName, categoryPoints);
     });
 
-    //more activity triggers below
-
-    // ??? MAY NOT USE THESE PAGES FOR CAPSTONE
-    //    ///////////////////////////////////////////FEED PAGE TRIGGERS///////////////////////////////////////////////
-    //    //FEED PAGE from nav menu
-    //    $('#js-feed').on('click', function (event) {
-    //        showOverallFeedPage();
-    //    });
-    //    //    $.ajax({
-    //    //            type: 'POST',
-    //    //            url: '/feed/post',
-    //    //            dataType: 'json',
-    //    //            data: JSON.stringify(newUserObject),
-    //    //            contentType: 'application/json'
-    //    //        })
-    //    //        .done(function (result) {
-    //    //            event.preventDefault();
-    //    //            alert('Congrats! You completed todays task');
-    //    //        })
-    //    //        .fail(function (jqXHR, error, errorThrown) {
-    //    //            console.log(jqXHR);
-    //    //            console.log(error);
-    //    //            console.log(errorThrown);
-    //    //        });
-    //
-    //    ///////////////////////////////////////////FRIENDS PAGE TRIGGERS///////////////////////////////////////////////
-    //    //FRIENDS PAGE from search icon on nav
-    //    $('#js-search-friends').on('click', function (event) {
-    //        showFriendsPage();
-    //    });
 
     ///////////////////////////////////////////PROFILE PAGE TRIGGERS///////////////////////////////////////////////
     //PROFILE PAGE from image in nav
@@ -488,27 +465,9 @@ $(document).ready(function () {
                 contentType: 'application/json'
             })
             .done(function (result) {
-                console.log(result.categoryOutput);
+                //console.log(result.categoryOutput);
 
-
-
-                //                $.ajax({
-                //                        type: 'GET',
-                //                        url: '/activity/show',
-                //                        dataType: 'json',
-                //                        contentType: 'application/json'
-                //                    })
-                //                    .done(function (result) {
-                //
-                //                    })
-                //                    .fail(function (jqXHR, error, errorThrown) {
-                //                        console.log(jqXHR);
-                //                        console.log(error);
-                //                        console.log(errorThrown);
-                //                    });
-                //
-                //                displayProfileActivities(myActivities);
-
+                displayProfileActivitiesByUser(myActivities, result.categoryOutput);
             })
 
             .fail(function (jqXHR, error, errorThrown) {
@@ -523,144 +482,7 @@ $(document).ready(function () {
     //3. 'Card' spins around and says completed.
     //4. information from card shows up in feed
 
-    //???
-    //    $('.completedActivity').on('click', function (event) {
-    //        event.preventDefault();
-    //        //        displayProfileActivities(myActivities);
-    //        const checkBox = $(this).parent().find('.checkbox').val();
-    //        const activityDescription = $(this).parent().find('.textBox').val();
-    //        const profileActivityName = $(this).parent().find('.activityNameValue').val();
-    //        const profileActivityImage = $(this).parent().find('.activityImageValue').val();
-    //        const profileActivityPoints = $(this).parent().find('.activityPointsValue').val();
-    //
-    //        //        const profileActivityName = $('.activityNameValue').val(myActivities.activityName);
-    //        //        const profileActivityImage = $('.activityImageValue').val(myActivities.activityImage);
-    //        //        const profileActivityPoints = $('.activityPointsValue').val(myActivities.activityPoints);
-    //
-    //        console.log(checkBox);
-    //        console.log(activityDescription, profileActivityName, profileActivityImage, profileActivityPoints, loggedinUserName);
-    //
-    //        if (checkBox != 'completed') {
-    //            alert('Must be checked');
-    //        } else if (activityDescription.length < 10) {
-    //            alert('Must be at least 10 characters');
-    //        } else {
-    //            const newActivityCompleted = {
-    //                activityDescription: activityDescription,
-    //                activityName: profileActivityName,
-    //                activityImage: profileActivityImage,
-    //                activityPoints: profileActivityPoints,
-    //                username: loggedinUserName
-    //            };
-    //            console.log(newActivityCompleted);
-    //
-    // ???
 
-    //            function displayResults(activityArray) {
-    //
-    //                console.log(activityArray);
-    //                for (i = 0; i < myActivities; i++) {
-    //                    let buildActivity = "";
-    //                    $.each(activityArray, function (myActivities) {
-    //                        buildActivity += "<div>";
-    //                        buildActivity += "<img class='activityImageValue' src='" + myActivities.activityImage + "' alt='" + myActivities.category + "' category>";
-    //                        buildActivity += "<h3 class='activityNameValue'> " + myActivities.activityName + "</h3><br>";
-    //                        buildActivity += "<h3 class='activityPointsValue'> "
-    //                        'Points:' + myActivities.activityPoints + "</h3><br>";
-    //                        buildActivity += "<label for='checkbox'>Committed</label>";
-    //                        buildActivity += "<input class='checkbox' type='checkbox' name='completed' value='completed'><br>";
-    //                        buildActivity += "<p>Tell us about your experience</p><textarea class='textBox' name='textBox' id='text-box'></textarea>";
-    //                        buildActivity += "<button class='completedActivity' role='button' type='submit'>I did it</button>";
-    //                        buildActivity += "</div>";
-    //                    });
-    //                    $('.activityBoxes').append(buildActivity);
-    //                };
-    //            };
-
-    //???
-    //            $.ajax({
-    //                    type: 'POST',
-    //                    url: '/activity/add',
-    //                    dataType: 'json',
-    //                    data: JSON.stringify(newActivityCompleted),
-    //                    contentType: 'application/json'
-    //                })
-    //                .done(function (result) {
-    //                    event.preventDefault();
-    //                    alert('Congrats! You completed todays task');
-    //                    completedActivity(myActivities);
-    //                })
-    //
-    //                .fail(function (jqXHR, error, errorThrown) {
-    //                    console.log(jqXHR);
-    //                    console.log(error);
-    //                    console.log(errorThrown);
-    //                });
-    //        };
-    //    });
-    // ???
-
-    //PROFILE ACTIVITY POSTED TO FEED
-    //    $('.activityForm').on('submit', function (event) {
-    //        const profileActivityName = $('.activityNameValue').val();
-    //        const profileActivityImage = $('.activityImageValue').val();
-    //        const profileActivityPoints = $('.activityPointsValue').val();
-    //
-    //        console.log(activityDescription, profileActivityName, profileActivityImage, profileActivityPoints, loggedinUserName);
-    //
-    //        if (checkBox != 'completed') {
-    //            alert('Must be checked');
-    //        } else if (activityDescription.length < 10) {
-    //            alert('Must be at least 10 characters');
-    //        } else {
-    //            const newActivityCompleted = {
-    //                activityDescription: activityDescription,
-    //                activityName: profileActivityName,
-    //                activityImage: profileActivityImage,
-    //                activityPoints: profileActivityPoints,
-    //                username: loggedinUserName
-    //            };
-    //            console.log(newActivityCompleted);
-    //
-    //            function displayResults(activityArray) {
-    //
-    //                console.log(activityArray);
-    //                for (i = 0; i < myActivities; i++) {
-    //                    let buildCompletedActivity = "";
-    //                    $.each(activityArray, function (myActivities) {
-    //                        buildCompletedActivity += "<div>";
-    //                        buildCompletedActivity += "<img class='activityImageValue' src='" + myActivities.activityImage + "' alt='" + myActivities.category + "' category>";
-    //                        buildCompletedActivity += "<h3 class='activityNameValue'> " + myActivities.activityName + "</h3><br>";
-    //                        buildCompletedActivity += "<h3 class='activityPointsValue'> "
-    //                        'Points:' + myActivities.activityPoints + "</h3><br>";
-    //                        buildCompletedActivity += "<label for='checkbox'>Committed</label>";
-    //                        buildCompletedActivity += "<input class='checkbox' type='checkbox' name='completed' value='completed'><br>";
-    //                        buildCompletedActivity += "<p>Tell us about your experience</p><textarea class='textBox' name='textBox' id='text-box'></textarea>";
-    //                        buildCompletedActivity += "<button class='completedActivity' role='button' type='submit'>I did it</button>";
-    //                        buildCompletedActivity += "</div>";
-    //                    });
-    //                    $('.activityBoxes').append(buildCompletedActivity);
-    //                };
-    //            };
-    //
-    //            $.ajax({
-    //                    type: 'GET',
-    //                    url: '/activity/show',
-    //                    dataType: 'json',
-    //                    data: JSON.stringify(newActivityCompleted),
-    //                    contentType: 'application/json'
-    //                })
-    //                .done(function (result) {
-    //                    event.preventDefault();
-    //                    alert('Congrats! You completed todays task');
-    //                })
-    //                .fail(function (jqXHR, error, errorThrown) {
-    //                    console.log(jqXHR);
-    //                    console.log(error);
-    //                    console.log(errorThrown);
-    //                });
-    //        };
-    //    });
     // when user clicks sign-out link in header
     document.getElementById('js-signout-link').addEventListener('click', function (event) {
         location.reload();
@@ -671,7 +493,6 @@ $(document).ready(function () {
 
 //Activity/category added
 $(document).on('click', '#activityAddButton', function (event) {
-    console.log("add button clicked");
     event.preventDefault();
 
     const activityTrigger = $('#activityAddButton');
@@ -687,7 +508,7 @@ $(document).on('click', '#activityAddButton', function (event) {
         activityCategoryPoints: activityCategoryPointsInputValue
     };
 
-    console.log(newActivityCategoryObject);
+    //console.log(newActivityCategoryObject);
 
     //
     //        if (activityTrigger !== 'submit') {
@@ -752,8 +573,8 @@ $(document).on('click', '#activityAddButton', function (event) {
     //        });
 });
 
-$(document).on('click', '.completedActivity', function (event) {
-    console.log("completed button clicked");
+$(document).on('click', '.completedActivityButton', function (event) {
+
     event.preventDefault();
     const checkBox = $(this).parent().find('.checkbox').val();
     const activityDescription = $(this).parent().find('.textBox').val();
@@ -777,8 +598,8 @@ $(document).on('click', '.completedActivity', function (event) {
             activityPoints: profileActivityPoints,
             username: loggedinUserName
         };
-        console.log(newActivityCompleted);
-
+        //        console.log(newActivityCompleted);
+        $(this).parent().toggleClass('activityBoxeCompleted');
 
         $.ajax({
                 type: 'POST',
@@ -789,27 +610,26 @@ $(document).on('click', '.completedActivity', function (event) {
             })
             .done(function (result) {
                 event.preventDefault();
+                //                $.ajax({
+                //                        type: 'GET',
+                //                        url: '/activity/add/' + loggedinUserName,
+                //                        dataType: 'json',
+                //                        contentType: 'application/json'
+                //                    })
+                //                    .done(function (result) {
+                //                        //console.log(result);
+                //                        event.preventDefault();
+                //                        displayProfileActivities(myActivities);
+                //
+                //                    })
+                //
+                //                    .fail(function (jqXHR, error, errorThrown) {
+                //                        console.log(jqXHR);
+                //                        console.log(error);
+                //                        console.log(errorThrown);
+                //                    });
+
                 alert('Congrats! You completed todays task');
-                completedActivity(myActivities);
-            })
-
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-            });
-
-
-        $.ajax({
-                type: 'GET',
-                url: '/activity/add/' + loggedinUserName,
-                dataType: 'json',
-                contentType: 'application/json'
-            })
-            .done(function (result) {
-                console.log(result);
-                event.preventDefault();
-                displayProfileActivities(myActivities);
 
             })
 
@@ -818,5 +638,8 @@ $(document).on('click', '.completedActivity', function (event) {
                 console.log(error);
                 console.log(errorThrown);
             });
+
+
+
     };
 });
