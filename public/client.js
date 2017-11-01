@@ -253,7 +253,7 @@ function displayAllActivities(myActivities) {
 
         buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
         buildActivity += "<input type='hidden'  class='activityCategoryPointsInputValue' value='" + myActivitiesValue.activityPoints + "' >";
-        buildActivity += "<button class='addButton' id='activityAddButton' role='submit' type='button'>Add Category</button><br>";
+        buildActivity += "<button class='addCategoryButton' id='activityAddButton' role='submit' type='button'>Add Category</button><br>";
 
         buildActivity += "</div>";
     });
@@ -276,14 +276,14 @@ function displaySelectedActivities(categoryName, categoryPoints) {
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
             buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
             buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
-            buildActivity += "<button class='addButton' id='activityAddButton' role='button' type='submit'>Add Category</button><br>";
+            buildActivity += "<button class='addCategoryButton' id='activityAddButton' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
         } else if ((categoryName !== "") && (categoryName == myActivitiesValue.category) && (categoryPoints == "")) {
             buildActivity += "<div class='activityBoxes'>";
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
             buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
             buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
-            buildActivity += "<button class='addButton' id='activityAddButton' role='button' type='submit'>Add Category</button><br>";
+            buildActivity += "<button class='addCategoryButton' id='activityAddButton' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
         } else if (((categoryName == "") && (categoryPoints !== "") && (categoryPoints == myActivitiesValue.activityPoints))) {
             buildActivity += "<div class='activityBoxes'>";
@@ -492,89 +492,88 @@ $(document).ready(function () {
 
 
 //Activity/category added
-$(document).on('click', '#activityAddButton', function (event) {
-    event.preventDefault();
-
-    const activityTrigger = $('#activityAddButton');
-    const activityCategoryImage = $(this).parent().find('.activityImageInputValue').val();
-    const activityCategoryNameInputValue = $(this).parent().find('.activityCategoryNameInputValue').val();
-    const activityCategoryPointsInputValue = $(this).parent().find('.activityCategoryPointsInputValue').val();
-
-
-    const newActivityCategoryObject = {
-        username: loggedinUserName,
-        activityCategoryImage: activityCategoryImage,
-        activityCategoryName: activityCategoryNameInputValue,
-        activityCategoryPoints: activityCategoryPointsInputValue
-    };
-
-    //console.log(newActivityCategoryObject);
-
-    //
-    //        if (activityTrigger !== 'submit') {
-    //            $('.profileActivityBoxesSection').empty();
-    //        } else if (activityTrigger == 'submit') {
-    //            displayAddedActivities(myActivities);
-    //        }
-
-    //Adds card with flip and shows profile version of cards correctly
-    const categoryCheckBox = $('.checkbox').val();
-    const categoryActivityName = $('.activityNameValue').val();
-    const categoryActivityImage = $('.activityImageValue').val();
-    const categoryActivityPoints = $('.activityPointsValue').val();
-    //
-    //    console.log(categoryCheckBox);
-    //    console.log(activityDescription, categoryActivityName, categoryActivityImage, categoryActivityPoints, loggedinUserName);
-    //
-    //    if (categoryCheckBox != 'completed') {
-    //        alert('Must be checked');
-    //    } else {
-    //        const newAddedActivity = {
-    //            activityName: categoryActivityName,
-    //            activityImage: categoryActivityImage,
-    //            activityPoints: categoryActivityPoints,
-    //            username: loggedinUserName
-    //        };
-    //        console.log(newAddedActivity);
-    $.ajax({
-            type: 'POST',
-            url: '/category/add',
-            dataType: 'json',
-            data: JSON.stringify(newActivityCategoryObject),
-            contentType: 'application/json'
-        })
-        .done(function (result) {
-            event.preventDefault();
-            addedActivity(myActivities);
-        })
-
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
-    //    $.ajax({
-    //            type: 'GET',
-    //            url: '/activity/add/' + loggedinUserName,
-    //            dataType: 'json',
-    //            contentType: 'application/json'
-    //        })
-    //        .done(function (result) {
-    //            console.log(result);
-    //            event.preventDefault();
-    //            displayProfileActivities(myActivities);
-    //
-    //        })
-    //
-    //        .fail(function (jqXHR, error, errorThrown) {
-    //            console.log(jqXHR);
-    //            console.log(error);
-    //            console.log(errorThrown);
-    //        });
-});
+//$(document).on('click', '#activityAddButton', function (event) {
+//            event.preventDefault();
+//
+//            const activityTrigger = $('#activityAddButton');
+//            const activityCategoryImage = $(this).parent().find('.activityImageInputValue').val();
+//            const activityCategoryNameInputValue = $(this).parent().find('.activityCategoryNameInputValue').val();
+//            const activityCategoryPointsInputValue = $(this).parent().find('.activityCategoryPointsInputValue').val();
+//
+//
+//            const newActivityCategoryObject = {
+//                username: loggedinUserName,
+//                activityCategoryImage: activityCategoryImage,
+//                activityCategoryName: activityCategoryNameInputValue,
+//                activityCategoryPoints: activityCategoryPointsInputValue
+//            };
+//
+//    //console.log(newActivityCategoryObject);
+//
+//    //
+//    //        if (activityTrigger !== 'submit') {
+//    //            $('.profileActivityBoxesSection').empty();
+//    //        } else if (activityTrigger == 'submit') {
+//    //            displayAddedActivities(myActivities);
+//    //        }
+//
+//    //Adds card with flip and shows profile version of cards correctly
+//    const categoryCheckBox = $('.checkbox').val();
+//    const categoryActivityName = $('.activityNameValue').val();
+//    const categoryActivityImage = $('.activityImageValue').val();
+//    const categoryActivityPoints = $('.activityPointsValue').val();
+//    //
+//    //    console.log(categoryCheckBox);
+//    //    console.log(activityDescription, categoryActivityName, categoryActivityImage, categoryActivityPoints, loggedinUserName);
+//    //
+//    //    if (categoryCheckBox != 'completed') {
+//    //        alert('Must be checked');
+//    //    } else {
+//    //        const newAddedActivity = {
+//    //            activityName: categoryActivityName,
+//    //            activityImage: categoryActivityImage,
+//    //            activityPoints: categoryActivityPoints,
+//    //            username: loggedinUserName
+//    //        };
+//    //        console.log(newAddedActivity);
+//            $.ajax({
+//                    type: 'POST',
+//                    url: '/category/add',
+//                    dataType: 'json',
+//                    data: JSON.stringify(newActivityCategoryObject),
+//                    contentType: 'application/json'
+//                })
+//                .done(function (result) {
+//                    event.preventDefault();
+//                    addedActivity(myActivities);
+//                })
+//
+//                .fail(function (jqXHR, error, errorThrown) {
+//                    console.log(jqXHR);
+//                    console.log(error);
+//                    console.log(errorThrown);
+//                });
+//    //    $.ajax({
+//    //            type: 'GET',
+//    //            url: '/activity/add/' + loggedinUserName,
+//    //            dataType: 'json',
+//    //            contentType: 'application/json'
+//    //        })
+//    //        .done(function (result) {
+//    //            console.log(result);
+//    //            event.preventDefault();
+//    //            displayProfileActivities(myActivities);
+//    //
+//    //        })
+//    //
+//    //        .fail(function (jqXHR, error, errorThrown) {
+//    //            console.log(jqXHR);
+//    //            console.log(error);
+//    //            console.log(errorThrown);
+//    //        });
+//            });
 
 $(document).on('click', '.completedActivityButton', function (event) {
-
     event.preventDefault();
     const checkBox = $(this).parent().find('.checkbox').val();
     const activityDescription = $(this).parent().find('.textBox').val();
