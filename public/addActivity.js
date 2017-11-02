@@ -70,22 +70,22 @@ $(document).on('click', '.addCategoryButton', function (event) {
 
     $(this).parent().toggleClass('activityBoxAdded');
     //make ajax request to endpoint on server (POST)
-    $.ajax({
-            type: 'POST',
-            url: '/activity/card',
-            dataType: 'json',
-            data: JSON.stringify(newActivityCategoryObject),
-            contentType: 'application/json'
-        })
-        .done(function (result) {
-            event.preventDefault();
-        })
-
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
+    //    $.ajax({
+    //            type: 'POST',
+    //            url: '/activity/card',
+    //            dataType: 'json',
+    //            data: JSON.stringify(newActivityCategoryObject),
+    //            contentType: 'application/json'
+    //        })
+    //        .done(function (result) {
+    //            event.preventDefault();
+    //        })
+    //
+    //        .fail(function (jqXHR, error, errorThrown) {
+    //            console.log(jqXHR);
+    //            console.log(error);
+    //            console.log(errorThrown);
+    //        });
 
 
     //POST to call activities
@@ -97,8 +97,7 @@ $(document).on('click', '.addCategoryButton', function (event) {
             contentType: 'application/json'
         })
         .done(function (result) {
-            event.preventDefault();
-            $('.addedCategoryCard').show();
+            console.log(result);
         })
 
         .fail(function (jqXHR, error, errorThrown) {
@@ -113,20 +112,20 @@ $(document).on('click', '.addCategoryButton', function (event) {
     //activity.find finding data for
 
 
-    //        $.ajax({
+    //    $.ajax({
     //            type: 'GET',
     //            url: '/activity/add/' + loggedinUserName,
     //            dataType: 'json',
     //            contentType: 'application/json'
     //        })
-    //            .done(function (result) {
+    //        .done(function (result) {
     //            console.log(result);
     //            event.preventDefault();
-    //            displayProfileActivities(myActivities);
+    //            displayProfileActivitiesByUser(myActivities);
     //
     //        })
     //
-    //            .fail(function (jqXHR, error, errorThrown) {
+    //        .fail(function (jqXHR, error, errorThrown) {
     //            console.log(jqXHR);
     //            console.log(error);
     //            console.log(errorThrown);

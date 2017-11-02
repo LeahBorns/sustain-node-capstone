@@ -7,8 +7,7 @@ const activitySchema = new mongoose.Schema({
     name: String,
     points: Number,
     description: String,
-    image: String,
-    commited: Boolean
+    image: String
 });
 
 

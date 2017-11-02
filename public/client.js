@@ -605,44 +605,34 @@ $(document).on('click', '.completedActivityButton', function (event) {
         $(this).parent().toggleClass('activityBoxeCompleted');
 
         $.ajax({
-                type: 'POST',
-                url: '/activity/add',
+                type: 'GET',
+                url: '/get-category-by-username/' + loggedinUserName,
                 dataType: 'json',
-                data: JSON.stringify(newActivityCompleted),
                 contentType: 'application/json'
             })
             .done(function (result) {
-                event.preventDefault();
-                //                $.ajax({
-                //                        type: 'GET',
-                //                        url: '/activity/add/' + loggedinUserName,
-                //                        dataType: 'json',
-                //                        contentType: 'application/json'
-                //                    })
-                //                    .done(function (result) {
-                //                        //console.log(result);
-                //                        event.preventDefault();
-                //                        displayProfileActivities(myActivities);
-                //
-                //                    })
-                //
-                //                    .fail(function (jqXHR, error, errorThrown) {
-                //                        console.log(jqXHR);
-                //                        console.log(error);
-                //                        console.log(errorThrown);
-                //                    });
+                console.log(result);
+                $.ajax({
+                        type: 'POST',
+                        url: '/activity/add',
+                        dataType: 'json',
+                        data: JSON.stringify(newActivityCompleted),
+                        contentType: 'application/json'
+                    })
+                    .done(function (result) {
+                        alert('Congrats! You completed todays task');
 
-                alert('Congrats! You completed todays task');
-
+                    })
+                    .fail(function (jqXHR, error, errorThrown) {
+                        console.log(jqXHR);
+                        console.log(error);
+                        console.log(errorThrown);
+                    });
             })
-
             .fail(function (jqXHR, error, errorThrown) {
                 console.log(jqXHR);
                 console.log(error);
                 console.log(errorThrown);
             });
-
-
-
     };
 });

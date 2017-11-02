@@ -20,11 +20,7 @@ const activityCategorySchema = new mongoose.Schema({
     activityCategoryPoints: {
         type: Number,
         required: false
-    },
-    activityDescription: {
-    type: String,
-    required: false
-}
+    }
 });
 
 

@@ -241,11 +241,11 @@ app.post('/category/add', function (req, res) {
     //    console.log(username, name, points, description, image);
     console.log("-->", name, "<---");
 
-    activity.create({
+    activityCategory.create({
         username: username,
-        image: image,
-        name: name,
-        points: points
+        activityCategoryImage: image,
+        activityCategoryName: name,
+        activityCategoryPoints: points
     }, (err, item) => {
         if (err) {
             return res.status(500).json({
@@ -298,7 +298,7 @@ app.delete('/activity/:id', function (req, res) {
 
 //////////////////////////Profile Activtiy/////////////////////////////////////////////
 // Completing a new activity
-app.get('/activity/add/:user', function (req, res) {
+app.get('/get-category-by-username/:user', function (req, res) {
     console.log(req.params.user);
     activityCategory
         .find()
@@ -351,6 +351,7 @@ app.post('/activity/add', (req, res) => {
 
     //    console.log(username, name, points, description, image);
     console.log("-->", description, "<---");
+
 
     activity.create({
         username: username,
