@@ -124,6 +124,7 @@ function showSignInPage() {
     $('#login-page').show();
     $('#js-signout-link').hide();
     $('#nav-links').hide();
+    $('.addedCategoryCard').hide();
 }
 
 function showNewUserPage() {
@@ -136,6 +137,7 @@ function showNewUserPage() {
     $('#js-signout-link').hide();
     $('#login-page').hide();
     $('#nav-links').hide();
+    $('.addedCategoryCard').hide();
 }
 
 ////////////////////////////PROFILE PAGE FUNCTIONS////////////////////////////////
@@ -144,6 +146,7 @@ function showNewUserPage() {
 function showProfilePage(loggedinUserName, sustainGoals) {
 
     $('#friends-page').hide();
+    $('.addedCategoryCard').hide();
     $('#feed-page').hide();
     $('#activities-page').hide();
     $('#profile-page').show();
@@ -213,23 +216,24 @@ function displayProfileActivitiesByUser(myActivities, userActivities) {
 };
 
 //Profile page card flip
-function completedActivity(myActivities) {
-
-    let buildCompletedActivity = "";
-    $.each(myActivities, function (completedKey, completedValue) {
-        buildCompletedActivity += "<div class='activityBoxes animated flipOutY'>";
-        buildCompletedActivity += "<h3>Congrats!</h3>"
-        buildCompletedActivity += "<p> You completed " + completedValue.activityName + "!</p>";
-        buildCompletedActivity += "</div>";
-    });
-    $('.activityBoxes animated flipOutY').html(buildCompletedActivity);
-};
+//function completedActivity(myActivities) {
+//
+//    let buildCompletedActivity = "";
+//    $.each(myActivities, function (completedKey, completedValue) {
+//        buildCompletedActivity += "<div class='activityBoxes animated flipOutY'>";
+//        buildCompletedActivity += "<h3>Congrats!</h3>"
+//        buildCompletedActivity += "<p> You completed " + completedValue.activityName + "!</p>";
+//        buildCompletedActivity += "</div>";
+//    });
+//    $('.activityBoxes animated flipOutY').html(buildCompletedActivity);
+//};
 
 ///////////////////////////////ACTIVITY OR CATEGORY PAGE FUNCTIONS/////////////////////////
 //SHOW ACTIVTY/CATEGORY PAGE
 function showActivitiesPage(allActivities) {
 
     $('#friends-page').hide();
+    $('.addedCategoryCard').hide();
     $('#feed-page').hide();
     $('#activities-page').show();
     $('#profile-page').hide();
@@ -303,19 +307,18 @@ function displaySelectedActivities(categoryName, categoryPoints) {
     $('.activityBoxesSection').html(buildActivity);
 };
 
-//Activity/Category Page card flip
-function addedActivity(myActivities) {
-
-    let buildAddedActivity = "";
-    $.each(myActivities, function (addedKey, addedValue) {
-        buildAddedActivity += "<div class='activityBoxes animated flipOutY'>";
-        buildAddedActivity += "<h3>Congrats!</h3>"
-        buildAddedActivity += "<p> You added " + addedValue.activityName + "!</p>";
-        buildAddedActivity += "</div>";
-    });
-    $('.activityBoxes').html(buildAddedActivity);
-};
-
+////Activity/Category Page card flip
+//function addedActivity(myActivities) {
+//
+//    let buildAddedActivity = "";
+//    $.each(myActivities, function (addedKey, addedValue) {
+//        buildAddedActivity += "<div class='activityBoxes animated flipOutY'>";
+//        buildAddedActivity += "<h3>Congrats!</h3>"
+//        buildAddedActivity += "<p> You added " + addedValue.activityName + "!</p>";
+//        buildAddedActivity += "</div>";
+//    });
+//    $('.activityBoxes').html(buildAddedActivity);
+//};
 
 
 ///////////////////////////////////////////SIGN-IN TRIGGERS///////////////////////////////////////////////
@@ -326,6 +329,7 @@ $(document).ready(function () {
     //    $('*').scrollTop(0);
 
     $('#friends-page').hide();
+    $('.addedCategoryCard').hide();
     $('#feed-page').hide();
     $('#activities-page').hide();
     $('#profile-page').hide();

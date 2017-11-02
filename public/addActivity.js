@@ -1,3 +1,56 @@
+//SHOW ACTIVITY/CATEGORIES
+function displayAllActivities(myActivities) {
+
+    let buildActivity = "";
+    $.each(myActivities, function (myActivitiesKey, myActivitiesValue) {
+
+        buildActivity += "<div class='activityBoxes'>";
+        buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
+        buildActivity += "<input type='hidden' class='activityImageInputValue' value='" + myActivitiesValue.activityImage + "' >";
+        buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
+        buildActivity += "<input type='hidden' class='activityCategoryNameInputValue' value='" + myActivitiesValue.activityName + "' >";
+
+        buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
+        buildActivity += "<input type='hidden'  class='activityCategoryPointsInputValue' value='" + myActivitiesValue.activityPoints + "' >";
+        buildActivity += "<button class='addCategoryButton' id='activityAddButton' role='submit' type='button'>Add Category</button><br>";
+
+        buildActivity += "</div>";
+    });
+
+    $('.activityBoxesSection').html(buildActivity);
+};
+
+function displayAllActivitiesByUser(myActivities, userCategoryActivities) {
+
+    console.log(myActivities, userCategoryActivities);
+
+    let buildActivity = "";
+
+    //loop all activities
+    $.each(myActivities, function (myCategoryActivityKey, myCategoryActivityValue) {
+
+        //loop user selected activities
+        $.each(userCategoryActivities, function (userCategoryActivitiesKey, userCategoryActivitiesValue) {
+
+            //            if the user activity matches the name from all activities
+            if (userCategoryActivitiesValue.activityName == userCategoryActivitiesValue.activityCategoryName) {
+
+                buildActivity += "<div class='activityBoxes'>";
+                buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
+                buildActivity += "<input type='hidden' class='activityImageInputValue' value='" + myActivitiesValue.activityImage + "' >";
+                buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
+                buildActivity += "<input type='hidden' class='activityCategoryNameInputValue' value='" + myActivitiesValue.activityName + "' >";
+
+                buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
+                buildActivity += "<input type='hidden'  class='activityCategoryPointsInputValue' value='" + myActivitiesValue.activityPoints + "' >";
+                buildActivity += "<button class='addCategoryButton' id='activityAddButton' role='submit' type='button'>Add Category</button><br>";
+
+                buildActivity += "</div>";
+            }
+        });
+    });
+    $('.activityDetailsBoxesSection').html(buildActivity);
+};
 $(document).on('click', '.addCategoryButton', function (event) {
     console.log("completed button clicked");
     event.preventDefault();
@@ -15,7 +68,7 @@ $(document).on('click', '.addCategoryButton', function (event) {
         points: points
     };
 
-
+    $(this).parent().toggleClass('activityBoxAdded');
     //make ajax request to endpoint on server (POST)
     $.ajax({
             type: 'POST',
@@ -45,7 +98,7 @@ $(document).on('click', '.addCategoryButton', function (event) {
         })
         .done(function (result) {
             event.preventDefault();
-            addedActivity(myActivities);
+            $('.addedCategoryCard').show();
         })
 
         .fail(function (jqXHR, error, errorThrown) {

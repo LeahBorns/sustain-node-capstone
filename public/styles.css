@@ -460,6 +460,12 @@ img.twitter {
     background-color: gray !important;
 }
 
+.activityBoxAdded {
+    color: red !important;
+    background-color: gray !important;
+}
+
+
 /* Media Query*/
 
 @media only screen and (max-width: 800px) {
