@@ -27,7 +27,7 @@ const myActivities = [
     },
     {
         category: 'Water',
-        activityName: 'If it\'s yellow let it mellow',
+        activityName: 'If yellow let it mellow',
         activityImage: 'water-drop.png',
         activityPoints: 2
     },
@@ -45,7 +45,7 @@ const myActivities = [
     },
     {
         category: 'Energy',
-        activityName: 'Keep house temp at 68&deg;F',
+        activityName: 'Keep house temp at 68F',
         activityImage: 'lightbulb.png',
         activityPoints: 6
     },
@@ -87,7 +87,7 @@ const myActivities = [
     },
     {
         category: 'Health',
-        activityName: 'Eat mindfully',
+        activityName: 'Write down 3 things you are grateful for',
         activityImage: 'exercise.png',
         activityPoints: 6
     }
