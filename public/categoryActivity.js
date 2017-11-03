@@ -70,22 +70,6 @@ $(document).on('click', '.addCategoryButton', function (event) {
 
     $(this).parent().toggleClass('activityBoxAdded');
     //make ajax request to endpoint on server (POST)
-    //    $.ajax({
-    //            type: 'POST',
-    //            url: '/activity/card',
-    //            dataType: 'json',
-    //            data: JSON.stringify(newActivityCategoryObject),
-    //            contentType: 'application/json'
-    //        })
-    //        .done(function (result) {
-    //            event.preventDefault();
-    //        })
-    //
-    //        .fail(function (jqXHR, error, errorThrown) {
-    //            console.log(jqXHR);
-    //            console.log(error);
-    //            console.log(errorThrown);
-    //        });
 
 
     //POST to call activities
@@ -112,22 +96,4 @@ $(document).on('click', '.addCategoryButton', function (event) {
     //activity.find finding data for
 
 
-    //    $.ajax({
-    //            type: 'GET',
-    //            url: '/activity/add/' + loggedinUserName,
-    //            dataType: 'json',
-    //            contentType: 'application/json'
-    //        })
-    //        .done(function (result) {
-    //            console.log(result);
-    //            event.preventDefault();
-    //            displayProfileActivitiesByUser(myActivities);
-    //
-    //        })
-    //
-    //        .fail(function (jqXHR, error, errorThrown) {
-    //            console.log(jqXHR);
-    //            console.log(error);
-    //            console.log(errorThrown);
-    //        });
 });

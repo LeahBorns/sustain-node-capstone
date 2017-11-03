@@ -27,13 +27,13 @@ const myActivities = [
     },
     {
         category: 'Water',
-        activityName: "If it's yellow let it mellow",
+        activityName: 'If it\'s yellow let it mellow',
         activityImage: 'water-drop.png',
         activityPoints: 2
     },
     {
         category: 'Water',
-        activityName: 'Shorter you shower',
+        activityName: 'Shorten you shower',
         activityImage: 'water-drop.png',
         activityPoints: 4
     },
@@ -162,72 +162,6 @@ function showProfilePage(loggedinUserName, sustainGoals) {
     //        $('.profileActivityBoxesSection').text(displayProfileActivities(myActivities));
 }
 
-//SHOW ACTIVITY/CATEGORIES ON PROFILE PAGE
-function displayProfileActivities(myActivities) {
-
-    let buildActivity = "";
-    $.each(myActivities, function (myProfileKey, myProfileValue) {
-
-        buildActivity += '<div class="activityBoxes">';
-        buildActivity += '<img class="activityImageValue" src="images/' + myProfileValue.activityImage + '" alt="' + myProfileValue.category + ' category">';
-        buildActivity += '<h3 class="activityNameValueValue">' + myProfileValue.activityName + '</h3><br>';
-        buildActivity += '<h3 class="activityPointsValue">Points: ' + myProfileValue.activityPoints + '</h3><br>';
-
-        buildActivity += '<label for="checkbox">Committed</label>';
-        buildActivity += '<input class="checkbox" type="checkbox" name="completed" value="completed"> <br>';
-        buildActivity += '<p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>';
-        buildActivity += '<button class="completedActivityButton" role="button">I did it</button>';
-
-        buildActivity += "</div>";
-    });
-    $('.activityDetailsBoxesSection').html(buildActivity);
-};
-
-function displayProfileActivitiesByUser(myActivities, userActivities) {
-
-    console.log(myActivities, userActivities);
-
-    let buildActivity = "";
-
-    //loop all activities
-    $.each(myActivities, function (myProfileKey, myProfileValue) {
-
-        //loop user selected activities
-        $.each(userActivities, function (userActivitiesKey, userActivitiesValue) {
-
-            //            if the user activity matches the name from all activities
-            if (myProfileValue.activityName == userActivitiesValue.activityCategoryName) {
-
-                buildActivity += '<div class="activityBoxes">';
-                buildActivity += '<img class="activityImageValue" src="images/' + myProfileValue.activityImage + '" alt="' + myProfileValue.category + ' category">';
-                buildActivity += '<h3 class="activityNameValueValue">' + myProfileValue.activityName + '</h3><br>';
-                buildActivity += '<h3 class="activityPointsValue">Points: ' + myProfileValue.activityPoints + '</h3><br>';
-
-                buildActivity += '<label for="checkbox">Committed</label>';
-                buildActivity += '<input class="checkbox" type="checkbox" name="completed" value="completed"> <br>';
-                buildActivity += '<p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>';
-                buildActivity += '<button class="completedActivityButton" role="button">I did it</button>';
-
-                buildActivity += "</div>";
-            }
-        });
-    });
-    $('.activityDetailsBoxesSection').html(buildActivity);
-};
-
-//Profile page card flip
-//function completedActivity(myActivities) {
-//
-//    let buildCompletedActivity = "";
-//    $.each(myActivities, function (completedKey, completedValue) {
-//        buildCompletedActivity += "<div class='activityBoxes animated flipOutY'>";
-//        buildCompletedActivity += "<h3>Congrats!</h3>"
-//        buildCompletedActivity += "<p> You completed " + completedValue.activityName + "!</p>";
-//        buildCompletedActivity += "</div>";
-//    });
-//    $('.activityBoxes animated flipOutY').html(buildCompletedActivity);
-//};
-
 ///////////////////////////////ACTIVITY OR CATEGORY PAGE FUNCTIONS/////////////////////////
 //SHOW ACTIVTY/CATEGORY PAGE
 function showActivitiesPage(allActivities) {
@@ -306,19 +240,6 @@ function displaySelectedActivities(categoryName, categoryPoints) {
 
     $('.activityBoxesSection').html(buildActivity);
 };
-
-////Activity/Category Page card flip
-//function addedActivity(myActivities) {
-//
-//    let buildAddedActivity = "";
-//    $.each(myActivities, function (addedKey, addedValue) {
-//        buildAddedActivity += "<div class='activityBoxes animated flipOutY'>";
-//        buildAddedActivity += "<h3>Congrats!</h3>"
-//        buildAddedActivity += "<p> You added " + addedValue.activityName + "!</p>";
-//        buildAddedActivity += "</div>";
-//    });
-//    $('.activityBoxes').html(buildAddedActivity);
-//};
 
 
 ///////////////////////////////////////////SIGN-IN TRIGGERS///////////////////////////////////////////////
@@ -492,147 +413,4 @@ $(document).ready(function () {
         location.reload();
     });
 
-});
-
-
-//Activity/category added
-//$(document).on('click', '#activityAddButton', function (event) {
-//            event.preventDefault();
-//
-//            const activityTrigger = $('#activityAddButton');
-//            const activityCategoryImage = $(this).parent().find('.activityImageInputValue').val();
-//            const activityCategoryNameInputValue = $(this).parent().find('.activityCategoryNameInputValue').val();
-//            const activityCategoryPointsInputValue = $(this).parent().find('.activityCategoryPointsInputValue').val();
-//
-//
-//            const newActivityCategoryObject = {
-//                username: loggedinUserName,
-//                activityCategoryImage: activityCategoryImage,
-//                activityCategoryName: activityCategoryNameInputValue,
-//                activityCategoryPoints: activityCategoryPointsInputValue
-//            };
-//
-//    //console.log(newActivityCategoryObject);
-//
-//    //
-//    //        if (activityTrigger !== 'submit') {
-//    //            $('.profileActivityBoxesSection').empty();
-//    //        } else if (activityTrigger == 'submit') {
-//    //            displayAddedActivities(myActivities);
-//    //        }
-//
-//    //Adds card with flip and shows profile version of cards correctly
-//    const categoryCheckBox = $('.checkbox').val();
-//    const categoryActivityName = $('.activityNameValue').val();
-//    const categoryActivityImage = $('.activityImageValue').val();
-//    const categoryActivityPoints = $('.activityPointsValue').val();
-//    //
-//    //    console.log(categoryCheckBox);
-//    //    console.log(activityDescription, categoryActivityName, categoryActivityImage, categoryActivityPoints, loggedinUserName);
-//    //
-//    //    if (categoryCheckBox != 'completed') {
-//    //        alert('Must be checked');
-//    //    } else {
-//    //        const newAddedActivity = {
-//    //            activityName: categoryActivityName,
-//    //            activityImage: categoryActivityImage,
-//    //            activityPoints: categoryActivityPoints,
-//    //            username: loggedinUserName
-//    //        };
-//    //        console.log(newAddedActivity);
-//            $.ajax({
-//                    type: 'POST',
-//                    url: '/category/add',
-//                    dataType: 'json',
-//                    data: JSON.stringify(newActivityCategoryObject),
-//                    contentType: 'application/json'
-//                })
-//                .done(function (result) {
-//                    event.preventDefault();
-//                    addedActivity(myActivities);
-//                })
-//
-//                .fail(function (jqXHR, error, errorThrown) {
-//                    console.log(jqXHR);
-//                    console.log(error);
-//                    console.log(errorThrown);
-//                });
-//    //    $.ajax({
-//    //            type: 'GET',
-//    //            url: '/activity/add/' + loggedinUserName,
-//    //            dataType: 'json',
-//    //            contentType: 'application/json'
-//    //        })
-//    //        .done(function (result) {
-//    //            console.log(result);
-//    //            event.preventDefault();
-//    //            displayProfileActivities(myActivities);
-//    //
-//    //        })
-//    //
-//    //        .fail(function (jqXHR, error, errorThrown) {
-//    //            console.log(jqXHR);
-//    //            console.log(error);
-//    //            console.log(errorThrown);
-//    //        });
-//            });
-
-$(document).on('click', '.completedActivityButton', function (event) {
-    event.preventDefault();
-    const checkBox = $(this).parent().find('.checkbox').val();
-    const activityDescription = $(this).parent().find('.textBox').val();
-    const profileActivityName = $(this).parent().find('.activityNameValue').val();
-    const profileActivityImage = $(this).parent().find('.activityImageValue').val();
-    const profileActivityPoints = $(this).parent().find('.activityPointsValue').val();
-
-
-    console.log(checkBox);
-    console.log(activityDescription, profileActivityName, profileActivityImage, profileActivityPoints, loggedinUserName);
-
-    if (checkBox != 'completed') {
-        alert('Must be checked');
-    } else if (activityDescription.length < 10) {
-        alert('Must be at least 10 characters');
-    } else {
-        const newActivityCompleted = {
-            activityDescription: activityDescription,
-            activityName: profileActivityName,
-            activityImage: profileActivityImage,
-            activityPoints: profileActivityPoints,
-            username: loggedinUserName
-        };
-        //        console.log(newActivityCompleted);
-        $(this).parent().toggleClass('activityBoxeCompleted');
-
-        $.ajax({
-                type: 'GET',
-                url: '/get-category-by-username/' + loggedinUserName,
-                dataType: 'json',
-                contentType: 'application/json'
-            })
-            .done(function (result) {
-                console.log(result);
-                $.ajax({
-                        type: 'POST',
-                        url: '/activity/add',
-                        dataType: 'json',
-                        data: JSON.stringify(newActivityCompleted),
-                        contentType: 'application/json'
-                    })
-                    .done(function (result) {
-                        alert('Congrats! You completed todays task');
-
-                    })
-                    .fail(function (jqXHR, error, errorThrown) {
-                        console.log(jqXHR);
-                        console.log(error);
-                        console.log(errorThrown);
-                    });
-            })
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-            });
-    };
 });

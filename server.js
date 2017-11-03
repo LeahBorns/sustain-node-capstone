@@ -258,6 +258,31 @@ app.post('/category/add', function (req, res) {
         }
     });
 });
+app.get('/get-category-by-username/:user', function (req, res) {
+    console.log(req.params.user);
+    activityCategory
+        .find()
+        .sort()
+        .then(function (category) {
+
+            console.log("user categories->", category);
+            let categoryOutput = [];
+            category.map(function (category) {
+                if (category.username == req.params.user) {
+                    categoryOutput.push(category);
+                }
+            });
+            res.json({
+                categoryOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
 
 app.get('/category/show/:user', function (req, res) {
     console.log(req.params.user);
@@ -298,36 +323,12 @@ app.delete('/activity/:id', function (req, res) {
 
 //////////////////////////Profile Activtiy/////////////////////////////////////////////
 // Completing a new activity
-app.get('/get-category-by-username/:user', function (req, res) {
-    console.log(req.params.user);
-    activityCategory
-        .find()
-        .sort()
-        .then(function (category) {
 
-            console.log("user categories->", category);
-            let categoryOutput = [];
-            category.map(function (category) {
-                if (category.username == req.params.user) {
-                    categoryOutput.push(category);
-                }
-            });
-            res.json({
-                categoryOutput
-            });
-        })
-        .catch(function (err) {
-            console.error(err);
-            res.status(500).json({
-                message: 'Internal server error'
-            });
-        });
-});
 
-app.post('/activity/card', (req, res) => {
+app.get('/activity-feed-by-username/:username', (req, res) => {
 
     activity.find({
-        username: req.body.username
+        username: req.params.username
     }, (err, activity) => {
 
         if (err) {
@@ -340,17 +341,18 @@ app.post('/activity/card', (req, res) => {
 
 app.post('/activity/add', (req, res) => {
 
-    let image = req.body.image;
-    let name = req.body.name;
-    let points = req.body.points;
-    let description = req.body.description;
-    let commited = req.body.commited;
+
+    let image = req.body.activityImage;
+    let name = req.body.activityName;
+    let points = req.body.activityPoints;
+    let description = req.body.activityDescription;
     let username = req.body.username;
 
 
 
     //    console.log(username, name, points, description, image);
     console.log("-->", description, "<---");
+
 
 
     activity.create({
