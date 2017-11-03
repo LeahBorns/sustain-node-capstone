@@ -102,7 +102,6 @@ $(document).on('click', '.completedActivityButton', function (event) {
             })
             .done(function (result) {
                 alert('Congrats! You completed todays task');
-
                 getActivitiesFeedByUsername(loggedinUserName);
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -111,38 +110,8 @@ $(document).on('click', '.completedActivityButton', function (event) {
                 console.log(errorThrown);
             });
 
-        //        $.ajax({
-        //                type: 'GET',
-        //                url: '/get-category-by-username/' + loggedinUserName,
-        //                dataType: 'json',
-        //                contentType: 'application/json'
-        //            })
-        //            .done(function (result) {
-        //                console.log(result);
-        //                $.ajax({
-        //                        type: 'POST',
-        //                        url: '/activity/add',
-        //                        dataType: 'json',
-        //                        data: JSON.stringify(newActivityCompleted),
-        //                        contentType: 'application/json'
-        //                    })
-        //                    .done(function (result) {
-        //                        alert('Congrats! You completed todays task');
-        //
-        //
-        //                    })
-        //                    .fail(function (jqXHR, error, errorThrown) {
-        //                        console.log(jqXHR);
-        //                        console.log(error);
-        //                        console.log(errorThrown);
-        //                    });
-        //            })
-        //            .fail(function (jqXHR, error, errorThrown) {
-        //                console.log(jqXHR);
-        //                console.log(error);
-        //                console.log(errorThrown);
-        //            });
     };
+
 });
 
 /////////show feed data//////////
@@ -166,6 +135,7 @@ function getActivitiesFeedByUsername(username) {
 }
 
 function displayActivitiesFeedByUsername(activityFeed) {
+    let totalPoints = 0;
     let buildActivity = '<h2 class="pageTitle">YOUR FEED</h2>';
     $.each(activityFeed, function (myProfileKey, myProfileValue) {
 
@@ -178,7 +148,9 @@ function displayActivitiesFeedByUsername(activityFeed) {
         buildActivity += '<p class="comment">"' + myProfileValue.description + '"</p>';
         buildActivity += '</div>';
         buildActivity += '</div>';
+        totalPoints = totalPoints + parseInt(myProfileValue.points);
 
     });
+    $('#total-points').text(totalPoints);
     $('.indivFeed').html(buildActivity);
 }
