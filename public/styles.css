@@ -26,6 +26,8 @@ main.wrapper {
     min-height: 100%;
 }
 
+
+
 h2.pageTitle {
     margin-top: 20px;
     margin-left: 70px;
@@ -37,6 +39,34 @@ nav {
     background-color: #C1E1A6;
     color: #585858;
     width: 100%;
+    position: relative;
+}
+
+nav .demoMessage {
+    position: fixed;
+    top: 0px;
+    left: 40%;
+    background-color: green;
+    color: #fff;
+    padding: 10px 5%;
+    width: 30%;
+    text-align: center;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+nav .demoMessage span,
+nav .demoMessage a {
+    color: #fff;
+
+}
+nav .demoMessage a {cursor: pointer; color: yellow;}
+
+nav .demoMessage #hideBtn {
+    padding: 2px 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 h1 {

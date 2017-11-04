@@ -114,6 +114,11 @@ var sustainGoals = '';
 var currentScore = 5;
 var allActivities = [];
 
+function displayError(message) {
+    $("#messageBox span").html(message);
+    $("#messageBox").fadeIn();
+};
+
 ///////////////////////////////REGISTER AND SIGN UP////////////////////////////
 function showSignInPage() {
     $('#friends-page').hide();
@@ -258,6 +263,7 @@ $(document).ready(function () {
     $('#login-page').show();
     $('#js-signout-link').hide();
     $('#nav-links').hide();
+    $("#messageBox").hide();
 
     // USER WITH ACCOUNT SIGNS IN
 
@@ -269,9 +275,11 @@ $(document).ready(function () {
         const inputPw = $('input[name="signin-pw"]').val();
         // check for spaces, empty, undefined
         if ((!inputUname) || (inputUname.length < 1) || (inputUname.indexOf(' ') > 0)) {
-            alert('Invalid username');
+            displayError('Invalid username');
+            //            alert('Invalid username');
         } else if ((!inputPw) || (inputPw.length < 1) || (inputPw.indexOf(' ') > 0)) {
-            alert('Invalid password');
+            displayError('Invalid password');
+            //            alert('Invalid password');
         } else {
             const unamePwObject = {
                 username: inputUname,
@@ -301,7 +309,8 @@ $(document).ready(function () {
                     console.log(jqXHR);
                     console.log(error);
                     console.log(errorThrown);
-                    alert('Invalid username and password combination. Pleae check your username and password and try again.');
+                    displayError('Invalid username and password combination. Pleae check your username and password and try again.');
+                    //                    alert('Invalid username and password combination. Pleae check your username and password and try again.');
                 });
         };
     });
@@ -326,7 +335,8 @@ $(document).ready(function () {
         const goals = $('input[name="goals"]').val();
         if (pw !== confirmPw) {
 
-            alert('Passwords must match!');
+            //            alert('Passwords must match!');
+            displayError('Passwords must match!');
         } else {
             event.preventDefault();
             const newUserObject = {
@@ -346,7 +356,8 @@ $(document).ready(function () {
                 })
                 .done(function (result) {
                     event.preventDefault();
-                    alert('Thanks for signing up! You may now sign in with your username and password.');
+                    //                    alert('Thanks for signing up! You may now sign in with your username and password.');
+                    displayError('Thanks for signing up! You may now sign in with your username and password.');
                     showSignInPage();
                 })
                 .fail(function (jqXHR, error, errorThrown) {
@@ -413,4 +424,31 @@ $(document).ready(function () {
         location.reload();
     });
 
+});
+$(document).on("click", '#js-profile ', function (event) {
+    showProfilePage(loggedinUserName, sustainGoals);
+
+
+
+    $.ajax({
+            type: 'GET',
+            url: '/category/show/' + loggedinUserName,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            //console.log(result.categoryOutput);
+
+            displayProfileActivitiesByUser(myActivities, result.categoryOutput);
+        })
+
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+});
+
+$(document).on("click", "#hideBtn", function () {
+    $("#messageBox").fadeOut();
 });

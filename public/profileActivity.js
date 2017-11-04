@@ -77,9 +77,11 @@ $(document).on('click', '.completedActivityButton', function (event) {
     console.log(activityDescription, profileActivityName, profileActivityImage, profileActivityPoints, loggedinUserName);
 
     if (checkBox != 'completed') {
-        alert('Must be checked');
+        displayError('Must be checked');
+        //        alert('Must be checked');
     } else if (activityDescription.length < 10) {
-        alert('Must be at least 10 characters');
+        displayError('Must be at least 10 characters');
+        //        alert('Must be at least 10 characters');
     } else {
         const newActivityCompleted = {
             activityDescription: activityDescription,
@@ -101,7 +103,8 @@ $(document).on('click', '.completedActivityButton', function (event) {
                 contentType: 'application/json'
             })
             .done(function (result) {
-                alert('Congrats! You completed todays task');
+//                alert('Congrats! You completed todays task');
+                displayError('Congrats! You completed todays task');
                 getActivitiesFeedByUsername(loggedinUserName);
             })
             .fail(function (jqXHR, error, errorThrown) {

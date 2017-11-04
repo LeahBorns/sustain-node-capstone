@@ -82,6 +82,7 @@ $(document).on('click', '.addCategoryButton', function (event) {
         })
         .done(function (result) {
             console.log(result);
+            displayError('Category added. <a class="link" id="js-profile">Click here to add activities.</a>');
         })
 
         .fail(function (jqXHR, error, errorThrown) {
