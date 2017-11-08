@@ -179,6 +179,7 @@ function showActivitiesPage(allActivities) {
     $('#register-page').hide();
     $('#login-page').hide();
     $('#js-signout-link').show();
+    $('#js-signout-link').text("Sign out " + loggedinUserName);
     $('#nav-links').show();
 }
 
@@ -219,6 +220,11 @@ function displaySelectedActivities(categoryName, categoryPoints) {
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
             buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
             buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
+
+            buildActivity += "<input type='hidden' class='activityImageInputValue' value='" + myActivitiesValue.activityImage + "' >";
+            buildActivity += "<input type='hidden' class='activityCategoryNameInputValue' value='" + myActivitiesValue.activityName + "' >";
+            buildActivity += "<input type='hidden'  class='activityCategoryPointsInputValue' value='" + myActivitiesValue.activityPoints + "' >";
+
             buildActivity += "<button class='addCategoryButton' id='activityAddButton' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
         } else if ((categoryName !== "") && (categoryName == myActivitiesValue.category) && (categoryPoints == "")) {
@@ -226,6 +232,11 @@ function displaySelectedActivities(categoryName, categoryPoints) {
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
             buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
             buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
+
+            buildActivity += "<input type='hidden' class='activityImageInputValue' value='" + myActivitiesValue.activityImage + "' >";
+            buildActivity += "<input type='hidden' class='activityCategoryNameInputValue' value='" + myActivitiesValue.activityName + "' >";
+            buildActivity += "<input type='hidden'  class='activityCategoryPointsInputValue' value='" + myActivitiesValue.activityPoints + "' >";
+
             buildActivity += "<button class='addCategoryButton' id='activityAddButton' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
         } else if (((categoryName == "") && (categoryPoints !== "") && (categoryPoints == myActivitiesValue.activityPoints))) {
@@ -233,6 +244,11 @@ function displaySelectedActivities(categoryName, categoryPoints) {
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
             buildActivity += "<h3 class='activityNameValue'> " + myActivitiesValue.activityName + "</h3><br>";
             buildActivity += "<h3 class='activityPointsValue'> Points:" + myActivitiesValue.activityPoints + "</h3><br>";
+
+            buildActivity += "<input type='hidden' class='activityImageInputValue' value='" + myActivitiesValue.activityImage + "' >";
+            buildActivity += "<input type='hidden' class='activityCategoryNameInputValue' value='" + myActivitiesValue.activityName + "' >";
+            buildActivity += "<input type='hidden'  class='activityCategoryPointsInputValue' value='" + myActivitiesValue.activityPoints + "' >";
+
             buildActivity += "<button class='addCategoryButton' id='activityAddButton' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
         } else if ((categoryName == "") && (categoryPoints == "")) {

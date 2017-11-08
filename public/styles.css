@@ -214,6 +214,7 @@ form.signup input {
     padding: 5px;
     font-family: 'Cousine', monospace;
     color: #d1e8e2;
+    float: right;
 }
 
 form.signup button {
@@ -397,7 +398,7 @@ select.sustainCategories,
 select.sustainPoints,
 button.pullDownCategories {
     margin-top: 40px;
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Cousine', monospace;
 }
 
 select.sustainCategories {
@@ -417,7 +418,7 @@ select.sustainPoints {
 
 button.pullDownCategories {
     margin-left: 10px;
-    background-color: #C1E1A6;
+    background-color: #d9b08c;
     padding: 10px;
     color: #585858;
 }
@@ -428,7 +429,7 @@ button.addCategoryButton {
     color: #585858;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Cousine', monospace;
 }
 
 /*Feed*/
@@ -771,7 +772,7 @@ img.twitter {
 
     button.pullDownCategories {
         width: 15%;
-        font-size: 0.8em
+        font-size: 0.8em;
     }
 
     /*Feed*/

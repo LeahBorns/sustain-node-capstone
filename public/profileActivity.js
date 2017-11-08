@@ -15,8 +15,8 @@ function displayProfileActivities(myActivities) {
         buildActivity += "<input type='hidden'  class='activityPointsInputValue' value='" + myProfileValue.activityPoints + "' >";
 
 
-        buildActivity += '<label for="checkbox">Committed</label>';
-        buildActivity += '<input class="checkbox" type="checkbox" name="completed" value="completed"> <br>';
+        //        buildActivity += '<label for="checkbox">Committed</label>';
+        //        buildActivity += '<input class="checkbox" type="checkbox" name="completed" value="completed"> <br>';
         buildActivity += '<p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>';
         buildActivity += '<button class="completedActivityButton" role="button">I did it</button>';
 
@@ -52,8 +52,8 @@ function displayProfileActivitiesByUser(myActivities, userActivities) {
                 buildActivity += "<input type='hidden'  class='activityPointsInputValue' value='" + myProfileValue.activityPoints + "' >";
 
 
-                buildActivity += '<label for="checkbox">Committed</label>';
-                buildActivity += '<input class="checkbox" type="checkbox" name="completed" value="completed"> <br>';
+                //                buildActivity += '<label for="checkbox">Committed</label>';
+                //                buildActivity += '<input class="checkbox" type="checkbox" name="completed" value="completed"> <br>';
                 buildActivity += '<p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>';
                 buildActivity += '<button class="completedActivityButton" role="button">I did it</button>';
 
@@ -66,20 +66,17 @@ function displayProfileActivitiesByUser(myActivities, userActivities) {
 
 $(document).on('click', '.completedActivityButton', function (event) {
     event.preventDefault();
-    const checkBox = $(this).parent().find('.checkbox').val();
+
     const activityDescription = $(this).parent().find('.textBox').val();
     const profileActivityName = $(this).parent().find('.activityNameInputValue').val();
     const profileActivityImage = $(this).parent().find('.activityImageInputValue').val();
     const profileActivityPoints = $(this).parent().find('.activityPointsInputValue').val();
 
 
-    console.log(checkBox);
+
     console.log(activityDescription, profileActivityName, profileActivityImage, profileActivityPoints, loggedinUserName);
 
-    if (checkBox != 'completed') {
-        displayError('Must be checked');
-        //        alert('Must be checked');
-    } else if (activityDescription.length < 10) {
+    if (activityDescription.length < 10) {
         displayError('Must be at least 10 characters');
         //        alert('Must be at least 10 characters');
     } else {
@@ -103,7 +100,7 @@ $(document).on('click', '.completedActivityButton', function (event) {
                 contentType: 'application/json'
             })
             .done(function (result) {
-//                alert('Congrats! You completed todays task');
+                //                alert('Congrats! You completed todays task');
                 displayError('Congrats! You completed todays task');
                 getActivitiesFeedByUsername(loggedinUserName);
             })
