@@ -17,7 +17,7 @@ function displayProfileActivities(myActivities) {
 
         //        buildActivity += '<label for="checkbox">Committed</label>';
         //        buildActivity += '<input class="checkbox" type="checkbox" name="completed" value="completed"> <br>';
-        buildActivity += '<p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>';
+        buildActivity += '<p class="tell-us">Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>';
         buildActivity += '<button class="completedActivityButton" role="button">I did it</button>';
 
         buildActivity += "</div>";
@@ -54,7 +54,7 @@ function displayProfileActivitiesByUser(myActivities, userActivities) {
 
                 //                buildActivity += '<label for="checkbox">Committed</label>';
                 //                buildActivity += '<input class="checkbox" type="checkbox" name="completed" value="completed"> <br>';
-                buildActivity += '<p>Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>';
+                buildActivity += '<p class="tell-us">Tell us about your experience</p><textarea class="textBox" name="textBox" id="text-box"></textarea>';
                 buildActivity += '<button class="completedActivityButton" role="button">I did it</button>';
 
                 buildActivity += "</div>";
@@ -117,6 +117,7 @@ $(document).on('click', '.completedActivityButton', function (event) {
 /////////show feed data//////////
 
 function getActivitiesFeedByUsername(username) {
+
     $.ajax({
             type: 'GET',
             url: '/activity-feed-by-username/' + username,

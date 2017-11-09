@@ -103,18 +103,21 @@ a.link {
     color: #d1e8e2;
 }
 
+/*
 img.searchIcon {
     width: 20px;
     vertical-align: middle;
     color: #d1e8e2;
 }
+*/
 
 img.profilePic {
     width: 30px;
     border-radius: 50%;
-    border: 2px solid #118C4E;
+    border: 2px solid #d9b08c;
     vertical-align: middle;
     margin-right: 10px;
+    background-color: #d1e8e2;
 }
 
 #js-signout-link {
@@ -181,6 +184,12 @@ form.login button {
     margin-left: 40%;
     font-family: 'Cousine', monospace;
 }
+
+a#js-new-account {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 
 /*Register Form*/
 
@@ -296,10 +305,10 @@ section.activityDetailsBoxesSection {
 
 section.activityBoxesSection div,
 section.activityDetailsBoxesSection div {
-    border: 3px dashed #ffcb9a;
+    border: 3px dashed #d9b08c;
     width: 30%;
     display: inline-block;
-    padding-top: 30px;
+    padding: 30px 5px 0px 5px;
     background-color: #116466;
     margin: auto;
     color: white;
@@ -309,6 +318,8 @@ section.activityDetailsBoxesSection div {
 }
 
 
+/*Category Page*/
+
 h3.activityNameValue {
     height: 40px;
     overflow-y: hidden;
@@ -316,29 +327,38 @@ h3.activityNameValue {
     text-align: center;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    color: #d1e8e2
+    color: #d1e8e2;
+}
+
+/*Profile Page*/
+
+h3.activityNameValueValue,
+p.tell-us {
+    color: #d1e8e2;
 }
 
 h3.activityPointsValue {
-    color: #d1e8e2
+    color: #d1e8e2;
 }
 
 img.activityImageValue {
     width: 50px;
     background-color: white;
-    border: 3px solid #FFCB9A;
+    border: 3px solid #d9b08c;
     border-radius: 50%;
     margin-bottom: 20px;
 }
 
 
+/*
 input.checkbox {
     margin-top: 10px;
     margin-bottom: 20px;
 }
+*/
 
 input {
-    color: #585858;
+    color: #2c3531;
 }
 
 textarea.textBox {
@@ -351,7 +371,7 @@ button.completedActivity,
 button.completedActivityButton {
     background-color: #d1e8e2;
     padding: 10px;
-    color: #585858;
+    color: #2c3531;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -414,7 +434,7 @@ p.categoryPageDescription {
 
 select.sustainCategories,
 select.sustainPoints {
-    border: 1px solid #118C4E;
+    border: 1px solid #2c3531;
 }
 
 
@@ -422,7 +442,7 @@ button.pullDownCategories {
     margin-left: 10px;
     background-color: #d9b08c;
     padding: 10px;
-    color: #585858;
+    color: #2c3531;
 }
 
 button.addCategoryButton {

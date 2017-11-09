@@ -271,6 +271,10 @@ $(document).ready(function () {
     // when page first loads
     //    $('*').scrollTop(0);
 
+    $('.sustain-logo').on('click', function (event) {
+        showSignInPage();
+    })
+
     $('#friends-page').hide();
     $('.addedCategoryCard').hide();
     $('#feed-page').hide();
@@ -293,10 +297,12 @@ $(document).ready(function () {
         // check for spaces, empty, undefined
         if ((!inputUname) || (inputUname.length < 1) || (inputUname.indexOf(' ') > 0)) {
             displayError('Invalid username');
+            console.log('invalid username');
             //            alert('Invalid username');
         } else if ((!inputPw) || (inputPw.length < 1) || (inputPw.indexOf(' ') > 0)) {
             displayError('Invalid password');
             //            alert('Invalid password');
+            console.log('invalid password');
         } else {
             const unamePwObject = {
                 username: inputUname,
