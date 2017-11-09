@@ -186,7 +186,7 @@ form.login button {
 
 section.registerForm {
     margin: auto;
-    width: 80%;
+    width: 60%;
     margin-top: 40px;
 
 }
@@ -202,18 +202,19 @@ form.signup {
 form.signup h2 {
     color: #d1e8e2;
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
 }
 
 form.signup label {
     color: #d1e8e2;
+
+    /*    margin-left: 50px;*/
 }
 
 form.signup input {
-    border: 2px dotted #C1E1A6;
     padding: 5px;
     font-family: 'Cousine', monospace;
-    color: #d1e8e2;
+    color: #2c3531;
     float: right;
 }
 
@@ -223,6 +224,7 @@ form.signup button {
     color: #2c3531;
     margin-left: 40%;
     font-family: 'Cousine', monospace;
+    margin-top: 40px;
 }
 
 /*Profile Page*/

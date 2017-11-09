@@ -110,6 +110,7 @@ const myActivities = [
 // Function and object definitions
 var user = undefined;
 var loggedinUserName = '';
+var loggedinPassword = '';
 var sustainGoals = '';
 var currentScore = 5;
 var allActivities = [];
@@ -314,6 +315,7 @@ $(document).ready(function () {
                 .done(function (result) {
                     // console.log(result);
                     loggedinUserName = result.username;
+                    loggedinPassword = result.password;
 
                     // show the signout link in header as soon as user is signed in
                     $('#js-signout-link').show();
@@ -325,7 +327,7 @@ $(document).ready(function () {
                     console.log(jqXHR);
                     console.log(error);
                     console.log(errorThrown);
-                    displayError('Invalid username and password combination. Pleae check your username and password and try again.');
+                    displayError('Invalid username and password combination. Please check your username and password and try again.');
                     //                    alert('Invalid username and password combination. Pleae check your username and password and try again.');
                 });
         };
@@ -348,7 +350,7 @@ $(document).ready(function () {
         const email = $('input[name="email"]').val();
         const pw = $('input[name="pw"]').val();
         const confirmPw = $('input[name="confirm-pw"]').val();
-        const goals = $('input[name="goals"]').val();
+        //        const goals = $('input[name="goals"]').val();
         if (pw !== confirmPw) {
 
             //            alert('Passwords must match!');
@@ -359,7 +361,7 @@ $(document).ready(function () {
                 username: uname,
                 password: pw,
                 email: email,
-                goals: goals
+                //                goals: goals
             };
             // will assign a value to variable 'user' in signin step below
             // AJAX call to send form data up to server/DB and create new user
