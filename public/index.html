@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body id="page-top">
     <nav id="nav-bar">
         <div id="messageBox" class="demoMessage">
             <span>Loading ...</span> <button id="hideBtn">X</button>
         </div>
-        <img class="sustain-logo" src="images/sustain-logo.png" alt="Sustain logo">
+        <a href="#page-top"><img class="sustain-logo" src="images/sustain-logo.png" alt="Sustain logo"></a>
 
         <div class="navLinks" id="nav-links">
             <a class="link" id="js-activities">ADD CATEGORY</a>
@@ -130,6 +130,7 @@
         <!--Personal feed -->
         <section class="indivFeed">
             <h2 class="pageTitle">YOUR FEED</h2>
+            <p>Tell us about your experiences above to start earning points</p>
             <div class="currentFeed">
                 <img class="proofPicture" src="images/water-bottle.png" alt="water bottle">
 
@@ -165,7 +166,7 @@
 
     <!--ACTIVITIES Category PAGE -->
     <main id="activities-page" class="wrapper">
-        <section class="activitiesSection">
+        <section class="activitiesSection active">
             <h2 class="pageTitle">ACTIVITY CATEGORIES</h2>
             <p class="categoryPageDescription">Select activities to start earning points. </p>
             <select name="Categories" class="sustainCategories" id="categories">
@@ -188,7 +189,9 @@
             </select>
             <button class="pullDownCategories" role="button" type="search">Search</button>
         </section>
+
         <hr>
+
         <section class="activityBoxesSection">
             <!--
 <div class="activityBoxes">
@@ -226,6 +229,7 @@
     </main>
 
     <!--OVERALL FEED PAGE -->
+    <!--
     <main id="feed-page" class="wrapper">
         <section class="overallFeed">
             <h2 class="pageTitle">FEED</h2>
@@ -257,8 +261,10 @@
         </section>
         <div class="push"></div>
     </main>
+-->
 
     <!--FRIENDS PAGE -->
+    <!--
     <main id="friends-page" class="wrapper">
         <section class="friendsSection">
             <h2 class="pageTitle">FRIENDS</h2>
@@ -373,9 +379,10 @@
         </section>
         <div class="push"></div>
     </main>
+-->
     <footer>
         <div class="footerInfo">
-            <h1>Sustain</h1>
+            <a href="#page-top"><img class="footer-sustain-logo" src="images/sustain-logo.png" alt="Sustain logo"></a>
         </div>
         <div class="socialButtons">
             <a href="http://www.facebook.com" class="link"><img class="facebook" src="images/facebook.png" alt="facebook"></a>

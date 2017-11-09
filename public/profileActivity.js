@@ -118,6 +118,7 @@ $(document).on('click', '.completedActivityButton', function (event) {
 
 function getActivitiesFeedByUsername(username) {
 
+
     $.ajax({
             type: 'GET',
             url: '/activity-feed-by-username/' + username,
@@ -154,4 +155,11 @@ function displayActivitiesFeedByUsername(activityFeed) {
     });
     $('#total-points').text(totalPoints);
     $('.indivFeed').html(buildActivity);
+    hideFeed();
 }
+
+function hideFeed() {
+    if ($('.currentFeed').length < 1) {
+        $('.indivFeed').hide();
+    } else($('.indivFeed').show())
+};

@@ -275,6 +275,8 @@ $(document).ready(function () {
         showSignInPage();
     })
 
+
+
     $('#friends-page').hide();
     $('.addedCategoryCard').hide();
     $('#feed-page').hide();
