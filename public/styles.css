@@ -298,7 +298,7 @@ hr {
 */
 
 section.activitiesSection {
-    width: 80%;
+    width: 90%;
     margin: auto;
     text-align: center;
 }
@@ -883,6 +883,10 @@ img.twitter {
         margin-left: 30px;
     }
 
+    div.sign-up {
+        font-size: 0.8em;
+    }
+
     /* Register Page */
     section.registerForm {
         width: 95%;
@@ -898,24 +902,23 @@ img.twitter {
     }
 
     /*Profile Page*/
-    div.picture {
-        display: block;
-        margin: auto;
-        margin-top: 20px;
+    img.profile-picture {
+        width: 35px;
+        margin-top: 50px;
     }
 
-    img.mainProfilePic {
-        width: 100px;
+    h2.profileUsername {
+        font-size: 1.3em;
     }
 
-    div.profileDescription {
-        width: 90%;
-        display: block;
-        text-align: center;
+    div.pointsTotal {
+        margin-bottom: 30px;
     }
-
     /*activities on profile page*/
-
+    p.tell-us {
+        margin-top: 5px;
+    }
+    /*
     section.profileActivityBoxesSection {
         margin: auto;
         width: 100%;
@@ -928,45 +931,54 @@ img.twitter {
         margin-top: 5px;
         margin-bottom: 5px;
     }
-
-
-    h3.activityNameValue {
-        width: 100%;
-        text-align: center;
+*/
+    h3.activityNameValueValue {
+        margin-top: 10px;
     }
 
     textarea.textBox {
-        width: 85%
+        width: 100%
+    }
+
+    button.completedActivityButton {
+        margin-bottom: 0;
     }
 
     /* Individual and overall feed*/
-    div.currentFeed {
-        margin: 10px auto;
-        width: 90%;
-    }
-
     div.pointsEarned {
-        width: 95%;
+        width: 100%;
         margin: auto;
         margin-bottom: 10px;
     }
 
     p.comment {
         font-size: 0.8em;
+        text-align: center;
     }
 
     h2.points,
     h3.practice {
         font-size: 1.1em;
+        text-align: center;
+        width: 100%;
+    }
+
+    p.comment,
+    h2.points,
+    h3.practice {
+        padding-left: 5px;
+    }
+
+
+    div.currentFeed {
+        margin: auto;
     }
 
     img.proofPicture {
         width: 70px;
-        margin-left: 115px;
+        margin-left: 40%;
     }
-
     /*Category page*/
-
     h2.pageTitle {
         margin-top: 40px;
         font-size: 1.1em;
@@ -988,6 +1000,11 @@ img.twitter {
         margin-bottom: 10px;
     }
 
+    img.activityImageValue {
+        width: 45px;
+        margin-bottom: 0px;
+    }
+
     section.activityBoxesSection,
     section.activityDetailsBoxesSection {
         margin: auto;
@@ -996,36 +1013,38 @@ img.twitter {
 
     section.activityBoxesSection div,
     section.activityDetailsBoxesSection div {
-        width: 80%;
+        width: 100%;
+        padding: 20px;
         display: block;
         margin: auto;
         margin-top: 5px;
         margin-bottom: 5px;
     }
 
-    select.sustainCategories,
-    select.sustainPoints {
-        margin-top: 20px;
-        width: 35%;
-        font-size: 0.7em;
+    h3.activityNameValue {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 15px;
+        height: 95px;
     }
+}
 
-    select.sustainCategories {
-        margin-left: 10px;
+button.addCategoryButton {
+    font-size: 0.75em;
+}
 
-    }
+/*Feed*/
 
-    button.pullDownCategories {
-        width: 18%;
-        font-size: 0.8em;
-    }
+/*
+img.feedPicture {
+    width: 25px;
+}
+*/
 
-    /*Feed*/
-    img.feedPicture {
-        width: 25px;
-    }
-    /*Friends section*/
-    /*
+/*Friends section*/
+
+/*
     h2.pageTitle {
         margin-bottom: 20px;
     }
@@ -1079,4 +1098,5 @@ img.twitter {
 
     }
 */
+
 }
