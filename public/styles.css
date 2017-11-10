@@ -19,7 +19,7 @@ a {
 
 main {
     margin: auto;
-    width: 80%;
+    width: 100%;
 }
 
 main.wrapper {
@@ -40,6 +40,7 @@ nav {
     color: #d1e8e2;
     width: 100%;
     position: relative;
+    height: 50px;
 }
 
 nav .demoMessage {
@@ -132,27 +133,32 @@ section.loginPage {
     margin: 20px auto;
     width: 100%;
     border: 4px solid #d9b08c;
-    padding: 50px 10px;
+    padding: 0 0 50px 10px;
+
 }
 
 /* Overall message*/
 
-p.overallMessage {
+div.overallMessage {
     width: 35%;
     display: inline-block;
     font-size: 20px;
     vertical-align: top;
-    margin-top: 50px;
-    margin-left: 30px;
+    margin: 40px auto auto 50px;
+    /*    margin-top: 50px;*/
+    /*    padding: 0 20px 0 20px;*/
+    /*    margin-left: 30px;*/
 }
 
 /* form */
 
 div.loginForm {
-    width: 49%;
+    width: 45%;
     margin-top: 50px;
-    margin-left: 90px;
+    /*    margin-left: 10%;*/
     display: inline-block;
+    margin: 40px auto auto 50px;
+
 }
 
 form.login {
@@ -160,6 +166,7 @@ form.login {
     width: 90%;
     padding: 50px 20px;
     color: #d1e8e2;
+    text-align: center;
 }
 
 form.login h2 {
@@ -176,15 +183,16 @@ form.login input {
     border: 2px dotted #C1E1A6;
     font-family: 'Cousine', monospace;
     padding: 5px;
-    width: 70%;
+    width: 80%;
 }
 
 form.login button {
     background-color: #d9b08c;
     padding: 10px;
     color: #2c3531;
-    margin-left: 40%;
-    font-family: 'Cousine', monospace;
+    /*
+    margin-left: 40%; font-family: 'Cousine', monospace;
+*/
 }
 
 a#js-new-account {
@@ -294,6 +302,12 @@ hr {
 }
 */
 
+section.activitiesSection {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
 section.activityBoxesSection,
 section.activityDetailsBoxesSection {
     margin: 20px auto;
@@ -394,7 +408,7 @@ div.currentFeed {
     background-color: white;
 }
 
-h2.pageTitle {
+h2.feed {
     color: #d1e8e2;
 }
 
@@ -553,7 +567,7 @@ img.friendImages {
 img.footer-sustain-logo {
     width: 20%;
     display: inline-block;
-    margin-left: 110px;
+    /*    margin-left: 110px;*/
     padding-top: 10px;
 }
 
@@ -609,103 +623,64 @@ img.twitter {
 /* Media Query*/
 
 @media only screen and (max-width: 800px) {
+
+    /*Category Page*/
     h3.activityNameValue {
+        height: 70px;
         width: 100%;
         text-align: center;
         padding: 20px;
+        font-size: 0.95em;
     }
 
-    div.picture {
-        margin-top: 20px;
+    h3.activityPointsValue {
+        font-size: 0.9em;
     }
 
-    img.mainProfilePic {
-        width: 130px;
+
+    img.profile-picture {
+        width: 50px;
     }
 
+    button.addCategoryButton {
+        font-size: 0.9em;
+    }
+
+    /*
     div.profileDescription {
         width: 49%;
         display: inline-block;
         vertical-align: middle;
     }
-
+*/
     /*activities on profile page*/
+    h3.activityNameValueValue {
+        font-size: 0.95em;
+    }
+
+    p.tell-us {
+        font-size: 0.85em;
+    }
+
     textarea.textBox {
         width: 90%;
     }
 
-
-    /* Individual feed*/
-    div.pointsEarned {
-        display: inline-block;
-        vertical-align: middle;
-        width: 60%;
+    button.completedActivityButton {
+        font-size: 0.9em;
     }
 
+
+
+    /* Individual feed*/
     img.proofPicture {
         width: 90px;
         display: inline-block;
     }
 
-    /*Overall Feed*/
-    img.feedPicture {
-        width: 25px;
-    }
-    /*Friends section*/
-    h2.pageTitle {
-        margin-bottom: 20px;
-    }
-
-    h2.topPlayers {
-        font-size: 1.4em;
-    }
-
-    div.topRated {
-        width: 85%;
-    }
-
-    img.topImages {
-        width: 30%;
-    }
-
-    div.topPlayerInfo {
-        font-size: 0.85em;
-    }
-
-    div.playerInfo {
-        font-size: 0.75em;
-    }
-
-    form.search-bar {
-        margin: 20px auto;
-        width: 60%;
-        font-size: 0.9em;
-    }
-
-    input.searchFriends {
-        width: 70%;
-        padding: 7px;
-    }
-
-    input.searchButton {
-        width: 20%;
-    }
-
-    div.currentFriends {
-        width: 100%;
-    }
-
-
-    div.friendProfile {
-        width: 15%;
-    }
-
-    img.friendImages {
-        width: 40%;
-    }
-}
 
 }
+
 
 @media only screen and (max-width: 640px) {
     /*Nav */
@@ -725,7 +700,7 @@ img.twitter {
     img.profilePic {
         width: 30px;
         border-radius: 30px;
-        border: 2px solid #118C4E;
+
         vertical-align: middle;
     }
 
