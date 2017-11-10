@@ -30,7 +30,7 @@ main.wrapper {
 
 h2.pageTitle {
     margin-top: 20px;
-    margin-left: 70px;
+    /*    margin-left: 70px;*/
 }
 
 /* Navigation*/
@@ -74,6 +74,10 @@ nav .demoMessage #hideBtn {
     right: 0;
 }
 
+div.mobile-logo {
+    width: 20%;
+    display: inline-block;
+}
 
 img.sustain-logo {
     width: 135px;
@@ -436,12 +440,14 @@ button.pullDownCategories {
     font-family: 'Cousine', monospace;
 }
 
+/*
 select.sustainCategories {
     margin-left: 70px;
 }
+*/
 
 p.categoryPageDescription {
-    margin-left: 70px;
+    /*    margin-left: 70px;*/
     margin-top: 20px;
 }
 
@@ -837,25 +843,28 @@ img.twitter {
 @media only screen and (max-width: 480px) {
 
     /* Nav */
-    img.sustain-logo {
+    div.mobile-logo {
+        width: 33%;
         margin: auto;
-
+        display: block;
     }
+
     div.navLinks {
-        font-size: 0.7em;
+        width: 100%;
+        margin: -5px auto;
+        background-color: #116466;
+        font-size: 0.55em;
     }
 
-    a.link {
-        margin-left: 10px;
-    }
-
-    img.searchIcon {
-        width: 15px;
-        vertical-align: middle;
+    div.mobile-menu-bar {
+        width: 88%;
+        margin: auto;
     }
 
     img.profilePic {
         width: 20px;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 
     /* sign-in page */
@@ -864,21 +873,22 @@ img.twitter {
         display: block;
         font-size: 0.9em;
         margin-top: 20px;
-        margin-left: 50px;
+        margin-left: 30px;
     }
 
     div.loginForm {
         width: 86%;
         display: block;
-        margin-top: 20px
+        margin-top: 20px;
+        margin-left: 30px;
     }
 
-
+    /* Register Page */
     section.registerForm {
         width: 95%;
     }
 
-    /* Register Page */
+
     form.signup {
         width: 100%;
     }
@@ -905,6 +915,7 @@ img.twitter {
     }
 
     /*activities on profile page*/
+
     section.profileActivityBoxesSection {
         margin: auto;
         width: 100%;
@@ -954,7 +965,29 @@ img.twitter {
         margin-left: 115px;
     }
 
-    /*Activities page*/
+    /*Category page*/
+
+    h2.pageTitle {
+        margin-top: 40px;
+        font-size: 1.1em;
+    }
+
+    p.categoryPageDescription {
+        font-size: 0.75em;
+    }
+
+    select.sustainCategories,
+    select.sustainPoints {
+        font-size: 0.45em;
+    }
+
+    button.pullDownCategories {
+        font-size: 0.65em;
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
     section.activityBoxesSection,
     section.activityDetailsBoxesSection {
         margin: auto;
@@ -992,6 +1025,7 @@ img.twitter {
         width: 25px;
     }
     /*Friends section*/
+    /*
     h2.pageTitle {
         margin-bottom: 20px;
     }
@@ -1044,4 +1078,5 @@ img.twitter {
         border-radius: 100%;
 
     }
+*/
 }
