@@ -74,20 +74,11 @@ nav .demoMessage #hideBtn {
     right: 0;
 }
 
-/*
-h1 {
-    display: inline-block;
-    padding: 10px;
-    font-size: 2em;
-    margin: 0;
-    color: #d1e8e2;
-}
-*/
 
 img.sustain-logo {
-    width: 13%;
+    width: 135px;
     display: inline-block;
-    margin-left: 110px;
+
 }
 
 div.navLinks {
@@ -142,7 +133,7 @@ section.loginPage {
 div.overallMessage {
     width: 35%;
     display: inline-block;
-    font-size: 20px;
+    font-size: 1.3em;
     vertical-align: top;
     margin: 40px auto auto 50px;
     /*    margin-top: 50px;*/
@@ -403,7 +394,7 @@ section.indivFeed {
 div.currentFeed {
     border: 3px dashed #d1e8e2;
     margin: 15px auto;
-    width: 80%;
+    width: 90%;
     padding: 10px 0;
     background-color: white;
 }
@@ -564,11 +555,17 @@ img.friendImages {
 
 /*Footer*/
 
+div.footerInfo {
+    display: inline-block;
+    width: 45%;
+}
+
 img.footer-sustain-logo {
-    width: 20%;
+    width: 26%;
     display: inline-block;
     /*    margin-left: 110px;*/
-    padding-top: 10px;
+    margin-top: 10px;
+
 }
 
 footer {
@@ -589,18 +586,17 @@ div.footerInfo {
 }
 
 div.socialButtons {
-    padding: 10px 10px;
-    width: 60%;
+    width: 55%;
     display: inline-block;
     float: right;
-    /*    margin: 20px 20px 0 0;*/
+    margin-top: 20px;
 }
 
 img.facebook,
 img.instagram,
 img.linkedIn,
 img.twitter {
-    width: 3%;
+    width: 5%;
     display: inline-block;
     float: right;
     vertical-align: middle;
@@ -624,7 +620,35 @@ img.twitter {
 
 @media only screen and (max-width: 800px) {
 
+    /*Nav*/
+    img.sustain-logo {
+        width: 115px;
+        margin-top: 5px;
+    }
+
+    div.navLinks {
+        font-size: 0.85em;
+    }
+
+    h2.pageTitle {
+        font-size: 1.3em;
+
+    }
     /*Category Page*/
+    p.categoryPageDescription {
+        font-size: 0.9em;
+    }
+
+    select.sustainCategories,
+    select.sustainPoints {
+        width: 20%;
+        font-size: 0.65em;
+    }
+
+    button.pullDownCategories {
+        font-size: 0.75em;
+    }
+
     h3.activityNameValue {
         height: 70px;
         width: 100%;
@@ -684,30 +708,22 @@ img.twitter {
 
 @media only screen and (max-width: 640px) {
     /*Nav */
-    h1 {
-        font-size: 1.5em;
+    img.sustain-logo {
+        margin-top: 5px;
     }
 
     div.navLinks {
-        font-size: 0.9em;
-    }
-
-    img.searchIcon {
-        width: 20px;
-        vertical-align: middle;
+        font-size: 0.75em;
     }
 
     img.profilePic {
-        width: 30px;
-        border-radius: 30px;
-
-        vertical-align: middle;
+        width: 25px;
     }
 
     /*sign-in page */
-    p.overallMessage {
+    div.overallMessage {
         width: 30%;
-        font-size: 1.0em;
+        font-size: 1.1em;
         margin-left: 30px;
     }
 
@@ -715,48 +731,76 @@ img.twitter {
         width: 50%;
     }
 
+    form.login h2 {
+        font-size: 1.4em;
+    }
+
+    form.login label {
+        font-size: 0.9em;
+    }
+
     form.login input {
         width: 95%;
+        font-size: 0.9em;
+    }
+
+    div.sign-up {
+        font-size: 0.9em;
     }
 
     /*register page */
     section.registerForm {
-        margin: auto;
+        margin: 30px auto;
         width: 80%;
+    }
+
+    form.signup h2 {
+        padding-bottom: 0px;
     }
 
     form.signup {
         width: 90%;
     }
 
-    form.signup input {
-        width: 95%
+    form.signup label {
+        margin-left: 20px;
+
     }
 
+    form.signup input {
+        width: 95%;
+        margin-bottom: 20px;
+    }
+
+    form.signup button {
+        margin-top: 20px;
+    }
     /*Profile and overall Feed minus the profile pic*/
     /*Prfile page*/
-    div.picture {
-        margin-left: 50px;
-        width: 35%;
-    }
-    img.mainProfilePic {
-        width: 130px;
+    img.profile-picture {
+        width: 45px;
     }
 
+    h2.profileUsername {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    div.pointsTotal {
+        font-size: 0.8em;
+    }
+    /*
     div.profileDescription {
         width: 40%;
         font-size: 0.9em;
     }
-
+*/
     section.activityBoxesSection div,
     section.activityDetailsBoxesSection div {
-        width: 30%;
-        border: 5px solid #D9B08C;
+        width: 45%;
+        border: 3px dashed #D9B08C;
     }
 
-    div.currentFeed {
-        width: 90%;
-    }
 
     p.comment {
         font-size: 0.8em;
@@ -768,79 +812,24 @@ img.twitter {
     }
 
     img.proofPicture {
-        width: 75px;
+        width: 80px;
     }
 
     /*Activities page*/
     select.sustainCategories,
     select.sustainPoints {
-        margin-top: 20px;
-        width: 35%;
-        font-size: 0.9em;
+        width: 25%;
+        font-size: 0.65em;
     }
 
-    select.sustainCategories {
-        margin-left: 10px;
-
-    }
 
     button.pullDownCategories {
-        width: 15%;
+        font-size: 0.75em;
+        margin-top: 0;
+    }
+
+    button.addCategoryButton {
         font-size: 0.8em;
-    }
-
-    /*Feed*/
-    img.feedPicture {
-        width: 30px;
-    }
-    /*Friends section*/
-    h2.pageTitle {
-        margin-bottom: 20px;
-    }
-
-    h2.topPlayers {
-        font-size: 1.4em;
-    }
-
-    div.topRated {
-        width: 90%;
-    }
-
-    div.topPlayerInfo {
-        font-size: 0.8em;
-    }
-
-    div.playerInfo {
-        font-size: 0.7em;
-    }
-
-    form.search-bar {
-        margin: 20px auto;
-        width: 60%;
-        font-size: 0.8em;
-    }
-
-    input.searchFriends {
-        width: 70%;
-        padding: 7px;
-    }
-
-    input.searchButton {
-        width: 23%;
-    }
-
-    div.currentFriends {
-        width: 100%;
-        text-align: center;
-    }
-
-
-    div.friendProfile {
-        width: 18%;
-    }
-
-    img.friendImages {
-        width: 45%;
     }
 }
 
@@ -848,10 +837,10 @@ img.twitter {
 @media only screen and (max-width: 480px) {
 
     /* Nav */
-    h1 {
-        font-size: 1.0em;
-    }
+    img.sustain-logo {
+        margin: auto;
 
+    }
     div.navLinks {
         font-size: 0.7em;
     }
@@ -870,23 +859,22 @@ img.twitter {
     }
 
     /* sign-in page */
-    p.overallMessage {
+    div.overallMessage {
         width: 80%;
         display: block;
-        font-size: 1em;
-        vertical-align: top;
+        font-size: 0.9em;
         margin-top: 20px;
+        margin-left: 50px;
     }
 
     div.loginForm {
-        width: 100%;
+        width: 86%;
         display: block;
         margin-top: 20px
     }
 
 
     section.registerForm {
-        margin: auto;
         width: 95%;
     }
 

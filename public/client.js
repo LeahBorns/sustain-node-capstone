@@ -180,7 +180,7 @@ function showActivitiesPage(allActivities) {
     $('#register-page').hide();
     $('#login-page').hide();
     $('#js-signout-link').show();
-    $('#js-signout-link').text("Sign out " + loggedinUserName);
+    $('#js-signout-link').text("SIGN OUT " + loggedinUserName);
     $('#nav-links').show();
 }
 
