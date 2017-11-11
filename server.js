@@ -211,15 +211,18 @@ app.post('/signin/', function (req, res) {
             } else {
                 items.validatePassword(req.body.password, function (err, isValid) {
                     if (err) {
-                        console.log('There was an error validating the password.');
+                        //                        console.log('There was an error validating the password.');
+                        return res.status(401).json({
+                            message: 'There was an error validating the password.'
+                        });
                     }
                     if (!isValid) {
-                        //                        return res.status(401).json({
-                        //                            message: 'Not found'
-                        //                        });
+                        return res.status(401).json({
+                            message: 'Invalid user'
+                        });
                     } else {
                         var logInTime = new Date();
-                        console.log('User logged in:' + req.body.username + 'at' + logInTime);
+                        //                        console.log('User logged in:' + req.body.username + 'at' + logInTime);
                         return res.json(items);
                     }
                 });

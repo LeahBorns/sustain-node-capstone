@@ -118,6 +118,7 @@ var allActivities = [];
 function displayError(message) {
     $("#messageBox span").html(message);
     $("#messageBox").fadeIn();
+    $("#messageBox").fadeOut(5000);
 };
 
 ///////////////////////////////REGISTER AND SIGN UP////////////////////////////
@@ -213,6 +214,7 @@ function displaySelectedActivities(categoryName, categoryPoints) {
     // console.log(categoryName, categoryPoints);
     let buildActivity = "";
     let emptyActivities = 0;
+    let numberOfActivities = 0;
 
     $.each(myActivities, function (myActivitiesKey, myActivitiesValue) {
 
@@ -228,6 +230,7 @@ function displaySelectedActivities(categoryName, categoryPoints) {
 
             buildActivity += "<button class='addCategoryButton' id='activityAddButton' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
+            numberOfActivities++;
         } else if ((categoryName !== "") && (categoryName == myActivitiesValue.category) && (categoryPoints == "")) {
             buildActivity += "<div class='activityBoxes'>";
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
@@ -240,6 +243,7 @@ function displaySelectedActivities(categoryName, categoryPoints) {
 
             buildActivity += "<button class='addCategoryButton' id='activityAddButton' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
+            numberOfActivities++;
         } else if (((categoryName == "") && (categoryPoints !== "") && (categoryPoints == myActivitiesValue.activityPoints))) {
             buildActivity += "<div class='activityBoxes'>";
             buildActivity += "<img class='activityImageValue' src='images/" + myActivitiesValue.activityImage + "' alt='" + myActivitiesValue.category + "category' >";
@@ -252,12 +256,16 @@ function displaySelectedActivities(categoryName, categoryPoints) {
 
             buildActivity += "<button class='addCategoryButton' id='activityAddButton' role='button' type='submit'>Add Category</button><br>";
             buildActivity += "</div>";
+            numberOfActivities++;
         } else if ((categoryName == "") && (categoryPoints == "")) {
             emptyActivities++;
         }
     });
     if (emptyActivities > 0) {
-        buildActivity += "<h3 class='activityNameValue'> Please select category name or points</h3>";
+        displayError('Please select category name or points');
+    }
+    if (numberOfActivities == 0) {
+        displayError('No categories found. Please change your selection');
     }
 
     $('.activityBoxesSection').html(buildActivity);
@@ -298,6 +306,7 @@ $(document).ready(function () {
         const inputPw = $('input[name="signin-pw"]').val();
         // check for spaces, empty, undefined
         if ((!inputUname) || (inputUname.length < 1) || (inputUname.indexOf(' ') > 0)) {
+
             displayError('Invalid username');
             console.log('invalid username');
             //            alert('Invalid username');
@@ -351,17 +360,21 @@ $(document).ready(function () {
     $('#signup-button').on('click', function (event) {
         event.preventDefault();
         const form = document.body.querySelector('#new-user-form');
-        if (form.checkValidity && !form.checkValidity()) {
-            return;
-        }
+        //        if (form.checkValidity && !form.checkValidity()) {
+        //            return;
+        //        }
         const uname = $('input[name="username"]').val();
         const email = $('input[name="email"]').val();
         const pw = $('input[name="pw"]').val();
         const confirmPw = $('input[name="confirm-pw"]').val();
         //        const goals = $('input[name="goals"]').val();
-        if (pw !== confirmPw) {
-
-            //            alert('Passwords must match!');
+        if (uname == "") {
+            displayError('Please add an username');
+        } else if (email == "") {
+            displayError('Please add an email');
+        } else if (pw == "") {
+            displayError('Please add a password');
+        } else if (pw !== confirmPw) {
             displayError('Passwords must match!');
         } else {
             event.preventDefault();
@@ -390,6 +403,7 @@ $(document).ready(function () {
                     console.log(jqXHR);
                     console.log(error);
                     console.log(errorThrown);
+                    displayError('All fields must be complete before submitting.');
                 });
         };
     });
