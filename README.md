@@ -1,7 +1,22 @@
 # Sustain-node-capstone
 Sustain is both a game and an educational tool for music fans to encourage the application of sustainable practices into an everyday routine. By signing up for practices users are committing to these practices and can gain points for each practice done daily. In addition to daily commitment, a short description of their experience and/or photo/video proof will gain users additional points. Sustain is also a way for fans to engage with their favorite artist. By gaining points, those points will go to the fans to get free swag as well as to the artist to decrease their carbon footprint through the help of their fans.
 
-![Opening Page Screenshot](https://github.com/LeahBorns/upbeat-atlas-artist-finder-songkick-api-capstone/blob/master/github-images/opening-page-screen-shot.png)
+![Sign-in Page Screenshot](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-screen-shots/sustain-sign-in-page.png)
+![Registration Screenshot](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-screen-shots/sustain-registration-page.png)
+![Activity Categories Page Screenshot](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-screen-shots/sustain-categories-page.png)
+![Profile page (top/bottom) Screenshot](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-screen-shots/sustain-profile-page-top.png, https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-screen-shots/sustain-profile-page-bottom.png)
+
+## Introduction
+Sustainability is becoming a growing practice as we see the negative impacts we are having on our renewable and non-renewable resources. As the ideal spokes-people. Musicans are becoming the voice for these initatives as they tour and show how they can have minimal impact even while traveling. Sustain is the first iteration of an app that will gameify sustainability. It will engage fans by having them commit to sustainable activies, document those experiences and get points for it. In return for the points the fans can recieve merchandise from the artist.
+
+
+## Use Case
+Why is this app useful? By gameifying sustainability it can make some of these practices habitual for each 'player'. It is also an outreach tool for artists trying to implement sustainability into their tour. Fans won't only learn about the artists initaitves at the venue but also inbetween shows. This app will provides the fans with the feeling that they are contributing to the artists initatives.
+
+## UX
+
+Initial wireframes for Sustain can be seen below. Wireframes of all key processes were designed along with data flow and user questions for key tasks.
+
 
 ## User-stories
 
