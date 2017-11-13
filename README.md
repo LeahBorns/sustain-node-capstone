@@ -59,17 +59,17 @@ You can access a working prototype of the app here: https://sustain-node-capston
 ## Functionality
 The app's functionality includes:
 
-* Search for running events in a 50 mile radius from a chosen US city.
-* Return 24 results.
-* Results provide the event name, location, race distance, date, and a discription (if available).
-* The results are in ascending order by date.
-* Add chosen results to a favorites section.
-* Delete events from favorites section.
-* Link to registration page from the results section, or the favorites section.
+* Register as a new user with a username, email, and password.
+* Sign-in using registered username and password.
+* Search through pre-existing categories and points of activities with pull down search option.
+* Select categories to add to profile.
+* Review chosen activities on profile page
+* Commit to each activity by writing about each experience and submitting.
+* Each submitted activites appears in feed at the bottom of the profile page and the points are added at the top.
 
 ## Technical
 
-The app is built with HTML, CSS, JavaScript, jQuery and Node.js. It uses AJAX JSON calls to the *Active.com* Open Platform API to return the serach results. All data is held in an mLab database during the user's session. It has been built to be fully responsive across mobile, tablet and desktop screen resolutions.
+The app is built with HTML, CSS, JavaScript, jQuery and Node.js. All data is held in an mLab database during the user's session. It has been built to be fully responsive across mobile, tablet and desktop screen resolutions.
 
 ## Development Roadmap
 
