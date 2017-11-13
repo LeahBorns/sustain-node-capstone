@@ -4,7 +4,8 @@ Sustain is both a game and an educational tool for music fans to encourage the a
 ![Sign-in Page Screenshot](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-screen-shots/sustain-sign-in-page.png)
 ![Registration Screenshot](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-screen-shots/sustain-registration-page.png)
 ![Activity Categories Page Screenshot](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-screen-shots/sustain-categories-page.png)
-![Profile page (top/bottom) Screenshot](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-screen-shots/sustain-profile-page-top.png, https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-screen-shots/sustain-profile-page-bottom.png)
+![Profile page (top/bottom) Screenshot](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-screen-shots/sustain-profile-page-top.png)
+![Profile page (top/bottom) Screenshot](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-screen-shots/sustain-profile-page-bottom.png)
 
 ## Introduction
 Sustainability is becoming a growing practice as we see the negative impacts we are having on our renewable and non-renewable resources. As the ideal spokes-people. Musicans are becoming the voice for these initatives as they tour and show how they can have minimal impact even while traveling. Sustain is the first iteration of an app that will gameify sustainability. It will engage fans by having them commit to sustainable activies, document those experiences and get points for it. In return for the points the fans can recieve merchandise from the artist.
@@ -51,18 +52,15 @@ Initial wireframes for Sustain can be seen below. Wireframes of all key processe
 * As a user I should be able to find and follow friends and artists
 * As a user I should be able to see what practices and points other friends gained in a feed
 
-##### Screens
+##### Wireframes
 
-* Screen to log in
-![Log-In](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-node-capstone-wireframe-login.jpg)
-* Screen with user profile (Home) information to find friends/activities (img, summary, feed of activities, activities signed up for
-![Profile](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-node-capstone-wireframe_profile.jpg)
-* Screen with list of activities
-![Activities](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-node-capstone-wireframe_activities.jpg)
-* Screen with live feed
-![Live feed](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-node-capstone-wireframe_feed.jpg)
-* Screen to find friends and see 'leaderboard'
-![Find friends](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-node-capstone-wireframe_find-friends.jpg)
+* Wireframe to log in
+![Log-In](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-wireframe/sustain-node-capstone-wireframe-login.jpg)
+* Wireframe with user profile (Home) information to find friends/activities (img, summary, feed of activities, activities signed up for
+![Profile](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-wireframe/sustain-node-capstone-wireframe_profile.jpg)
+* Wireframe with list of activities
+![Activities](https://github.com/LeahBorns/sustain-node-capstone/blob/master/github-images/sustain-wireframe/sustain-node-capstone-wireframe_activities.jpg)
+* Wireframe with live feed
 
 
 
@@ -90,4 +88,4 @@ The app is built with HTML, CSS, JavaScript, jQuery and Node.js. All data is hel
 
 This is v1.0 of the app, but future enhancements are expected to include:
 
-* Future road map
+* I plan to add a friends page and overall feed page for users to interact with other users. I also want to connect the points to artists merchandise web pages so users can redeem their points for prizes.

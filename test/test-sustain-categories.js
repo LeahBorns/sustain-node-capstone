@@ -1,61 +1,67 @@
-const should = require('chai').should();
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const should = chai.should();
 
-const sustainCategories = require('../categoryActivity');
 
-//unit test for sustainCategories function
-describe('sustainCategories', function () {
+const _require = require('../config'),
+    DATABASE_URL = _require.DATABASE_URL;
+
+const activityCategory = require('../models/activityCategory');
+
+const _require3 = require('../server'),
+    closeServer = _require3.closeServer,
+    runServer = _require3.runServer,
+    app = _require3.app;
+
+
+chai.use(chaiHttp);
+
+
+
+
+//unit test for activityCategory function
+describe('activityCategory', function () {
+
+    before(function () {
+        return runServer(DATABASE_URL);
+    });
 
     //testing the normal case
-    it('should select chosen category, points, or both', function () {
-        //examples of what normal case looks like for sustainCategories
-        const normalCase = [
-            {
-                a: 'Food',
-                b: '',
-                expected: 'Buy locally, Eat less meat'
-            },
-            {
-                a: '',
-                b: 4,
-                expected: 'Buy locally, Shorten your shower, Use reuseable water bottle'
-            },
-            {
-                a: 'Energy',
-                b: 6,
-                expected: 'Keep house temp at 68F'
-            }
-        ];
+    it('should select chosen category', function () {
+        return chai.request(app).get('/category/show/aaa').then(function (res) {
 
-        //for each set of inputs 'a,b', sustainCategories should produce the expected value
-        normalCase.forEach(function (input) {
-            const output = sustainCategories(input.a, input.b);
-            output.should.equal(input.expected);
-        });
-    });
-    it(`should raise error if args do not have activities`, function () {
-        //range of bad inputs
-        const testCase = [
-            {
-                a: 'Water',
-                b: 6
-            },
-            {
-                a: 'food',
-                b: 10
-            },
-            {
-                a: 'Choose category...',
-                b: 'Choose points...'
-            }
-        ];
-
-        //prove that above are bad inputs
-        testCase.forEach(function (input) {
-            (function () {
-                sustainCategories(input[0], input[1])
-            })
-            .should.throw(Error);
+            res.should.have.status(200);
+            res.should.be.json;
+            res.body.should.be.a('object');
         });
     });
 
+    it('should select all activities', function () {
+        return chai.request(app).get('/activity/show').then(function (res) {
+
+            res.should.have.status(200);
+            res.should.be.json;
+            res.body.should.be.a('object');
+        });
+    });
+
+    it('should select a activity based on the username', function () {
+        return chai.request(app).get('/activity-feed-by-username/aaa').then(function (res) {
+
+            res.should.have.status(200);
+            res.should.be.json;
+            res.body.should.be.a('array');
+
+            res.body.should.have.length.of.at.least(1);
+
+            res.body.forEach(function (item) {
+                item.should.be.a('object');
+                item.should.include.keys('username', 'name', 'points', 'description', 'image');
+            });
+        });
+    });
+
+    after(function () {
+        return closeServer();
+    });
 });

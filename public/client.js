@@ -427,44 +427,23 @@ $(document).ready(function () {
     });
 
 
-    ///////////////////////////////////////////PROFILE PAGE TRIGGERS///////////////////////////////////////////////
-    //PROFILE PAGE from image in nav
-    $('#js-profile').on('click', function (event) {
-        showProfilePage(loggedinUserName, sustainGoals);
-
-
-
-        $.ajax({
-                type: 'GET',
-                url: '/category/show/' + loggedinUserName,
-                dataType: 'json',
-                contentType: 'application/json'
-            })
-            .done(function (result) {
-                //console.log(result.categoryOutput);
-
-                displayProfileActivitiesByUser(myActivities, result.categoryOutput);
-            })
-
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-            });
-    });
-
-    //1. If box is checked and textbox is filled in.
-    //2. "I did it" button is pressed.
-    //3. 'Card' spins around and says completed.
-    //4. information from card shows up in feed
-
-
     // when user clicks sign-out link in header
     document.getElementById('js-signout-link').addEventListener('click', function (event) {
         location.reload();
     });
 
 });
+
+///////////////////////////////////////////PROFILE PAGE TRIGGERS///////////////////////////////////////////////
+//PROFILE PAGE from image in nav
+
+
+//1. If box is checked and textbox is filled in.
+//2. "I did it" button is pressed.
+//3. 'Card' spins around and says completed.
+//4. information from card shows up in feed
+
+
 $(document).on("click", '#js-profile ', function (event) {
     showProfilePage(loggedinUserName, sustainGoals);
 

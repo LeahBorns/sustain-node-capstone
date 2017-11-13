@@ -353,11 +353,6 @@ app.post('/activity/add', (req, res) => {
 
 
 
-    //    console.log(username, name, points, description, image);
-    console.log("-->", description, "<---");
-
-
-
     activity.create({
         username: username,
         name: name,
