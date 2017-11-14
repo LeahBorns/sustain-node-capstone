@@ -20,84 +20,14 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
 
-//JWT AUTHENTICATION
-//const {
-//    router: userRouter
-//} = require('./user');
-//const {
-//    router: authRouter,
-//    BasicStrategy,
-//    jwtStrategy
-//} = require('./auth/index')
+
 
 // Mongoose internally uses a promise-like object,
 // but its better to make Mongoose use built in es6 promises
 mongoose.Promise = global.Promise;
 
 
-//
-//const {
-//    PORT,
-//    DATABASE_URL
-//} = require('./config');
-//
-//
-//// Logging
-//app.use(morgan('common'));
-//
-//// CORS
-//app.use(function (req, res, next) {
-//    res.header('Access-Control-Allow-Origin', '*');
-//    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-//    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-//    if (req.method === 'OPTIONS') {
-//        return res.send(204);
-//    }
-//    next();
-//});
-//
-//
-////passport.use(basicStrategy);
-//passport.use(jwtStrategy);
-//
-//
-//app.use('/api/users/', usersRouter);
-//app.use('/api/auth/', authRouter);
-//
-///////////////////////////////////////////////////////////////////////////////
-//
-//
-//passport.use(new JwtSession("dwibeiwiuwei"));
-//
-//options = {
-//    secret: options.secret, //The decoding secret
-//    requestKey: options.requestKey || 'user', //The key in the JWT that defines the user id
-//    requestArg: options.requestArg || 'accessToken' /* The parameter name on the HTTP request that refers to the JWT. The middleware will look for this property in the query string, request body, and headers. The header name will be derived from a camelBack representation of the property name. For example, if the requestArg is "accessToken" (the default) then this instance of the middlware will look for the header name "x-access-token" */
-//};
-//
-//app.use(passport.initialize());
-//
-//app.use(passport.authenticate('jwt', options));
-///////////////////////////////////////////////////////////////////////
 
-// A protected endpoint which needs a valid JWT to access it
-//app.get(
-//    '/api/protected',
-//    passport.authenticate('jwt', {
-//        session: false
-//    }),
-//    (req, res) => {
-//        return res.json({
-//            data: 'rosebud'
-//        });
-//    }
-//);
-//
-//app.use('*', (req, res) => {
-//    return res.status(404).json({
-//        message: 'Not Found'
-//    });
-//});
 
 //RUN/CLOSE SERVER
 let server;
@@ -397,57 +327,7 @@ app.get('/activity/show', function (req, res) {
         });
 });
 
-////Feed page
-//// Indiv activity completion
-//app.post('/feed/post', (req, res) => {
-//    //    console.log(req.body);
-//    let activtyImg = req.body.img;
-//    let name = req.body.name;
-//    let points = req.body.points;
-//    let user = req.body.user;
-//
-//    activity.create({
-//        user,
-//        img,
-//        name,
-//        points
-//    }, (err, item) => {
-//        if (err) {
-//            return res.status(500).json({
-//                message: 'Internal Server Error'
-//            });
-//        }
-//        if (item) {
-//            console.log(`activity \`${name}\` completed.`);
-//            return res.json(item);
-//        }
-//    });
-//});
-//
-////Take completed activity and put in feed
-//app.get('/feed/post', function (req, res) {
-//    //    console.log(req.params.user);
-//    activity
-//        .find()
-//        .sort()
-//        .then(function (activity) {
-//            let activityOutput = [];
-//            activity.map(function (activity) {
-//                if (activity.user == req.params.user) {
-//                    activityOutput.push(activity);
-//                }
-//            });
-//            res.json({
-//                activityOutput
-//            });
-//        })
-//        .catch(function (err) {
-//            console.error(err);
-//            res.status(500).json({
-//                message: 'Internal server error'
-//            });
-//        });
-//});
+
 
 //MISC -> catch-all endpoint if client makes request to non-existent endpoint
 app.use('*', (req, res) => {

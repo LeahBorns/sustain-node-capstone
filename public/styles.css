@@ -289,14 +289,6 @@ div.pointsTotal {
 
 /*activities on profile page*/
 
-/*
-hr {
-    border: 1px solid #118C4E;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-*/
-
 section.activitiesSection {
     width: 90%;
     margin: auto;
@@ -360,13 +352,6 @@ img.activityImageValue {
     margin-bottom: 20px;
 }
 
-
-/*
-input.checkbox {
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-*/
 
 input {
     color: #2c3531;
@@ -1032,75 +1017,9 @@ img.twitter {
         padding-top: 15px;
         height: 95px;
     }
-}
 
-button.addCategoryButton {
-    font-size: 0.75em;
-}
-
-/*Feed*/
-
-/*
-img.feedPicture {
-    width: 25px;
-}
-*/
-
-/*Friends section*/
-
-/*
-    h2.pageTitle {
-        margin-bottom: 20px;
+    button.addCategoryButton {
+        font-size: 0.75em;
     }
-
-    h2.topPlayers {
-        font-size: 1.2em;
-    }
-
-    div.topRated {
-        width: 90%;
-    }
-
-    div.topPlayerInfo {
-        font-size: 0.7em;
-    }
-
-    div.playerInfo {
-        font-size: 0.65em;
-    }
-
-    form.search-bar {
-        margin: 20px auto;
-        width: 60%;
-        font-size: 0.7em;
-    }
-
-    input.searchFriends {
-        width: 60%;
-        padding: 7px;
-    }
-
-    input.searchButton {
-        width: 30%;
-    }
-
-    div.currentFriends {
-        margin: auto;
-        width: 100%;
-        text-align: center;
-    }
-
-
-    div.friendProfile {
-        display: inline-block;
-        width: 15%;
-    }
-
-    img.friendImages {
-        width: 35%;
-        border-radius: 100%;
-
-    }
-*/
 
 }
