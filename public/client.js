@@ -33,7 +33,7 @@ const myActivities = [
     },
     {
         category: 'Water',
-        activityName: 'Shorten you shower',
+        activityName: 'Shorten your shower',
         activityImage: 'water-drop.png',
         activityPoints: 4
     },
@@ -118,7 +118,7 @@ var allActivities = [];
 function displayError(message) {
     $("#messageBox span").html(message);
     $("#messageBox").fadeIn();
-    $("#messageBox").fadeOut(8000);
+    $("#messageBox").fadeOut(10000);
 };
 
 ///////////////////////////////REGISTER AND SIGN UP////////////////////////////
