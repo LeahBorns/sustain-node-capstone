@@ -118,7 +118,7 @@ var allActivities = [];
 function displayError(message) {
     $("#messageBox span").html(message);
     $("#messageBox").fadeIn();
-    $("#messageBox").fadeOut(5000);
+    $("#messageBox").fadeOut(8000);
 };
 
 ///////////////////////////////REGISTER AND SIGN UP////////////////////////////
