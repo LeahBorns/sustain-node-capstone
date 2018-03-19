@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sustain Capstone</title>
-    <link href="https://fonts.googleapis.com/css?family=Cousine" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cousine|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -21,6 +21,16 @@
         <div class="mobile-logo">
             <a href="#page-top"><img class="sustain-logo" src="images/sustain-logo.png" alt="Sustain logo"></a>
         </div>
+
+        <!--login in nav -->
+        <div class="nav-form">
+            <form class="nav-sign-in" role="form" action="/login/" method="post">
+                <input type="username" name="signin-username" id="username" placeholder="username" required="true">
+                <input type="password" name="signin-pw" id="password" placeholder="password" required="true">
+                <button id="js-signin-button" role="button" type="submit">Enter</button>
+            </form>
+        </div>
+        <!-- end login-->
         <div class="navLinks" id="nav-links">
             <div class="mobile-menu-bar">
                 <a class="link" id="js-activities">ADD CATEGORY</a>
@@ -37,10 +47,39 @@
 
     <!-- Login Page -->
     <main id="login-page" class="wrapper">
-        <section class="loginPage">
-            <div class="overallMessage">
-                <p>The artist BØRNS has commited to reducing his carbon footprint in his 2018 tour through incorporation of sustainable practices, such as recycling, carbon offsets, and outreach.<br><br>Join him on a quest toward a healthier future.Commit to daily sustainable practices, share your experience, get points!</p>
+        <section id="main-header">
+          <div id="header-insides">
+           <div id="amp1"><img src="images/amp-knobs.png" alt="amp knob image"></div>
+            <header id="page-title" role="banner">
+                <h1>Gamifying Sustainability</h1>
+                <p>Join your favorite artist on a quest toward a healthier future.<br>Commit to daily sustainable practices, share your experience, get points!</p><br>
+                <button class="sign-up" id="js-new-account">Join Sustain</button>
+            </header>
+            <div id="amp2"><img src="images/amp-knobs-2.png" alt="amp knob image"></div>
             </div>
+        </section>
+
+        <section class="loginPage">
+           <div id="info-steps">
+            <div class="instructions">
+                <img class ="step-img" src="images/recycle.png" alt="recycle icon">
+                <h3>Commit to sustainable activies </h3>
+            </div>
+            <div class="instructions">
+                <img class="step-img" src="images/save-money.png" alt="picture2">
+                <h3>Earn Carbon Points for each activity</h3>
+            </div>
+            <div class="instructions">
+                <img class="step-img" src="images/nature.png" alt="picture3">
+                <h3>Get prizes and help artists reduce their carbon footprint</h3>
+            </div>
+        </div>
+<!--
+            <div class="overallMessage">
+                <p>Join your favorite artist in reducing their carbon footprint through incorporation of sustainable practices, such as recycling, carbon offsets, and outreach.<br><br>Join your favorite artist on a quest toward a healthier future.Commit to daily sustainable practices, share your experience, get points!</p>
+            </div>
+-->
+<!--
             <div class="loginForm">
                 <form class="login" role="form" action="/login/" method="post">
                     <h2>LOGIN</h2><br>
@@ -51,9 +90,9 @@
                     <button id="js-signin-button" role="button" type="submit">Enter</button>
                 </form><br>
                 <div class="sign-up">
-                    <p>Want to join? <a id="js-new-account">Create an account</a></p>
-                </div>
+                    <p>Want to join? <a id="js-new-account">Create an account</a></p></div>
             </div>
+-->
         </section>
         <div class="push"></div>
     </main>
@@ -64,11 +103,13 @@
             <form class="signup" id="new-user-form" role="form" action="/signup/" method="post">
                 <h2>Join Sustain</h2><br>
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="username" required><br><br>
+                <input type="text" name="username-signup" id="username-signup" placeholder="username" required><br><br>
+<!--
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" placeholder="email" required><br><br>
+-->
                 <label for="password">Password</label>
-                <input type="password" name="pw" id="password" placeholder="password" required><br><br>
+                <input type="password" name="pw-signup" id="password-signup" placeholder="password" required><br><br>
                 <label for="password">Re-enter Password</label>
                 <input type="password" name="confirm-pw" id="verify-password" placeholder="verify password" required><br><br>
                 <!--

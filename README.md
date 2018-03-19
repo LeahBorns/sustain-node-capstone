@@ -89,3 +89,7 @@ The app is built with HTML, CSS, JavaScript, jQuery and Node.js. All data is hel
 This is v1.0 of the app, but future enhancements are expected to include:
 
 * I plan to add a friends page and overall feed page for users to interact with other users. I also want to connect the points to artists merchandise web pages so users can redeem their points for prizes.
+
+
+signin-form:
+

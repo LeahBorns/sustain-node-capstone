@@ -79,9 +79,9 @@ app.post('/signup', (req, res) => {
     //    console.log(password);
     password = password.trim();
 
-    let email = req.body.email;
-    //    console.log(email);
-    email = email.trim();
+//    let email = req.body.email;
+//    //    console.log(email);
+//    email = email.trim();
 
     bcrypt.genSalt(10, (err, salt) => {
         if (err) {
