@@ -134,18 +134,18 @@ function showSignInPage() {
     $('.addedCategoryCard').hide();
 }
 
-function showNewUserPage() {
-    //    $('*').scrollTop(0);
-    $('#friends-page').hide();
-    $('#feed-page').hide();
-    $('#activities-page').hide();
-    $('#profile-page').hide();
-    $('#register-page').show();
-    $('#js-signout-link').hide();
-    $('#login-page').hide();
-    $('#nav-links').hide();
-    $('.addedCategoryCard').hide();
-}
+//function showNewUserPage() {
+//    //    $('*').scrollTop(0);
+//    $('#friends-page').hide();
+//    $('#feed-page').hide();
+//    $('#activities-page').hide();
+//    $('#profile-page').hide();
+//    $('#register-page').show();
+//    $('#js-signout-link').hide();
+//    $('#login-page').hide();
+//    $('#nav-links').hide();
+//    $('.addedCategoryCard').hide();
+//}
 
 ////////////////////////////PROFILE PAGE FUNCTIONS////////////////////////////////
 
@@ -290,7 +290,7 @@ $(document).ready(function () {
     $('#feed-page').hide();
     $('#activities-page').hide();
     $('#profile-page').hide();
-    $('#register-page').hide();
+//    $('#register-page').hide();
     $('#login-page').show();
     $('#js-signout-link').hide();
     $('#nav-links').hide();
@@ -302,8 +302,12 @@ $(document).ready(function () {
         event.preventDefault();
 
         // AJAX call to validate login info and sign user in
-        const inputUname = $('input[name="signin-username"]').val();
-        const inputPw = $('input[name="signin-pw"]').val();
+        const inputUname = $('#username').val();
+        const inputPw = $('#password').val();
+
+        console.log(inputUname, inputPw);
+//        const inputUname = $('input[name="signin-username"]').val();
+//        const inputPw = $('input[name="signin-pw"]').val();
         // check for spaces, empty, undefined
         if ((!inputUname) || (inputUname.length < 1) || (inputUname.indexOf(' ') > 0)) {
 
@@ -324,7 +328,7 @@ $(document).ready(function () {
 
             $.ajax({
                     type: "POST",
-                    url: "/signin",
+                    url: "/signin/",
                     dataType: 'json',
                     data: JSON.stringify(unamePwObject),
                     contentType: 'application/json'
@@ -354,25 +358,30 @@ $(document).ready(function () {
     //2. Visitor wants to create an account. Clicks create an account
     //Add username, email, password and verify password. Submit
     //and brought back to sign in page to sign in
-    $('#js-new-account').on('click', function (event) {
-        showNewUserPage();
-    });
-    $('#signup-button').on('click', function (event) {
+//    $('#js-signup-button').on('click', function (event) {
+//        showNewUserPage();
+//    });
+    $('#js-signup-button').on('click', function (event) {
         event.preventDefault();
         const form = document.body.querySelector('#new-user-form');
         //        if (form.checkValidity && !form.checkValidity()) {
         //            return;
         //        }
-        const uname = $('input[name="username"]').val();
-        const email = $('input[name="email"]').val();
-        const pw = $('input[name="pw"]').val();
-        const confirmPw = $('input[name="confirm-pw"]').val();
+        const uname = $('#username-signup').val();
+        const pw = $('#password-signup').val();
+        const confirmPw = $('#verify-password').val();
+//        const uname = $('input[name="username"]').val();
+//        const email = $('input[name="email"]').val();
+//        const pw = $('input[name="pw"]').val();
+//        const confirmPw = $('input[name="confirm-pw"]').val();
         //        const goals = $('input[name="goals"]').val();
         if (uname == "") {
             displayError('Please add an username');
-        } else if (email == "") {
-            displayError('Please add an email');
-        } else if (pw == "") {
+        }
+//        else if (email == "") {
+//            displayError('Please add an email');
+//        }
+        else if (pw == "") {
             displayError('Please add a password');
         } else if (pw !== confirmPw) {
             displayError('Passwords must match!');
@@ -380,10 +389,12 @@ $(document).ready(function () {
             event.preventDefault();
             const newUserObject = {
                 username: uname,
-                password: pw,
-                email: email,
+                password: pw
+//                email: email,
                 //                goals: goals
             };
+
+
             // will assign a value to variable 'user' in signin step below
             // AJAX call to send form data up to server/DB and create new user
             $.ajax({

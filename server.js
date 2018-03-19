@@ -72,7 +72,7 @@ app.post('/signup', (req, res) => {
     //    console.log(username);
     username = username.trim();
 
-    let goals = req.body.goals;
+//    let goals = req.body.goals;
     //    console.log(goals);
 
     let password = req.body.password;
