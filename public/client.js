@@ -132,6 +132,7 @@ function showSignInPage() {
     $('#js-signout-link').hide();
     $('#nav-links').hide();
     $('.addedCategoryCard').hide();
+    $('.nav-form').show();
 }
 
 //function showNewUserPage() {
@@ -166,6 +167,7 @@ function showProfilePage(loggedinUserName, sustainGoals) {
     $('.profileDescription').text(sustainGoals);
     $('#total-points').text(currentScore + myActivities.activityPoints);
     displayProfileActivities(myActivities);
+    $('.nav-form').hide();
     //        $('.profileActivityBoxesSection').text(displayProfileActivities(myActivities));
 }
 
@@ -183,6 +185,7 @@ function showActivitiesPage(allActivities) {
     $('#js-signout-link').show();
     $('#js-signout-link').text("SIGN OUT " + loggedinUserName);
     $('#nav-links').show();
+    $('.nav-form').hide();
 }
 
 //FUNCTION TO SHOW ALL ACTIVITIES IN 'CARD' FORM
@@ -364,24 +367,14 @@ $(document).ready(function () {
     $('#js-signup-button').on('click', function (event) {
         event.preventDefault();
         const form = document.body.querySelector('#new-user-form');
-        //        if (form.checkValidity && !form.checkValidity()) {
-        //            return;
-        //        }
+
         const uname = $('#username-signup').val();
         const pw = $('#password-signup').val();
         const confirmPw = $('#verify-password').val();
-//        const uname = $('input[name="username"]').val();
-//        const email = $('input[name="email"]').val();
-//        const pw = $('input[name="pw"]').val();
-//        const confirmPw = $('input[name="confirm-pw"]').val();
-        //        const goals = $('input[name="goals"]').val();
+
         if (uname == "") {
             displayError('Please add an username');
-        }
-//        else if (email == "") {
-//            displayError('Please add an email');
-//        }
-        else if (pw == "") {
+        }else if (pw == "") {
             displayError('Please add a password');
         } else if (pw !== confirmPw) {
             displayError('Passwords must match!');
