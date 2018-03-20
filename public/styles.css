@@ -47,7 +47,7 @@ nav {
     right: 0;
     z-index: 10;
     color: #d1e8e2;
-    background-image: url(images/sustain-background.png);
+/*    background-image: url(images/sustain-background.png);*/
     background-size: 100%;
     background-color: #2c3531;
 }
@@ -182,6 +182,7 @@ div#header-insides{
     margin: auto;
     width: 100%;
     text-align: center;
+    color: #99F0DC;
 }
 
 header#page-title {
