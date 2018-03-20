@@ -165,8 +165,6 @@ nav .demoMessage #hideBtn {
     right: 0;
 }
 
-
-
 /*Header*/
 
 section#main-header {
@@ -318,7 +316,6 @@ form.signup input {
 }
 
 form.signup button {
-
     background-color: #fed731;
     padding: 10px;
     font-family: 'Cousine', monospace;
@@ -329,15 +326,12 @@ form.signup button {
     width: 20%;
 }
 
-/*Profile Page*/
+/*///////////////Profile Page/////////////////////////*/
 
 section.profileInfo {
     width: 80%;
     margin: auto;
-
 }
-
-
 
 div.profileHeader {
     width: 70%;
@@ -350,7 +344,6 @@ img.profile-picture {
     width: 70px;
     border-radius: 50%;
     border: 3px solid #d9b08c;
-
 }
 
 h2.profileUsername {
@@ -375,37 +368,31 @@ div.pointsTotal {
     text-align: center;
 }
 
-/*activities on profile page*/
-
-section.activitiesSection {
-    width: 90%;
-    margin: auto;
-    text-align: center;
-}
+/*activities on category and profile page*/
 
 section.activityBoxesSection,
 section.activityDetailsBoxesSection {
-    margin: 20px auto;
+    margin: auto;
     width: 100%;
     margin-bottom: 30px;
     text-align: center;
-    border: 3px solid #d9b08c;
-    background-color: #d9b08c;
+    background-color: #fff;
     padding: 20px 80px;
 }
 
 section.activityBoxesSection div,
 section.activityDetailsBoxesSection div {
-    border: 3px dashed #d9b08c;
     width: 30%;
     display: inline-block;
     padding: 30px 5px 0px 5px;
-    background-color: #116466;
     margin: auto;
-    color: white;
+    color: #000;
     vertical-align: top;
     margin-left: 10px;
     margin-bottom: 10px;
+    background-color: rgba(106,195,39, 0.8);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
 }
 
 
@@ -418,24 +405,24 @@ h3.activityNameValue {
     text-align: center;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    color: #d1e8e2;
+    color: #000;
 }
 
 /*Profile Page*/
 
 h3.activityNameValueValue,
 p.tell-us {
-    color: #d1e8e2;
+    color: #000;
 }
 
 h3.activityPointsValue {
-    color: #d1e8e2;
+    color: #000;
 }
 
 img.activityImageValue {
     width: 50px;
     background-color: white;
-    border: 3px solid #d9b08c;
+    border: 3px solid #0c4f6e;
     border-radius: 50%;
     margin-bottom: 20px;
 }
@@ -453,11 +440,12 @@ textarea.textBox {
 
 button.completedActivity,
 button.completedActivityButton {
-    background-color: #d1e8e2;
+    background-color: #fed731;
     padding: 10px;
-    color: #2c3531;
-    margin-top: 20px;
+    margin-left: 10px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
 }
 
 /* Individual feed*/
@@ -504,13 +492,26 @@ img.proofPicture {
 }
 
 
-/*Activities page*/
+/*Activity/Category page*/
+
+/*Activity/Category header*/
+section.activitiesSection {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    padding-top: 10%;
+    padding-bottom: 5%;
+    /*    border: 40px solid #0c4f6e;*/
+    background-color: rgba(127, 214, 194, 1);
+    background-image: url("images/climpek.png");
+}
 
 select.sustainCategories,
 select.sustainPoints,
 button.pullDownCategories {
     margin-top: 40px;
     font-family: 'Cousine', monospace;
+    font-size: 0.9rem;
 }
 
 /*
@@ -519,31 +520,35 @@ select.sustainCategories {
 }
 */
 
-p.categoryPageDescription {
+h3.categoryPageDescription {
     /*    margin-left: 70px;*/
     margin-top: 20px;
 }
 
 select.sustainCategories,
 select.sustainPoints {
-    border: 1px solid #2c3531;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
 }
 
 
 button.pullDownCategories {
-    margin-left: 10px;
-    background-color: #d9b08c;
+    background-color: #fed731;
     padding: 10px;
-    color: #2c3531;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
 }
 
 button.addCategoryButton {
-    background-color: #D1e8e2;
+    background-color: #fed731;
     padding: 10px;
-    color: #585858;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-family: 'Cousine', monospace;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
 }
 
 /*Feed*/
