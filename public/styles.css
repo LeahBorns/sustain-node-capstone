@@ -3,7 +3,6 @@
     border: 0;
     padding: 0;
     box-sizing: border-box;
-    color: #2c3531;
 }
 
 html,
@@ -73,12 +72,14 @@ div.navLinks {
     font-size: 1em;
     vertical-align: middle;
     margin-top: 11px;
-    color: #d1e8e2;
+    color: #7fd6c2;
+    font-family: 'Cousine', monospace;
 }
 
 a.link {
     margin-left: 20px;
-    color: #d1e8e2;
+    color: #7fd6c2;
+    font-family: 'Cousine', monospace;
 }
 
 /*
@@ -91,11 +92,11 @@ color: #d1e8e2;
 
 img.profilePic {
     width: 30px;
-    border-radius: 50%;
-    border: 2px solid #d9b08c;
+    border-radius: 10px;
+    border: 2px solid #7fd6c2;
     vertical-align: middle;
     margin-right: 10px;
-    background-color: #d1e8e2;
+    background-color: #7fd6c2;
 }
 
 #js-signout-link {
@@ -190,9 +191,11 @@ header#page-title {
     display: inline-block;
 }
 
+/*
 header h1, p {
     color: #B2FFF5;
 }
+*/
 
 header p {
     line-height: 2rem;
@@ -329,8 +332,15 @@ form.signup button {
 /*///////////////Profile Page/////////////////////////*/
 
 section.profileInfo {
-    width: 80%;
+    text-align: center;
+    width: 100%;
     margin: auto;
+    padding-top: 7%;
+    padding-bottom: 5%;
+    /*    border: 40px solid #0c4f6e;*/
+    background-color: #2c3531;
+    background-image: url("images/climpek.png");
+    color: #fed731;
 }
 
 div.profileHeader {
@@ -339,11 +349,13 @@ div.profileHeader {
 }
 
 img.profile-picture {
-    margin-left: 44%;
+    margin: auto;
     margin-top: 30px;
     width: 70px;
-    border-radius: 50%;
-    border: 3px solid #d9b08c;
+    border-radius: 10px;
+/*    border: 3px solid #0c4f6e;*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fff;
 }
 
 h2.profileUsername {
@@ -366,6 +378,90 @@ div.pointsTotal {
     width: 50%;
     margin: auto;
     text-align: center;
+    font-size: 1.2rem;
+}
+
+h3.activityNameValueValue,
+p.tell-us {
+    color: #000;
+}
+
+h3.activityPointsValue {
+    color: #000;
+}
+
+img.activityImageValue {
+    width: 50px;
+    background-color: white;
+    border: 3px solid #0c4f6e;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    color: #2c3531;
+}
+
+textarea.textBox {
+    border: 1px dashed #67BCDB;
+    margin-top: 10px;
+    width: 90%;
+}
+
+button.completedActivity,
+button.completedActivityButton {
+    background-color: #fed731;
+    padding: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+
+/* Individual feed*/
+
+section.indivFeed {
+    padding: 20px;
+    background-color: rgba(254,215,49, 0.5);
+    background-image: url("images/sustain-background.png");
+    background-attachment: fixed;
+    color: #99F0DC;
+}
+
+div.currentFeed {
+    margin: 15px auto;
+    width: 90%;
+    padding: 10px 0;
+    background-color: rgba(12,79,110,0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h2.feed {
+    color: #000;
+}
+
+div.pointsEarned {
+    display: inline-block;
+    vertical-align: middle;
+    width: 60%;
+}
+
+h2.points,
+h3.practice,
+p.comment {
+    padding: 10px;
+    padding-left: 50px;
+}
+
+img.proofPicture {
+    margin-top: 20px;
+    margin-left: 50px;
+    width: 10%;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /*activities on category and profile page*/
@@ -408,88 +504,7 @@ h3.activityNameValue {
     color: #000;
 }
 
-/*Profile Page*/
 
-h3.activityNameValueValue,
-p.tell-us {
-    color: #000;
-}
-
-h3.activityPointsValue {
-    color: #000;
-}
-
-img.activityImageValue {
-    width: 50px;
-    background-color: white;
-    border: 3px solid #0c4f6e;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
-
-
-input {
-    color: #2c3531;
-}
-
-textarea.textBox {
-    border: 1px dashed #67BCDB;
-    margin-top: 10px;
-    width: 90%;
-}
-
-button.completedActivity,
-button.completedActivityButton {
-    background-color: #fed731;
-    padding: 10px;
-    margin-left: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
-}
-
-/* Individual feed*/
-
-section.indivFeed {
-    border: 3px solid #2c3531;
-    padding: 20px;
-    background-color: #2c3531;
-}
-
-div.currentFeed {
-    border: 3px dashed #d1e8e2;
-    margin: 15px auto;
-    width: 90%;
-    padding: 10px 0;
-    background-color: white;
-}
-
-h2.feed {
-    color: #d1e8e2;
-}
-
-div.pointsEarned {
-    display: inline-block;
-    vertical-align: middle;
-    width: 60%;
-}
-
-h2.points,
-h3.practice,
-p.comment {
-    padding: 10px;
-    padding-left: 50px;
-}
-
-img.proofPicture {
-    margin-top: 20px;
-    margin-left: 50px;
-    width: 100px;
-    display: inline-block;
-    vertical-align: middle;
-    border-radius: 100%;
-    border: 5px dashed #116466;
-}
 
 
 /*Activity/Category page*/
@@ -556,7 +571,7 @@ button.addCategoryButton {
 img.feedPicture {
     width: 30px;
     vertical-align: middle;
-    border-radius: 100%;
+    border-radius: 10px;
     margin-right: 10px;
 }
 
