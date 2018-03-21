@@ -11,7 +11,6 @@ body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
     background-color: #fff;
-/*    background-image: url(images/sustain-background.png);*/
     background-attachment: fixed;
     background-size: 100%;
 }
@@ -49,14 +48,15 @@ nav {
     color: #d1e8e2;
 /*    background-image: url(images/sustain-background.png);*/
     background-size: 100%;
-    background-color: #2c3531;
+    background-color: #000;
 }
 
 div.mobile-logo {
-    width: 20%;
+    width: 50%;
     display: inline-block;
-    text-align: right;
-    margin: auto;
+    text-align: left;
+    margin-left: 10%;
+    vertical-align: bottom;
 }
 
 img.sustain-logo {
@@ -66,7 +66,6 @@ img.sustain-logo {
 
 
 div.navLinks {
-
     display: inline-block;
     float: right;
     font-size: 1em;
@@ -106,33 +105,32 @@ img.profilePic {
 div.nav-form {
     margin: auto;
     display: inline-block;
-    width: 30%;
+    width: 35%;
 
 }
 
 form.nav-sign-in {
-    float: right;
-    width: 90%;
-    vertical-align: middle;
+    width: 100%;
     display: inline-block;
+    vertical-align: bottom;
 }
 
 input#username, input#password, button#js-signin-button {
     font-family: 'Cousine', monospace;
-    padding: 5px;
+    padding: 3px;
+    border-radius: 10px;
 }
 
 input#username, input#password {
-    width: 90px;
-
+    width: 30%;
 }
 
 button#js-signin-button {
     background-color: #fed731;
-    padding: 10px;
+    padding: 7px;
     font-family: 'Cousine', monospace;
-    margin-bottom: 20px;
-    border-radius: 10px;
+    margin-bottom: 10px;
+
 }
 /*Pop up message*/
 nav .demoMessage {
@@ -170,12 +168,19 @@ nav .demoMessage #hideBtn {
 
 section#main-header {
     width: 100%;
+    height: 90vh;
     margin: auto;
     padding-top: 10%;
     padding-bottom: 5%;
 /*    border: 40px solid #0c4f6e;*/
-    background-color: rgba(12, 79, 110, 0.9);
-    background-image: url("images/climpek.png");
+    background-color: #000;
+    background-image: url("images/borns-stage.png");
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+
 }
 
 div#header-insides{
@@ -198,8 +203,9 @@ header h1, p {
 }
 */
 
-header p {
+header h3 {
     line-height: 2rem;
+    text-decoration: none;
 }
 
 button.sign-up {
@@ -211,9 +217,51 @@ button.sign-up {
     border-radius: 10px;
 }
 
+
+/*Info section*/
+
+section.loginPage {
+    width: 100%;
+    margin: 3% auto;
+/*    border: 40px solid #0c4f6e;*/
+    background-color: #fff;
+
+
+}
+
+/* Info steps*/
+div#info-steps {
+    width: 80%;
+    margin: 10% auto;
+    text-align: center;
+}
+
+hr {
+    border-width: 1px;
+    border-style: ridge;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+
 div#amp1, div#amp2 {
+    width: 50%;
     display: inline-block;
-    width: 10%;
+}
+div.inst-1 {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 5%;
+}
+
+img.step-img {
+    margin: 20px auto;
+    width: 80%;
+}
+
+div#amp1, div#amp2 {
+    width: 30%;
     margin: auto;
 }
 
@@ -226,68 +274,25 @@ div#amp1, div#amp2 {
     width: 70%;
     margin: auto;
 }
-/*Info section*/
-
-section.loginPage {
-    width: 100%;
-    margin: auto;
-/*    border: 40px solid #0c4f6e;*/
-
-    background-color: #fff;
-
-
-}
-
-/* Info steps*/
-div#info-steps {
-    width: 80%;
-    margin: auto;
-    text-align: center;
-}
-
-div.instructions {
-    width: 30%;
-    margin: 50px 5px;
-    background-color: rgba(106,195,39, 0.8);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 20px;
-    text-align: center;
-    vertical-align: top;
-    border-radius: 10px;
-    display: inline-block;
-}
-
-img.step-img {
-    margin: 20px auto;
-    width: 40%;
-    display: inline-block;
-    border-radius: 50%;
-}
-
-
 /*Register Form Section*/
 
 section.registerForm {
-    width: 100%;
-    margin: auto;
-    /*    border: 40px solid #0c4f6e;*/
-    background-color: rgba(127,214,194,0.9);
+    background-color: rgba(127,214,194,0.8);
     background-image: url("images/sustain-background.png");
-    box-shadow: 10px 10px 8px 0 rgba(254,215,49,0.2), 10px 10px 20px 0 rgba(254,215,49,0.19);
     background-attachment: fixed;
-    background-size: 100%;
-    padding: 30px 0;
+    padding: 20px;
     color: #0c4f6e;
-    font-size: 1em;
-    line-height: 1.5em;
-
+    font-size: 1rem;
+    line-height: 1.1rem;
+    margin: auto;
+    margin-top: 10%;
+    height: 100vh;
 }
 
 form.signup {
     width: 40%;
     margin: auto;
     padding: 20px;
-    background-color: rgba(127,214,194,0.7);
     text-align: center;
 }
 
@@ -299,24 +304,23 @@ form.signup h2 {
 form.signup label {
     color: #0c4f6e;
     display: block;
-    font-size: 1.2em;
+    font-size: 1rem;
     font-family: 'Cousine', monospace;
 
     /*    margin-left: 50px;*/
 }
 
 form.signup input {
-    padding: 5px;
-    padding-left: 10px;
     font-family: 'Cousine', monospace;
     color: #2c3531;
-    width: 40%;
+    width: 45%;
     border: none;
     border-radius: 10px;
-    font-size: 1em;
+    font-size: 1rem;
     margin: auto;
     line-height: 2em;
     display: block;
+    text-align: center;
 }
 
 form.signup button {
@@ -656,20 +660,19 @@ img.friendImages {
 /*Footer*/
 
 div.footerInfo {
+    width: 35%;
     display: inline-block;
-    width: 45%;
+    text-align: left;
+    margin-left: 10%;
 }
 
 img.footer-sustain-logo {
-    width: 26%;
+    width: 120px;
     display: inline-block;
-    /*    margin-left: 110px;*/
-    margin-top: 10px;
-
 }
 
 footer {
-    background-color: #2c3531;
+    background-color: #000;
     color: #d1e8e2;
     display: inline-block;
 }
@@ -686,10 +689,10 @@ div.footerInfo {
 }
 
 div.socialButtons {
-    width: 55%;
+    width: 50%;
     display: inline-block;
-    float: right;
-    margin-top: 20px;
+    margin-top: 10px;
+
 }
 
 img.facebook,
