@@ -52,7 +52,7 @@ nav {
 }
 
 div.mobile-logo {
-    width: 50%;
+    width: 40%;
     display: inline-block;
     text-align: left;
     margin-left: 10%;
@@ -106,7 +106,6 @@ div.nav-form {
     margin: auto;
     display: inline-block;
     width: 35%;
-
 }
 
 form.nav-sign-in {
@@ -119,6 +118,7 @@ input#username, input#password, button#js-signin-button {
     font-family: 'Cousine', monospace;
     padding: 3px;
     border-radius: 10px;
+    font-size: 0.8rem;
 }
 
 input#username, input#password {
@@ -127,7 +127,7 @@ input#username, input#password {
 
 button#js-signin-button {
     background-color: #fed731;
-    padding: 7px;
+    padding: 4px;
     font-family: 'Cousine', monospace;
     margin-bottom: 10px;
 
@@ -168,11 +168,10 @@ nav .demoMessage #hideBtn {
 
 section#main-header {
     width: 100%;
-    height: 80vh;
+    height: 60vh;
     margin: auto;
     padding-top: 10%;
     padding-bottom: 5%;
-/*    border: 40px solid #0c4f6e;*/
     background-color: #000;
     background-image: url("images/borns-stage.png");
     background-position: top;
@@ -195,15 +194,11 @@ header#page-title {
     display: inline-block;
 }
 
-/*
-header h1, p {
-    color: #B2FFF5;
-}
-*/
 
 header h3 {
     line-height: 2rem;
     text-decoration: none;
+    font-size: 1rem;
 }
 
 button.sign-up {
@@ -256,6 +251,16 @@ img.step-img {
     width: 70%;
 }
 
+div#final-img {
+    width: 50%;
+    display: inline-block;
+}
+
+img.last-step-img {
+    margin: 20px auto;
+    width: 90%;
+
+}
 /*Register Form Section*/
 
 section.registerForm {
@@ -271,7 +276,7 @@ section.registerForm {
 }
 
 form.signup {
-    width: 40%;
+    width: 60%;
     margin: auto;
     padding: 20px;
     text-align: center;
@@ -297,7 +302,7 @@ form.signup input {
     width: 45%;
     border: none;
     border-radius: 10px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin: auto;
     line-height: 2em;
     display: block;
@@ -312,7 +317,7 @@ form.signup button {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
     margin: auto;
-    width: 20%;
+    width: 30%;
 }
 
 /*///////////////Profile Page/////////////////////////*/
@@ -416,23 +421,28 @@ section.indivFeed {
 div.currentFeed {
     color: #99F0DC;
     margin: 15px auto;
-    width: 90%;
+    width: 60%;
+    text-align: center;
     padding: 10px 0;
     background-color: rgba(12,79,110,0.8);
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-h2.feed {
+h2.feed-info {
     width: 40%;
     color: #000;
-    margin-left: 5%;
+    margin-left: 10%;
 }
 
 div.pointsEarned {
     display: inline-block;
     vertical-align: middle;
     width: 60%;
+}
+
+h2.points {
+    color: #FFF14B;
 }
 
 h2.points,
@@ -444,7 +454,6 @@ p.comment {
 
 img.proofPicture {
     margin-top: 20px;
-    margin-left: 50px;
     width: 10%;
     display: inline-block;
     vertical-align: middle;
@@ -514,12 +523,6 @@ button.pullDownCategories {
     font-family: 'Cousine', monospace;
     font-size: 0.9rem;
 }
-
-/*
-select.sustainCategories {
-    margin-left: 70px;
-}
-*/
 
 h3.categoryPageDescription {
     /*    margin-left: 70px;*/
@@ -722,31 +725,80 @@ img.twitter {
         font-size: 1.3em;
 
     }
+
+/*    landing page header*/
+    section#main-header {
+    height: 55vh;
+    }
+
+    header h3 {
+        font-size: 0.95rem;
+        width: 100%;
+    }
+
+    button.sign-up {
+        font-size: 0.85;
+        width: 40%;
+    }
+
+/*    register form*/
+    form.signup {
+        width: 60%;
+    }
+
+
+    form.signup input {
+        font-size: 0.8rem;
+    }
+
+    form.signup button {
+       font-size: 1rem;
+    }
+
     /*Category Page*/
-    p.categoryPageDescription {
-        font-size: 0.9em;
+
+/*selection section*/
+    div.mobile-logo {
+        width: 35%;
+    }
+
+    h3.categoryPageDescription {
+        font-size: 0.95em;
     }
 
     select.sustainCategories,
     select.sustainPoints {
         width: 20%;
         font-size: 0.65em;
+        padding: 3px;
     }
 
     button.pullDownCategories {
         font-size: 0.75em;
+        padding: 5px;
+    }
+
+/*    activity boxes section*/
+
+    section.activityBoxesSection,
+    section.activityDetailsBoxesSection {
+        padding: 20px 40px;
+    }
+
+    img.activityImageValue {
+        margin-bottom: 10px;
     }
 
     h3.activityNameValue {
-        height: 70px;
-        width: 100%;
-        text-align: center;
+        height: 5.5vh;
+        vertical-align: top;
         padding: 20px;
-        font-size: 0.95em;
+        padding-bottom: 10px;
+        font-size: 0.95rem;
     }
 
     h3.activityPointsValue {
-        font-size: 0.9em;
+        font-size: 0.85rem;
     }
 
 
@@ -755,23 +807,17 @@ img.twitter {
     }
 
     button.addCategoryButton {
-        font-size: 0.9em;
+        font-size: 0.85rem;
     }
 
-    /*
-    div.profileDescription {
-        width: 49%;
-        display: inline-block;
-        vertical-align: middle;
-    }
-*/
+
     /*activities on profile page*/
     h3.activityNameValueValue {
-        font-size: 0.95em;
+        font-size: 0.95rem;
     }
 
     p.tell-us {
-        font-size: 0.85em;
+        font-size: 0.85rem;
     }
 
     textarea.textBox {
@@ -779,7 +825,7 @@ img.twitter {
     }
 
     button.completedActivityButton {
-        font-size: 0.9em;
+        font-size: 0.85rem;
     }
 
 
@@ -788,6 +834,10 @@ img.twitter {
     img.proofPicture {
         width: 90px;
         display: inline-block;
+    }
+
+    div.currentFeed {
+        width: 70%;
     }
 
 
@@ -808,123 +858,111 @@ img.twitter {
         width: 25px;
     }
 
-    /*sign-in page */
-    div.overallMessage {
-        width: 30%;
-        font-size: 1.1em;
-        margin-left: 30px;
+    div.mobile-logo {
+        width: 25%;
     }
 
-    div.loginForm {
+    div.nav-form {
+        width: 55%;
+        text-align: right;
+    }
+
+    /*    landing page header*/
+    section#main-header {
+        height: 50vh;
+    }
+
+    button.sign-up {
+        font-size: 0.85;
         width: 50%;
     }
 
-    form.login h2 {
-        font-size: 1.4em;
-    }
 
-    form.login label {
-        font-size: 0.9em;
-    }
-
-    form.login input {
-        width: 95%;
-        font-size: 0.9em;
-    }
-
-/*
-    button.sign-up {
-        background-color: #ba2f2f;
-        border: 1px solid #ba2f2f;
-        padding: 5px;
-        width: 20px;
-
-    }
-*/
-
-    /*register page */
-    section.registerForm {
-        margin: 30px auto;
-        width: 80%;
-    }
-
-    form.signup h2 {
-        padding-bottom: 0px;
-    }
-
-    form.signup {
+    /* Info section*/
+    div#info-steps {
         width: 90%;
     }
 
-    form.signup label {
-        margin-left: 20px;
+    div.inst-1 {
+        font-size: .9rem;
+    }
 
+    div#amp1, div#amp2 {
+        width: 35%;
+        display: inline-block;
+    }
+
+
+    div#final-img {
+        width: 55%;
+        display: inline-block;
+    }
+
+    /*    register form*/
+    form.signup {
+        width: 80%;
     }
 
     form.signup input {
-        width: 95%;
-        margin-bottom: 20px;
+        font-size: 0.8rem;
     }
 
     form.signup button {
-        margin-top: 20px;
-    }
-    /*Profile and overall Feed minus the profile pic*/
-    /*Prfile page*/
-    img.profile-picture {
-        width: 45px;
+        font-size: 1rem;
     }
 
-    h2.profileUsername {
-        font-size: 1.5em;
-        text-align: center;
-    }
-
-    div.pointsTotal {
-        font-size: 0.8em;
-    }
-    /*
-    div.profileDescription {
-        width: 40%;
-        font-size: 0.9em;
-    }
-*/
-    section.activityBoxesSection div,
-    section.activityDetailsBoxesSection div {
-        width: 45%;
-        border: 3px dashed #D9B08C;
-    }
-
-
-    p.comment {
-        font-size: 0.8em;
-    }
-
-    h2.points,
-    h3.practice {
-        font-size: 1em;
-    }
-
-    img.proofPicture {
-        width: 80px;
-    }
-
-    /*Activities page*/
+    /*Category Page*/
     select.sustainCategories,
     select.sustainPoints {
         width: 25%;
         font-size: 0.65em;
     }
 
-
-    button.pullDownCategories {
-        font-size: 0.75em;
-        margin-top: 0;
+    section.activityBoxesSection,
+    section.activityDetailsBoxesSection {
+        padding: 20px 20px;
     }
 
-    button.addCategoryButton {
-        font-size: 0.8em;
+    section.activityBoxesSection div,
+    section.activityDetailsBoxesSection div {
+        width: 45%;
     }
+
+    h3.activityNameValue {
+        height: 6vh;
+    }
+
+
+    /*Profile and overall Feed minus the profile pic*/
+    /*Prfile page*/
+    img.profile-picture {
+        width: 45px;
+        margin-top: 50px;
+    }
+
+    h2.profileUsername {
+        font-size: 1.6rem;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    div.pointsTotal {
+        font-size: 0.95rem;
+    }
+
+    p.comment {
+        font-size: 0.8rem;
+    }
+
+    h2.points,
+    h3.practice {
+        font-size: 1rem;
+    }
+
+    img.proofPicture {
+        width: 80px;
+    }
+
 }
 
 
@@ -955,34 +993,41 @@ img.twitter {
         margin-bottom: 5px;
     }
 
-    /* sign-in page */
-    div.overallMessage {
-        width: 80%;
+    div.nav-form {
         display: block;
-        font-size: 0.9em;
-        margin-top: 20px;
-        margin-left: 30px;
+        width: 100%;
+        text-align: center;
     }
 
-    div.loginForm {
-        width: 86%;
-        display: block;
-        margin-top: 20px;
-        margin-left: 30px;
+    /* head page */
+
+    section#main-header {
+        height: 55vh;
+        background-position: center;
+        background-attachment: scroll;
+    }
+
+    header#page-title {
+        margin: 20% auto;
+        width: 70%;
     }
 
     button.sign-up {
-        color: #ba2f2f;
-        border: 1px solid #ba2f2f;
-        padding: 5px;
-        width: 20px;
+            width: 60%;
+        }
 
+    div#amp1, div#amp2 {
+        width: 40%;
+        display: inline-block;
+    }
+
+
+    div#final-img {
+        width: 56%;
+        display: inline-block;
     }
 
     /* Register Page */
-    section.registerForm {
-        width: 95%;
-    }
 
 
     form.signup {
@@ -1076,7 +1121,7 @@ img.twitter {
         font-size: 1.1em;
     }
 
-    p.categoryPageDescription {
+    h3.categoryPageDescription {
         font-size: 0.75em;
     }
 

@@ -138,7 +138,7 @@ function getActivitiesFeedByUsername(username) {
 
 function displayActivitiesFeedByUsername(activityFeed) {
     let totalPoints = 0;
-    let buildActivity = '<h2 class="pageTitle">YOUR FEED</h2>';
+    let buildActivity = '<h2 class="feed-info">YOUR FEED</h2>';
     $.each(activityFeed, function (myProfileKey, myProfileValue) {
 
         buildActivity += '<div class="currentFeed">';
