@@ -323,10 +323,9 @@ section.profileInfo {
     margin: auto;
     padding-top: 7%;
     padding-bottom: 5%;
-    /*    border: 40px solid #0c4f6e;*/
     background-color: #2c3531;
     background-image: url("images/climpek.png");
-    color: #fed731;
+    color: #99F0DC;
 }
 
 div.profileHeader {
@@ -342,6 +341,7 @@ img.profile-picture {
 /*    border: 3px solid #0c4f6e;*/
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #fff;
+    border: 3px solid #fed731;
 }
 
 h2.profileUsername {
@@ -389,7 +389,7 @@ input {
 }
 
 textarea.textBox {
-    border: 1px dashed #67BCDB;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-top: 10px;
     width: 90%;
 }
@@ -398,8 +398,7 @@ button.completedActivity,
 button.completedActivityButton {
     background-color: #fed731;
     padding: 10px;
-    margin-left: 10px;
-    margin-bottom: 20px;
+    margin: 10px auto 20px auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
@@ -411,10 +410,11 @@ section.indivFeed {
     background-color: rgba(254,215,49, 0.5);
     background-image: url("images/sustain-background.png");
     background-attachment: fixed;
-    color: #99F0DC;
+    color: #000;
 }
 
 div.currentFeed {
+    color: #99F0DC;
     margin: 15px auto;
     width: 90%;
     padding: 10px 0;
@@ -424,7 +424,9 @@ div.currentFeed {
 }
 
 h2.feed {
+    width: 40%;
     color: #000;
+    margin-left: 5%;
 }
 
 div.pointsEarned {
