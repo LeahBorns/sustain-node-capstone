@@ -978,19 +978,31 @@ img.twitter {
     div.navLinks {
         width: 100%;
         margin: -5px auto;
-        background-color: #116466;
+        background-color: #7fd6c2;
         font-size: 0.55em;
     }
 
+    a.link {
+        color: #000;
+        font-size: 0.65rem;
+    }
+
+    a.link:hover {
+        background-color: gray;
+
+    }
+
     div.mobile-menu-bar {
-        width: 88%;
+        width: 70%;
         margin: auto;
+        text-align: center;
     }
 
     img.profilePic {
         width: 20px;
         margin-top: 5px;
         margin-bottom: 5px;
+        margin: auto;
     }
 
     div.nav-form {
@@ -1027,8 +1039,7 @@ img.twitter {
         display: inline-block;
     }
 
-    /* Register Page */
-
+    /* Register section */
 
     form.signup {
         width: 100%;
@@ -1038,10 +1049,68 @@ img.twitter {
         width: 95%
     }
 
+    /*Category page*/
+    h2.pageTitle {
+        margin-top: 50px;
+        font-size: 1.1em;
+    }
+
+    h3.categoryPageDescription {
+        font-size: 0.75em;
+    }
+
+    select.sustainCategories,
+    select.sustainPoints {
+        font-size: 0.45em;
+        width: 30%;
+    }
+
+    button.pullDownCategories {
+        font-size: 0.65em;
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+/*    activity boxes*/
+
+    img.activityImageValue {
+        width: 45px;
+        margin-bottom: 0px;
+    }
+
+    section.activityBoxesSection,
+    section.activityDetailsBoxesSection {
+        margin: auto;
+        width: 85%;
+    }
+
+    section.activityBoxesSection div,
+    section.activityDetailsBoxesSection div {
+        width: 100%;
+        padding: 20px;
+        display: block;
+        margin: auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    h3.activityNameValue {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 15px;
+        height: 5.8vh
+    }
+
+    button.addCategoryButton {
+        font-size: 0.75em;
+    }
+
     /*Profile Page*/
     img.profile-picture {
         width: 35px;
-        margin-top: 50px;
+        margin-top: 70px;
     }
 
     h2.profileUsername {
@@ -1049,7 +1118,7 @@ img.twitter {
     }
 
     div.pointsTotal {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
     /*activities on profile page*/
     p.tell-us {
@@ -1074,7 +1143,7 @@ img.twitter {
     }
 
     textarea.textBox {
-        width: 100%
+        width: 90%;
     }
 
     button.completedActivityButton {
@@ -1085,7 +1154,7 @@ img.twitter {
     div.pointsEarned {
         width: 100%;
         margin: auto;
-        margin-bottom: 10px;
+        margin-bottom: 5%;
     }
 
     p.comment {
@@ -1113,61 +1182,7 @@ img.twitter {
 
     img.proofPicture {
         width: 70px;
-        margin-left: 40%;
-    }
-    /*Category page*/
-    h2.pageTitle {
-        margin-top: 40px;
-        font-size: 1.1em;
     }
 
-    h3.categoryPageDescription {
-        font-size: 0.75em;
-    }
-
-    select.sustainCategories,
-    select.sustainPoints {
-        font-size: 0.45em;
-    }
-
-    button.pullDownCategories {
-        font-size: 0.65em;
-        padding: 5px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    img.activityImageValue {
-        width: 45px;
-        margin-bottom: 0px;
-    }
-
-    section.activityBoxesSection,
-    section.activityDetailsBoxesSection {
-        margin: auto;
-        width: 100%;
-    }
-
-    section.activityBoxesSection div,
-    section.activityDetailsBoxesSection div {
-        width: 100%;
-        padding: 20px;
-        display: block;
-        margin: auto;
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-
-    h3.activityNameValue {
-        width: 100%;
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 15px;
-        height: 95px;
-    }
-
-    button.addCategoryButton {
-        font-size: 0.75em;
-    }
 
 }
