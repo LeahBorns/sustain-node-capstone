@@ -68,7 +68,7 @@ img.sustain-logo {
 div.navLinks {
     display: inline-block;
     float: right;
-    font-size: 1em;
+    font-size: 1rem;
     vertical-align: middle;
     margin-top: 11px;
     color: #7fd6c2;
@@ -168,7 +168,7 @@ nav .demoMessage #hideBtn {
 
 section#main-header {
     width: 100%;
-    height: 60vh;
+    height: 80vh;
     margin: auto;
     padding-top: 10%;
     padding-bottom: 5%;
@@ -304,7 +304,7 @@ form.signup input {
     border-radius: 10px;
     font-size: 0.9rem;
     margin: auto;
-    line-height: 2em;
+    line-height: 2rem;
     display: block;
     text-align: center;
 }
@@ -352,7 +352,7 @@ img.profile-picture {
 h2.profileUsername {
     margin-top: 20px;
     margin-bottom: 10px;
-    font-size: 2em;
+    font-size: 2rem;
     text-align: center;
 }
 
@@ -718,18 +718,15 @@ img.twitter {
     }
 
     div.navLinks {
-        font-size: 0.85em;
+        font-size: 0.85rem;
     }
 
     h2.pageTitle {
-        font-size: 1.3em;
+        font-size: 1.3rem;
 
     }
 
 /*    landing page header*/
-    section#main-header {
-    height: 55vh;
-    }
 
     header h3 {
         font-size: 0.95rem;
@@ -737,7 +734,7 @@ img.twitter {
     }
 
     button.sign-up {
-        font-size: 0.85;
+        font-size: 0.85rem;
         width: 40%;
     }
 
@@ -763,18 +760,18 @@ img.twitter {
     }
 
     h3.categoryPageDescription {
-        font-size: 0.95em;
+        font-size: 0.95rem;
     }
 
     select.sustainCategories,
     select.sustainPoints {
         width: 20%;
-        font-size: 0.65em;
+        font-size: 0.65rem;
         padding: 3px;
     }
 
     button.pullDownCategories {
-        font-size: 0.75em;
+        font-size: 0.75rem;
         padding: 5px;
     }
 
@@ -851,7 +848,7 @@ img.twitter {
     }
 
     div.navLinks {
-        font-size: 0.75em;
+        font-size: 0.75rem;
     }
 
     img.profilePic {
@@ -868,12 +865,9 @@ img.twitter {
     }
 
     /*    landing page header*/
-    section#main-header {
-        height: 50vh;
-    }
 
     button.sign-up {
-        font-size: 0.85;
+        font-size: 0.85rem;
         width: 50%;
     }
 
@@ -915,7 +909,7 @@ img.twitter {
     select.sustainCategories,
     select.sustainPoints {
         width: 25%;
-        font-size: 0.65em;
+        font-size: 0.65rem;
     }
 
     section.activityBoxesSection,
@@ -977,9 +971,9 @@ img.twitter {
 
     div.navLinks {
         width: 100%;
-        margin: -5px auto;
+        margin: auto;
         background-color: #7fd6c2;
-        font-size: 0.55em;
+        font-size: 0.55rem;
     }
 
     a.link {
@@ -993,7 +987,7 @@ img.twitter {
     }
 
     div.mobile-menu-bar {
-        width: 70%;
+        width: 100%;
         margin: auto;
         text-align: center;
     }
@@ -1014,7 +1008,7 @@ img.twitter {
     /* head page */
 
     section#main-header {
-        height: 55vh;
+        height: 70vh;
         background-position: center;
         background-attachment: scroll;
     }
@@ -1049,24 +1043,28 @@ img.twitter {
         width: 95%
     }
 
+    form.signup button {
+        font-size: 0.85rem;
+    }
+
     /*Category page*/
     h2.pageTitle {
         margin-top: 50px;
-        font-size: 1.1em;
+        font-size: 1.1rem;
     }
 
     h3.categoryPageDescription {
-        font-size: 0.75em;
+        font-size: 0.75rem;
     }
 
     select.sustainCategories,
     select.sustainPoints {
-        font-size: 0.45em;
+        font-size: 0.45rem;
         width: 30%;
     }
 
     button.pullDownCategories {
-        font-size: 0.65em;
+        font-size: 0.65rem;
         padding: 5px;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -1100,11 +1098,11 @@ img.twitter {
         padding-left: 0;
         padding-right: 0;
         padding-top: 15px;
-        height: 5.8vh
+        height: 7.5vh;
     }
 
     button.addCategoryButton {
-        font-size: 0.75em;
+        font-size: 0.75rem;
     }
 
     /*Profile Page*/
@@ -1114,7 +1112,7 @@ img.twitter {
     }
 
     h2.profileUsername {
-        font-size: 1.3em;
+        font-size: 1.3rem;
     }
 
     div.pointsTotal {
@@ -1124,20 +1122,7 @@ img.twitter {
     p.tell-us {
         margin-top: 5px;
     }
-    /*
-    section.profileActivityBoxesSection {
-        margin: auto;
-        width: 100%;
-    }
 
-    section.profileActivityBoxesSection div {
-        width: 80%;
-        display: block;
-        margin: auto;
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-*/
     h3.activityNameValueValue {
         margin-top: 10px;
     }
@@ -1154,17 +1139,16 @@ img.twitter {
     div.pointsEarned {
         width: 100%;
         margin: auto;
-        margin-bottom: 5%;
     }
 
     p.comment {
-        font-size: 0.8em;
+        font-size: 0.8rem;
         text-align: center;
     }
 
     h2.points,
     h3.practice {
-        font-size: 1.1em;
+        font-size: 1.1rem;
         text-align: center;
         width: 100%;
     }
@@ -1178,6 +1162,7 @@ img.twitter {
 
     div.currentFeed {
         margin: auto;
+        margin-bottom: 5px;
     }
 
     img.proofPicture {
